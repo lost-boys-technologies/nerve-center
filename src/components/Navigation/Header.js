@@ -1,6 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
+import SignedInLinks from './SignedInLinks';
+import SignedOutLinks from './SignedOutLinks';
+
 import './Header.scss';
 
 const Header = () => {
@@ -9,6 +12,9 @@ const Header = () => {
 			<NavLink to='/' className='nav-link group-name'>
 				Running Backs of Scotland
 			</NavLink>
+			<div className='links-container'>
+				<SignedInLinks />
+			</div>
 		</nav>
 	);
 };
