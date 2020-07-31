@@ -3,7 +3,7 @@ import React from 'react';
 const BetsLists = () => {
 	return (
 		<div className='bets-lists'>
-			<p>Bets</p>
+			<h2>Bets</h2>
 		</div>
 	);
 };

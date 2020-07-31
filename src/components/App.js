@@ -5,6 +5,9 @@ import Login from './Auth/Login';
 import ForgotPassword from './Auth/ForgotPassword';
 import BetsLists from './Bets/BetsLists';
 
+import Members from './StaticPages/Members';
+import Homepage from './StaticPages/Homepage';
+
 import './App.scss';
 
 const App = () => {
@@ -12,10 +15,11 @@ const App = () => {
 		<BrowserRouter>
 			<Header />
 			<Switch>
-				<Route exact path='/' render={() => <Redirect to='/' />} />
+				<Route exact path='/' component={Homepage} render={() => <Redirect to='/' />} />
 				<Route path='/login' component={Login} />
 				<Route path='/forgot' component={ForgotPassword} />
 				<Route path='/bets' component={BetsLists} />
+				<Route path='/members' component={Members} />
 			</Switch>
 		</BrowserRouter>
 	);
