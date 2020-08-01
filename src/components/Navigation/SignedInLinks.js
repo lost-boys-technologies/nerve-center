@@ -11,31 +11,31 @@ const SignedInLinks = () => {
 					Members
 				</NavLink>
 			</li>
-			{/* <li>
-				<NavLink className='nav-link' to='/'>
+			<li>
+				<NavLink className='nav-link' to='/constitution'>
 					Constitution
 				</NavLink>
-			</li> */}
-			{/* <li>
-				<NavLink className='nav-link' to='/'>
+			</li>
+			<li>
+				<NavLink className='nav-link' to='/rules'>
 					Rules
 				</NavLink>
-			</li> */}
+			</li>
 			<li>
 				<NavLink className='nav-link' to='/bets'>
 					Bets
 				</NavLink>
 			</li>
-			{/* <li>
-				<NavLink className='nav-link' to='/'>
-					Sign Out
+			<li>
+				<NavLink className='nav-link' to='/logout'>
+					Logout
 				</NavLink>
-			</li> */}
-			{/* <li>
+			</li>
+			<li>
 				<NavLink className='nav-link' to='/'>
 					KH
 				</NavLink>
-			</li> */}
+			</li>
 		</ul>
 	);
 };
