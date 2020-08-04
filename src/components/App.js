@@ -15,17 +15,21 @@ import './App.scss';
 const App = () => {
 	return (
 		<BrowserRouter>
-			<Header />
-			<Switch>
-				<Route exact path='/' component={Homepage} render={() => <Redirect to='/' />} />
-				<Route path='/members' component={Members} />
-				<Route path='/constitution' component={Constitution} />
-				<Route path='/rules' component={Rules} />
-				<Route path='/bets' component={BetsLists} />
-				<Route path='/login' component={Login} />
-				<Route path='/logout' component={Logout} />
-				<Route path='/forgot' component={ForgotPassword} />
-			</Switch>
+			<div className='app-container'>
+				<Header />
+			</div>
+			<div className='route-container'>
+				<Switch>
+					<Route exact path='/' component={Homepage} render={() => <Redirect to='' />} />
+					<Route path='/members' component={Members} />
+					<Route path='/constitution' component={Constitution} />
+					<Route path='/rules' component={Rules} />
+					<Route path='/bets' component={BetsLists} />
+					<Route path='/login' component={Login} />
+					<Route path='/logout' component={Logout} />
+					<Route path='/forgot' component={ForgotPassword} />
+				</Switch>
+			</div>
 		</BrowserRouter>
 	);
 };

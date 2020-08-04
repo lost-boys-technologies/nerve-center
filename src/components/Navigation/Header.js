@@ -33,7 +33,7 @@ const Header = () => {
 					</li>
 					<li>
 						<NavLink className='nav-link' to='/login'>
-							Login
+							login
 						</NavLink>
 					</li>
 					<li>
