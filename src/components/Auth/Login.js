@@ -11,16 +11,17 @@ const INITIAL_STATE = {
 };
 
 const Login = props => {
-	const { handleChange } = useFormValidation(INITIAL_STATE);
+	const { handleChange, handleSubmit, values } = useFormValidation(INITIAL_STATE);
 	const [login, setLogin] = useState(true);
 
 	return (
 		<div className='login'>
 			<h2>{login ? 'Login' : 'Create An Account'}</h2>
-			<form className='login-form'>
+			<form onSubmit={handleSubmit} className='login-form'>
 				{!login && (
 					<input
 						onChange={handleChange}
+						value={values.name}
 						name='name'
 						type='text'
 						placeholder='please enter your name'
@@ -29,6 +30,7 @@ const Login = props => {
 				)}
 				<input
 					onChange={handleChange}
+					value={values.email}
 					name='email'
 					type='email'
 					placeholder='Please enter your email'
@@ -36,6 +38,7 @@ const Login = props => {
 				/>
 				<input
 					onChange={handleChange}
+					value={values.password}
 					name='password'
 					type='password'
 					placeholder='Password'
