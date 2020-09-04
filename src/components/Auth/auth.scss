@@ -31,6 +31,12 @@
 		}
 	}
 
+	.forgot-password > a {
+		color: $cyan-blue-color;
+		font-weight: bold;
+		text-decoration: none;
+	}
+
 	.error-input {
 		border: 2px solid $red-color;
 	}

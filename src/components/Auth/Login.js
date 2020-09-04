@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import useFormValidation from './useFormValidation';
 import validateLogin from './validateLogin';
 import firebase from '../../firebase';
@@ -86,6 +87,9 @@ const Login = props => {
 					</button>
 				</div>
 			</form>
+			<div className='forgot-password'>
+				<Link to='/forgot'>Need Help?</Link>
+			</div>
 			{/* <div className='firebase-oauth'>
 				<p>Or connect with Social Media</p>
 			</div> */}
