@@ -4,6 +4,7 @@ import Header from './Navigation/Header';
 import Login from './Auth/Login';
 import Logout from './Auth/Logout';
 import ForgotPassword from './Auth/ForgotPassword';
+import useAuth from './Auth/useAuth';
 import BetsLists from './Bets/BetsLists';
 import Members from './StaticPages/Members';
 import Homepage from './StaticPages/Homepage';
@@ -13,6 +14,8 @@ import Rules from './StaticPages/Rules';
 import './App.scss';
 
 const App = () => {
+	useAuth();
+
 	return (
 		<BrowserRouter>
 			<div className='app-container'>
