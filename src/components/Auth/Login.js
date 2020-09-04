@@ -20,13 +20,18 @@ const Login = props => {
 		isSubmitting,
 	} = useFormValidation(INITIAL_STATE, validateLogin, authenticateUser);
 	const [login, setLogin] = useState(true);
+	const [firebaseError, setFirebaseError] = useState(null);
 
 	async function authenticateUser() {
 		const { name, email, password } = values
-		const response = login 
+		try {
+			login 
 			? await firebase.login(email, password)
 			: await firebase.register(name, email, password)
-		console.log({ response });
+		} catch (err) {
+			console.error('Authentication Error', err);
+			setFirebaseError(err.message)
+		}
 	}
 
 	return (
@@ -66,6 +71,7 @@ const Login = props => {
 					autoComplete='off'
 				/>
 				{errors.password && <p className='error-text'>{errors.password}</p>}
+				{firebaseError && <p className='error-text'>{firebaseError}</p>}
 				<div className='login-buttons'>
 					<button
 						disabled={isSubmitting}
