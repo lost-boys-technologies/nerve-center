@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import Header from './Navigation/Header';
 import Login from './Auth/Login';
-import Logout from './Auth/Logout';
 import ForgotPassword from './Auth/ForgotPassword';
 import useAuth from './Auth/useAuth';
 import firebase, { FirebaseContext } from '../firebase';
@@ -34,7 +33,6 @@ const App = () => {
 						<Route path='/bets' component={BetsLists} />
 						<Route path='/account' component={Account} />
 						<Route path='/login' component={Login} />
-						<Route path='/logout' component={Logout} />
 						<Route path='/forgot' component={ForgotPassword} />
 					</Switch>
 				</div>

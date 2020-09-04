@@ -42,9 +42,9 @@ const Header = () => {
 								</NavLink>
 							</li>
 							<li>
-								<NavLink className='nav-link' to='/logout'>
+								<div className='nav-link' onClick={() => firebase.logout()}>
 									logout
-								</NavLink>
+								</div>
 							</li>
 						</React.Fragment>
 					) : (
