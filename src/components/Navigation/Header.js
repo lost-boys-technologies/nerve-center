@@ -1,9 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { FirebaseContext } from '../../firebase';
 
 import './Header.scss';
 
 const Header = () => {
+	const {user, firebase} = React.useContext(FirebaseContext);
+
 	return (
 		<nav className='nav-link-container'>
 			<NavLink to='/' className='nav-link group-name'>
@@ -31,21 +34,26 @@ const Header = () => {
 							Bets
 						</NavLink>
 					</li>
-					<li>
-						<NavLink className='nav-link' to='/login'>
-							login
-						</NavLink>
-					</li>
-					<li>
-						<NavLink className='nav-link' to='/logout'>
-							Logout
-						</NavLink>
-					</li>
-					<li>
-						<NavLink className='nav-link' to='/'>
-							KH
-						</NavLink>
-					</li>
+					{user ? (
+						<React.Fragment>
+							<li>
+								<NavLink className='user-name' to='/account'>
+									{user.displayName}
+								</NavLink>
+							</li>
+							<li>
+								<NavLink className='nav-link' to='/logout'>
+									logout
+								</NavLink>
+							</li>
+						</React.Fragment>
+					) : (
+						<li>
+							<NavLink className='nav-link' to='/login'>
+								login
+							</NavLink>
+						</li>
+					)}
 				</ul>
 			</div>
 		</nav>

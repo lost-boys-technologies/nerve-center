@@ -11,7 +11,8 @@
 		padding: 0 10px;
 	}
 
-	.nav-link {
+	.nav-link, .user-name {
+		cursor: pointer;
 		color: $ivory-color;
 		text-decoration: none;
 	}
