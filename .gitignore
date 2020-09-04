@@ -5,7 +5,7 @@
 /.pnp
 .pnp.js
 
-# firebase
+# firebase secrets
 /src/firebase/config.js
 
 # testing
