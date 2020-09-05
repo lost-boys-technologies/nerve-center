@@ -2,9 +2,15 @@ import React from 'react';
 
 const BetsLists = () => {
 	return (
-		<div className='bets-lists'>
-			<h2>Bets</h2>
-		</div>
+		// <form className='bets-list-container'>
+		// 	<input
+		// 		name='description'
+		// 		placeholder='A description of your bet'
+		// 		autoComplete='off'
+		// 		type='text'
+		// 	/>
+		// </form>
+		<div>Bets Lists</div>
 	);
 };
 
