@@ -40,11 +40,11 @@
 	.error-input {
 		border: 2px solid $red-color;
 	}
+}
 
-	.error-text {
-		color: $red-color;
-		width: 300px;
-		margin: 0 auto;
-		text-align: center;
-	}
+.error-text {
+	color: $red-color;
+	width: 300px;
+	margin: 0 auto;
+	text-align: center;
 }
