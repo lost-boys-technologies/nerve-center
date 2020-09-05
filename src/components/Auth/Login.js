@@ -37,7 +37,7 @@ const Login = props => {
 	}
 
 	return (
-		<div className='login'>
+		<div className='login-container'>
 			<h2>{login ? 'Login' : 'Create An Account'}</h2>
 			<form onSubmit={handleSubmit} className='login-form'>
 				{!login && (
@@ -87,9 +87,11 @@ const Login = props => {
 					</button>
 				</div>
 			</form>
-			<div className='forgot-password'>
-				<Link to='/forgot'>Need Help?</Link>
-			</div>
+			{login ? (
+				<div className='forgot-password'>
+					<Link to='/forgot'>Need Help?</Link>
+				</div>
+			) : ''}
 			{/* <div className='firebase-oauth'>
 				<p>Or connect with Social Media</p>
 			</div> */}

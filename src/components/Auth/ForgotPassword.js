@@ -22,8 +22,8 @@ const ForgotPassword = () => {
 	}
 
 	return (
-		//TODO Need to style this much better
 		<div className='forgot-password-container'>
+			<h2>Forgot Password?</h2>
 			<input
 				type='email'
 				className='input'
@@ -31,11 +31,11 @@ const ForgotPassword = () => {
 				onChange={event => setResetPasswordEmail(event.target.value)}
 			/>
 			<div>
-				<button className='button' onClick={handleResetPassword}>
+				<button className='unique-button' onClick={handleResetPassword}>
 					Reset Password
 				</button>
 			</div>
-			{isPasswordReset && <p>Check email to reset password</p> }
+			{isPasswordReset && <p className="success-text">Check your email to reset password</p> }
 			{passwordResetError && <p className='error-text'>{passwordResetError}</p>}
 		</div>
 	);

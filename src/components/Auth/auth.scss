@@ -1,7 +1,7 @@
 @import '../../variables';
 
-// Login
-.login {
+// Login && Forgot Password
+.login-container, .forgot-password-container {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -12,12 +12,6 @@
 		justify-content: center;
 		flex-direction: column;
 		margin: 0 5em;
-
-		input {
-			margin: 3px 0;
-			padding: 4px;
-			width: 30em;
-		}
 
 		.login-buttons {
 			display: inline-flex;
@@ -31,20 +25,38 @@
 		}
 	}
 
+	input {
+		margin: 3px 0;
+		padding: 4px;
+		width: 30em;
+	}
+
+	.error-input {
+		border: 2px solid $red-color;
+	}
+
+	.error-text {
+		color: $red-color;
+		width: 300px;
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	.success-text {
+		color: $cyan-blue-color;
+		width: 300px;
+		margin: 0 auto;
+		text-align: center;
+	}
+
 	.forgot-password > a {
 		color: $cyan-blue-color;
 		font-weight: bold;
 		text-decoration: none;
 	}
 
-	.error-input {
-		border: 2px solid $red-color;
+	.unique-button {
+		background: $cyan-color;
+		margin: 10px 0 5px 0;
 	}
-}
-
-.error-text {
-	color: $red-color;
-	width: 300px;
-	margin: 0 auto;
-	text-align: center;
 }
