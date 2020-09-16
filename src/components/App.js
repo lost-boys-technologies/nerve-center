@@ -6,7 +6,11 @@ import ForgotPassword from './Auth/ForgotPassword';
 import useAuth from './Auth/useAuth';
 import firebase, { FirebaseContext } from '../firebase';
 
+// Bets
 import BetsLists from './Bets/BetsLists';
+import CreateBet from './Bets/CreateBet';
+
+// Static Pages
 import Members from './StaticPages/Members';
 import Homepage from './StaticPages/Homepage';
 import Constitution from './StaticPages/Constitution';
@@ -31,6 +35,7 @@ const App = () => {
 						<Route path='/constitution' component={Constitution} />
 						<Route path='/rules' component={Rules} />
 						<Route path='/bets' component={BetsLists} />
+						<Route path='/create' component={CreateBet} />
 						<Route path='/account' component={Account} />
 						<Route path='/login' component={Login} />
 						<Route path='/forgot' component={ForgotPassword} />

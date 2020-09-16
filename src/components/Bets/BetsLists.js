@@ -1,16 +1,11 @@
 import React from 'react';
+import CreateBet from './CreateBet';
 
 const BetsLists = () => {
 	return (
-		// <form className='bets-list-container'>
-		// 	<input
-		// 		name='description'
-		// 		placeholder='A description of your bet'
-		// 		autoComplete='off'
-		// 		type='text'
-		// 	/>
-		// </form>
-		<div>Bets Lists</div>
+		<div className='bets-container'>
+			<div>Bets Lists</div>
+		</div>
 	);
 };
 
