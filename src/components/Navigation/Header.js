@@ -14,28 +14,28 @@ const Header = () => {
 			</NavLink>
 			<div className='links-container'>
 				<ul className='nav-link-container'>
-					<li>
-						<NavLink className='nav-link' to='/members'>
-							Members
-						</NavLink>
-					</li>
-					<li>
-						<NavLink className='nav-link' to='/constitution'>
-							Constitution
-						</NavLink>
-					</li>
-					<li>
-						<NavLink className='nav-link' to='/rules'>
-							Rules
-						</NavLink>
-					</li>
-					<li>
-						<NavLink className='nav-link' to='/bets'>
-							Bets
-						</NavLink>
-					</li>
 					{user ? (
 						<React.Fragment>
+							<li>
+								<NavLink className='nav-link' to='/members'>
+									Members
+								</NavLink>
+							</li>
+							<li>
+								<NavLink className='nav-link' to='/constitution'>
+									Constitution
+								</NavLink>
+							</li>
+							<li>
+								<NavLink className='nav-link' to='/rules'>
+									Rules
+								</NavLink>
+							</li>
+							<li>
+								<NavLink className='nav-link' to='/bets'>
+									Bets
+								</NavLink>
+							</li>
 							<li>
 								<NavLink className='user-name' to='/account'>
 									{user.displayName}
