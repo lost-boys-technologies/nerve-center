@@ -6,7 +6,6 @@ import './Header.scss';
 
 const Header = () => {
 	const {user, firebase} = React.useContext(FirebaseContext);
-	console.log('user', user);
 
 	return (
 		<nav className='nav-link-container'>

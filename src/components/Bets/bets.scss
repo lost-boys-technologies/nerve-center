@@ -1,3 +1,8 @@
 @import '../../variables';
 
-textarea { resize: none }
+.create-bet-container {
+    max-width: 100px;
+
+    textarea { resize: none }
+}
+

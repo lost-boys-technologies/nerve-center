@@ -1,5 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
+// import Swal from 'sweetalert2';
+// import withReactContent from 'sweetalert2-react-content';
 import { Form } from 'react-bootstrap';
+import { FirebaseContext } from '../../firebase';
 
 import './bets.scss';
 
@@ -12,14 +15,17 @@ const leagueMembers = [
 ];
 
 const CreateBet = () => {
+    const {user} = React.useContext(FirebaseContext);
+
+    //! REMOVE BEFORE DEPLOY
     const betTerms = ['money', 'meal', 'other'];
 
     return (
         <div className='create-bet-container'>
             <h2>Create Your Bet</h2>
-            <Form>
+            {user && <Form>
                 <Form.Group>
-                    <Form.Label>USER, who do you want to challenge?</Form.Label>
+                    <Form.Label>{user.displayName}, who do you want to challenge?</Form.Label>
                     <Form.Control as='select'>
                         {leagueMembers.map(leagueMember => <option>{leagueMember.name}</option>)}
                     </Form.Control>
@@ -34,7 +40,7 @@ const CreateBet = () => {
                         {betTerms.map(betTerm => <option>{betTerm}</option>)}
                     </Form.Control>
                 </Form.Group>                                           
-            </Form>
+            </Form>}
         </div>
     );
 }
