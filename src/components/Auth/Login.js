@@ -29,7 +29,8 @@ const Login = props => {
 			login 
 				? await firebase.login(email, password)
 				: await firebase.register(name, email, password)
-			props.history.push('/');
+			props.history.push('/'); 
+			props.history.go(0);
 		} catch (err) {
 			console.error('Authentication Error', err);
 			setFirebaseError(err.message)
