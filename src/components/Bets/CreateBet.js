@@ -16,6 +16,7 @@ const leagueMembers = [
 
 const CreateBet = () => {
     const {user} = React.useContext(FirebaseContext);
+    // const [betTerms, setBetTerms] = useState('');
 
     //! REMOVE BEFORE DEPLOY
     const betTerms = ['money', 'meal', 'other'];
@@ -25,8 +26,8 @@ const CreateBet = () => {
             <h2>Create Your Bet</h2>
             {user && <Form>
                 <Form.Group>
-                    <Form.Label>{user.displayName}, who do you want to challenge?</Form.Label>
-                    <Form.Control as='select'>
+                    <Form.Label className='label'>{user.displayName}, who do you want to challenge?</Form.Label>
+                    <Form.Control className='challenger control' as='select'>
                         {leagueMembers.map(leagueMember => <option>{leagueMember.name}</option>)}
                     </Form.Control>
                 </Form.Group>
@@ -34,12 +35,26 @@ const CreateBet = () => {
                     <Form.Label>What's the bet?</Form.Label>
                     <Form.Control as="textarea" rows={5} />
                 </Form.Group>
-                <Form.Group>
+                <Form.Group className='side-by-side'>
                     <Form.Label>Bet Terms:</Form.Label>
                     <Form.Control as='select'>
                         {betTerms.map(betTerm => <option>{betTerm}</option>)}
                     </Form.Control>
-                </Form.Group>                                           
+                    <Form.Label>amount:</Form.Label>
+                    <Form.Control 
+                        placeholder="amount"
+                    />
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label>Bet Completion Date:</Form.Label>
+                    <Form.Control as='select'>
+                        {betTerms.map(betTerm => <option>{betTerm}</option>)}
+                    </Form.Control>
+                    <Form.Label>Acceptance Window:</Form.Label>
+                    <Form.Control as='select'>
+                        {betTerms.map(betTerm => <option>{betTerm}</option>)}
+                    </Form.Control>
+                </Form.Group>
             </Form>}
         </div>
     );
