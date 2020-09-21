@@ -7,6 +7,9 @@ import { FirebaseContext } from '../../firebase';
 import './bets.scss';
 
 //! REMOVE BEFORE DEPLOY
+const betTerms = ['money', 'meal', 'other'];
+
+//! REMOVE BEFORE DEPLOY
 const leagueMembers = [
     {id: 1, name: 'Evan'},
     {id: 2, name: 'Kyle'},
@@ -16,10 +19,11 @@ const leagueMembers = [
 
 const CreateBet = () => {
     const {user} = React.useContext(FirebaseContext);
-    // const [betTerms, setBetTerms] = useState('');
+    const [betTypes, setBetTypes] = useState('');
 
-    //! REMOVE BEFORE DEPLOY
-    const betTerms = ['money', 'meal', 'other'];
+    const handleChange = value => {
+        console.log('value', value);
+    }
 
     return (
         <div className='create-bet-container'>
@@ -38,7 +42,7 @@ const CreateBet = () => {
                 <Form.Group className='side-by-side'>
                     <Form.Label>Bet Terms:</Form.Label>
                     <Form.Control as='select'>
-                        {betTerms.map(betTerm => <option>{betTerm}</option>)}
+                        {betTerms.map(betTerm => <option onChange={() => handleChange('term')}>{betTerm}</option>)}
                     </Form.Control>
                     <Form.Label>amount:</Form.Label>
                     <Form.Control 
