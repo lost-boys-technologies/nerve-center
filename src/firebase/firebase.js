@@ -19,6 +19,12 @@ class Firebase {
         })
     }
 
+    // const query = ref.orderByChild('username').startAt(action.searchText)endA‌t(action.searchText+‌​"\uf8ff");
+    // const snapshot = yield call([query, query.once], 'value');
+    // snapshot.forEach(function(child) { 
+    //   console.log(child.key, child.val().username);
+    // });
+
     async login(email, password) {
         return await this.auth.signInWithEmailAndPassword(email, password)
     }
@@ -30,6 +36,8 @@ class Firebase {
     async resetPassword(email) {
         await this.auth.sendPasswordResetEmail(email);
     }
+
+    asy
 }
 
 const firebase = new Firebase()

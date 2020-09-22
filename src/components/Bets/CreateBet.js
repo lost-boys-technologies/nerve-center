@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 // import withReactContent from 'sweetalert2-react-content';
 import { Form } from 'react-bootstrap';
 import { FirebaseContext } from '../../firebase';
+import useFormValidation from '../Auth/useFormValidation';
 
 import './bets.scss';
 
@@ -17,13 +18,18 @@ const leagueMembers = [
     {id: 3, name: 'Sean'}
 ];
 
+
 const CreateBet = () => {
-    const {user} = React.useContext(FirebaseContext);
+    const {firebase, user} = React.useContext(FirebaseContext);
     const [betTypes, setBetTypes] = useState('');
 
-    const handleChange = value => {
-        console.log('value', value);
-    }
+    // const { handleSubmit, handleChange, values, errors } = useFormValidation(INITIAL_STATE, validateCreateBet, handleCreateBet)
+
+    // const handleCreateBet = () => {
+    //     if (!user) {
+    //         props.history.push('/login');
+    //     }
+    // }
 
     return (
         <div className='create-bet-container'>
@@ -42,7 +48,7 @@ const CreateBet = () => {
                 <Form.Group className='side-by-side'>
                     <Form.Label>Bet Terms:</Form.Label>
                     <Form.Control as='select'>
-                        {betTerms.map(betTerm => <option onChange={() => handleChange('term')}>{betTerm}</option>)}
+                        {betTerms.map(betTerm => <option onChange>{betTerm}</option>)}
                     </Form.Control>
                     <Form.Label>amount:</Form.Label>
                     <Form.Control 
