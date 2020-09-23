@@ -93,9 +93,19 @@ const Login = props => {
 					<Link to='/forgot'>Need Help?</Link>
 				</div>
 			) : ''}
-			{/* <div className='firebase-oauth'>
-				<p>Or connect with Social Media</p>
-			</div> */}
+			<hr />
+			<div className='google-login'>
+				<button
+					type='button'
+					// onClick={() => set}
+				>
+					<img
+						src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+						alt="logo"
+          			/>
+					Sign in With Google
+				</button>
+			</div>
 		</div>
 	);
 };

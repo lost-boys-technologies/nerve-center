@@ -59,4 +59,16 @@
 		background: $cyan-color;
 		margin: 10px 0 5px 0;
 	}
+
+	.google-login {
+		display: flex;
+
+		img {
+			width: 16px;
+			height: 16px;
+			padding: 0;
+			margin: 0 5px;
+			vertical-align: middle;
+		}
+	}
 }
