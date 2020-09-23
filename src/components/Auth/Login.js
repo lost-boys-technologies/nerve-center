@@ -16,6 +16,7 @@ const Login = props => {
 		handleChange,
 		handleBlur,
 		handleSubmit,
+		handleGoogleLogin,
 		values,
 		errors,
 		isSubmitting,
@@ -33,7 +34,7 @@ const Login = props => {
 			{!login && props.history.go(0);}
 		} catch (err) {
 			console.error('Authentication Error', err);
-			setFirebaseError(err.message)
+			setFirebaseError(err.message);
 		}
 	}
 
@@ -93,16 +94,15 @@ const Login = props => {
 					<Link to='/forgot'>Need Help?</Link>
 				</div>
 			) : ''}
-			<hr />
 			<div className='google-login'>
 				<button
+					// onClick={handleGoogleLogin}
 					type='button'
-					// onClick={() => set}
 				>
 					<img
 						src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
 						alt="logo"
-          			/>
+					/>
 					Sign in With Google
 				</button>
 			</div>

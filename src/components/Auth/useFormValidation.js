@@ -37,7 +37,12 @@ const useFormValidation = (initialState, validate, authenticate) => {
 		setSubmitting(true);
 	};
 
-	return { handleChange, handleBlur, handleSubmit, values, errors, isSubmitting };
+	const handleGoogleLogin = event => {
+		event.preventDefault();
+		console.log(event);
+	}
+
+	return { handleChange, handleBlur, handleSubmit, handleGoogleLogin, values, errors, isSubmitting };
 };
 
 export default useFormValidation;
