@@ -95,7 +95,7 @@ const Login = props => {
 			) : ''}
 			<div className='google-login'>
 				<button
-					// onClick={() => handleGoogleLogin()}
+					onClick={firebase.loginByGoogle}
 					type='button'
 				>
 					<img

@@ -19,6 +19,16 @@ class Firebase {
         })
     }
 
+    async loginByGoogle() {
+        const googleAuthProvider = this.auth.GoogleAuthProvider;
+        const provider = new googleAuthProvider();
+        provider.addScope('profile');
+        provider.addScope('email');
+        googleAuthProvider.this.auth().signInWithPopup(provider).then(function(result) {
+            return result.user;
+        })
+    }
+
     async login(email, password) {
         return await this.auth.signInWithEmailAndPassword(email, password)
     }
