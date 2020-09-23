@@ -16,7 +16,6 @@ const Login = props => {
 		handleChange,
 		handleBlur,
 		handleSubmit,
-		handleGoogleLogin,
 		values,
 		errors,
 		isSubmitting,
@@ -96,7 +95,7 @@ const Login = props => {
 			) : ''}
 			<div className='google-login'>
 				<button
-					// onClick={handleGoogleLogin}
+					// onClick={() => handleGoogleLogin()}
 					type='button'
 				>
 					<img
