@@ -3,9 +3,13 @@
 // Login && Forgot Password
 .login-container, .forgot-password-container {
 	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin: 20px 200px;
+    padding: 0 0 30px;
+    align-items: center;
+	background-color: $white-color;
+	opacity: 0.9;
 
 	form {
 		display: flex;

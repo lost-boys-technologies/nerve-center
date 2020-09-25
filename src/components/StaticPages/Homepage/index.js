@@ -1,9 +1,10 @@
 import React from 'react';
 
+import '../Static.scss';
+
 const Homepage = () => {
 	return (
-		<div className='homepage'>
-			<h2>Homepage</h2>
+		<div className='homepage-container'>
 		</div>
 	);
 };
