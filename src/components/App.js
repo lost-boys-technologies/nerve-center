@@ -16,7 +16,7 @@ import Homepage from './StaticPages/Homepage';
 import Constitution from './StaticPages/Constitution';
 import Rules from './StaticPages/Rules';
 import Account from './StaticPages/Account';
-import NotFound from './StaticPages/404';
+// import NotFound from './StaticPages/404';
 
 import './App.scss';
 
@@ -44,7 +44,7 @@ const App = () => {
 						)}
 						<Route path='/login' component={Login} />
 						<Route path='/forgot' component={ForgotPassword} />
-						<Route component={NotFound}/>
+						{/* <Route component={NotFound}/> */}
 					</Switch>
 				</div>
 			</FirebaseContext.Provider>
