@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 const BetsLists = () => {
 	return (
 		<div className='bets-container'>
-			<div>Bets Lists</div>
+			<h2>Bets Lists</h2>
 		</div>
 	);
 };

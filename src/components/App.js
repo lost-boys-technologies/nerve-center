@@ -31,12 +31,16 @@ const App = () => {
 				<div className='route-container'>
 					<Switch>
 						<Route exact path='/' component={Homepage} render={() => <Redirect to='' />} />
-						<Route path='/members' component={Members} />
-						<Route path='/constitution' component={Constitution} />
-						<Route path='/rules' component={Rules} />
-						<Route path='/bets' component={BetsLists} />
-						<Route path='/create' component={CreateBet} />
-						<Route path='/account' component={Account} />
+						{user && (
+							<React.Fragment>
+								<Route path='/members' component={Members} />
+								<Route path='/constitution' component={Constitution} />
+								<Route path='/rules' component={Rules} />
+								<Route path='/bets' component={BetsLists} />
+								<Route path='/create' component={CreateBet} />
+								<Route path='/account' component={Account} />
+							</React.Fragment>
+						)}
 						<Route path='/login' component={Login} />
 						<Route path='/forgot' component={ForgotPassword} />
 					</Switch>
