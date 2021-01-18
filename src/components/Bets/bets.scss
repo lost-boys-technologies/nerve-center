@@ -1,5 +1,6 @@
 @import '../../variables';
 
+// Create Bet Container
 .create-bet-container {
     display: flex;
     justify-content: center;
@@ -26,10 +27,8 @@
     }
 }
 
-.bets-container {
-
-    .create-bet-btn {
-        display: flex;
-        justify-content: center;
-    }
+// Bets Container
+.create-bet-btn {
+    display: flex;
+    justify-content: center;
 }
