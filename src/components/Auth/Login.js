@@ -98,6 +98,7 @@ const Login = props => {
 					// onClick={firebase.loginByGoogle}
 					type='button'
 				>
+					{/* // TODO Update Google Login Option - need to focus on other things first */}
 					<img
 						src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
 						alt="logo"
