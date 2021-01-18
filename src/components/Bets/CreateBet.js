@@ -7,6 +7,10 @@ import useFormValidation from '../Auth/useFormValidation';
 
 import './bets.scss';
 
+// TODO
+//* Add 'Go back' button
+//* Finalize Submit button
+
 const INITIAL_STATE = {
 
 }
@@ -47,7 +51,7 @@ const CreateBet = () => {
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>What's the bet?</Form.Label>
-                    <Form.Control as="textarea" rows={5} />
+                    <Form.Control as='textarea' rows={5} />
                 </Form.Group>
                 <Form.Group className='side-by-side'>
                     <Form.Label>Bet Terms:</Form.Label>
@@ -56,7 +60,7 @@ const CreateBet = () => {
                     </Form.Control>
                     <Form.Label>amount:</Form.Label>
                     <Form.Control 
-                        placeholder="amount"
+                        placeholder='amount'
                     />
                 </Form.Group>
                 <Form.Group>

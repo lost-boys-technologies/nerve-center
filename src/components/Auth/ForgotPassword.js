@@ -35,7 +35,7 @@ const ForgotPassword = () => {
 					Reset Password
 				</button>
 			</div>
-			{isPasswordReset && <p className="success-text">Check your email to reset password</p> }
+			{isPasswordReset && <p className='success-text'>Check your email to reset password</p> }
 			{passwordResetError && <p className='error-text'>{passwordResetError}</p>}
 		</div>
 	);
