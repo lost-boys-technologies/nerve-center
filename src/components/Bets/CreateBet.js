@@ -7,6 +7,10 @@ import useFormValidation from '../Auth/useFormValidation';
 
 import './bets.scss';
 
+const INITIAL_STATE = {
+
+}
+
 //! REMOVE BEFORE DEPLOY
 const betTerms = ['money', 'meal', 'other'];
 
@@ -36,7 +40,7 @@ const CreateBet = () => {
             <h2>Create Your Bet</h2>
             {user && <Form>
                 <Form.Group>
-                    <Form.Label className='label'>{user.displayName}, who do you want to challenge?</Form.Label>
+                    <Form.Label className='label'>{user.displayName ? `${user.displayName}, who` : `Who `} do you want to challenge?</Form.Label>
                     <Form.Control className='challenger control' as='select'>
                         {leagueMembers.map(leagueMember => <option>{leagueMember.name}</option>)}
                     </Form.Control>
