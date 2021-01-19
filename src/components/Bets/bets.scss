@@ -9,21 +9,25 @@
 
     textarea { resize: none }
 
-    .form { width: 40px; }
-
-    .form-group {
+    .create-bet {
         display: flex;
         flex-direction: column;
-        margin: 10px 0 5px 0;
+
+        label {
+            display: flex;
+            justify-content: center;
+            margin: 5px 0;
+        }
     }
 
-    .form-group:nth-last-child(-n+2) {
-        display: inline-flex;
-        flex-direction: row;
-    }
-
-    .form-label {
-        margin: 0 5px 5px 0;
+    .form {
+        width: 400px;
+        background-color: $white-color-opaque;
+        padding: 10px 35px 35px;
+        
+        input, select {
+            height: 30px;
+        }
     }
 }
 

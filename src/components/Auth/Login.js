@@ -48,7 +48,7 @@ const Login = props => {
 						value={values.name}
 						name='name'
 						type='text'
-						placeholder='please enter your name'
+						placeholder='Please enter your name'
 						autoComplete='off'
 					/>
 				)}
