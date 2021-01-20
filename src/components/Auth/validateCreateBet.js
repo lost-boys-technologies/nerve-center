@@ -23,9 +23,9 @@ export default function validateCreateLink(values) {
 	}
 
 	// Approval Period Errors
-	if (!values.approvalPeriod) {
-		errors.approvalPeriod = 'Please indicate an approval time limit';
-	}
+	// if (!values.approvalPeriod) {
+	// 	errors.approvalPeriod = 'Please indicate an approval time limit';
+	// }
 
 	return errors;
 }
