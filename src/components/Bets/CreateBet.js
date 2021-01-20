@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { FirebaseContext } from '../../firebase';
 import useFormValidation from '../Auth/useFormValidation';
+import validateCreateBet from '../Auth/validateCreateBet';
 
 import './bets.scss';
 
@@ -23,6 +24,7 @@ const INITIAL_STATE = {
 }
 
 const CreateBet = () => {
+    useFormValidation(INITIAL_STATE, validateCreateBet);
     const {firebase, user} = React.useContext(FirebaseContext);
     const [betTypes, setBetTypes] = useState('');
 
@@ -41,12 +43,14 @@ const CreateBet = () => {
                     name='betDetails'
                     rows='5'
                 />
+                {/* // TODO Will need to handle logic for bet terms and bet amount */}
                 <label>Bet Terms</label>
                 <select name="betTerms">
                     {betTerms.map(betTerm => <option >{betTerm}</option>)}
                 </select>
+                {/* //!See Above */}
                 <label>Bet Amount</label>
-                <input name='betAmount' />
+                <input name='betAmount' type="number" min="0.01" step="0.01" max="2500" />
                 <label>Bet Completion</label>
                 <input
                     name='dateCompletion'
