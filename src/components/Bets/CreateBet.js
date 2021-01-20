@@ -26,15 +26,6 @@ const CreateBet = () => {
     const {firebase, user} = React.useContext(FirebaseContext);
     const [betTypes, setBetTypes] = useState('');
 
-    // const { handleSubmit, handleChange, values, errors } = useFormValidation(INITIAL_STATE, validateCreateBet, handleCreateBet)
-
-    // const handleCreateBet = () => {
-    //     if (!user) {
-    //         props.history.push('/login');
-    //     }
-    // }
-    console.log('user info', user);
-
     return (
         <div className='create-bet-container'>
             <h2>Create Your Bet</h2>
