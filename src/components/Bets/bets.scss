@@ -25,9 +25,8 @@
         background-color: $white-color-opaque;
         padding: 10px 35px 35px;
         
-        input, select {
-            height: 30px;
-        }
+        input { height: 25px; }
+        select { height: 32.5px; }
     }
 }
 
