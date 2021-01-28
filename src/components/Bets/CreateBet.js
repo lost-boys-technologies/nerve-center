@@ -28,6 +28,7 @@ const CreateBet = () => {
     const {firebase, user} = React.useContext(FirebaseContext);
 
     function handleCreateBet() {
+        // TODO Update logic
         console.log('bet created');
     }
 

@@ -7,31 +7,6 @@
     align-items: center;
     flex-direction: column;
 
-    textarea { resize: none }
-
-    .create-bet {
-        display: flex;
-        flex-direction: column;
-
-        label {
-            display: flex;
-            justify-content: center;
-            margin: 5px 0;
-        }
-    }
-
-    .form {
-        width: 400px;
-        background-color: $white-color-opaque;
-        padding: 10px 35px 35px;
-        
-        input { height: 25px; }
-        select { height: 32.5px; }
-    }
-}
-
-// Bets Container
-.create-bet-container {
     .create-bet-btn {
         display: flex;
         justify-content: center;
@@ -50,5 +25,27 @@
     
     button {
         margin: 20px 0 0 0;
+    }
+
+    .create-bet {
+        display: flex;
+        flex-direction: column;
+
+        label {
+            display: flex;
+            justify-content: center;
+            margin: 5px 0;
+        }
+    }
+
+    textarea { resize: none }
+
+    .form {
+        width: 400px;
+        background-color: $white-color-opaque;
+        padding: 10px 35px 35px;
+        
+        input { height: 25px; }
+        select { height: 32.5px; }
     }
 }
