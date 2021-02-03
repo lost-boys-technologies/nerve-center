@@ -1,16 +1,21 @@
 @import '../../variables';
 
+// Bets Container
+.bets-container {
+    display: flex;
+
+    .create-bet-btn {
+        display: flex;
+        justify-content: end;
+    }
+}
+
 // Create Bet Container
 .create-bet-container {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-
-    .create-bet-btn {
-        display: flex;
-        justify-content: center;
-    }
 
     .error-input {
 		border: 2px solid $red-color;
