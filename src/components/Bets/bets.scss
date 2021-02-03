@@ -9,9 +9,9 @@
     align-items: center;
     flex-direction: column;
 
-    .create-bet-btn {	
-        display: flex;	
-        justify-content: center;	
+    .back-btn {
+        align-items: flex-start;
+        width: 50px;
     }
 
     .error-input {

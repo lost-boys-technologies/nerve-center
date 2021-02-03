@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { FirebaseContext } from '../../firebase';
 import useFormValidation from '../Auth/useFormValidation';
 import validateCreateBet from '../Auth/validateCreateBet';
@@ -27,15 +28,22 @@ const CreateBet = () => {
     const { handleSubmit, handleChange, values, errors} = useFormValidation(INITIAL_STATE, validateCreateBet, handleCreateBet);
     const {firebase, user} = React.useContext(FirebaseContext);
 
+    let history = useHistory();
+
     function handleCreateBet() {
         // TODO Update logic
         console.log('bet created');
+    }
+
+    const handleBackButton = () => {
+        history.push('/bets')
     }
 
     return (
         <div className='create-bet-container'>
             <h2>Create Your Bet</h2>
             <form onSubmit={handleSubmit} className='create-bet form'>
+                <button type='button' className='back-btn' onClick={handleBackButton}>Back</button>
                 <label>{user.displayName ? `${user.displayName}, who` : `Who`} do you want to challenge?</label>
                 {/* // TODO Switch over to <select /> */}
                 <input
