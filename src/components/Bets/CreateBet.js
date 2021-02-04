@@ -7,7 +7,6 @@ import validateCreateBet from '../Auth/validateCreateBet';
 import './bets.scss';
 
 // TODO
-//* Add 'Go back' button
 //* Finalize Submit button
 
 //! REMOVE BEFORE DEPLOY
@@ -35,8 +34,10 @@ const CreateBet = () => {
         console.log('bet created');
     }
 
-    const handleBackButton = () => {
-        history.push('/bets')
+    const handleCancelBtn = () => {
+        if (window.confirm("Press a button!")) {
+            history.push('/bets')
+        }
     }
 
     return (
@@ -88,8 +89,8 @@ const CreateBet = () => {
                     <button className='button submit' type='submit'>
                         Submit
                     </button>
-                    <button className='button back' onClick={handleBackButton} type='button'>
-                        Back
+                    <button className='button cancel' onClick={handleCancelBtn} type='button'>
+                        Cancel
                     </button>
                 </div>
             </form>
