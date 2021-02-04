@@ -43,7 +43,6 @@ const CreateBet = () => {
         <div className='create-bet-container'>
             <h2>Create Your Bet</h2>
             <form onSubmit={handleSubmit} className='create-bet form'>
-                <button type='button' className='back-btn' onClick={handleBackButton}>Back</button>
                 <label>{user.displayName ? `${user.displayName}, who` : `Who`} do you want to challenge?</label>
                 {/* // TODO Switch over to <select /> */}
                 <input
@@ -85,9 +84,14 @@ const CreateBet = () => {
                 <select name='approvalPeriod' >
                     {termLimits.map(termLimit => <option>{termLimit}</option>)}
                 </select>
-                <button className='button' type='submit'>
-                    Submit
-                </button>
+                <div className='button-container'>
+                    <button className='button submit' type='submit'>
+                        Submit
+                    </button>
+                    <button className='button back' onClick={handleBackButton} type='button'>
+                        Back
+                    </button>
+                </div>
             </form>
         </div>
     );
