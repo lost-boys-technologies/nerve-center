@@ -1,10 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import FirebaseContext from '../../firebase/context';
 import { Link } from 'react-router-dom';
+import BetItem from './LinkItem';
 // import CreateBet from './CreateBet';
 
 import './bets.scss';
 
-const BetsLists = () => {
+const BetsLists = (props) => {
+	const { firebase } = useContext(FirebaseContext);
+	const [bets, setBets] = useState([]);
+
+	useEffect(() => {
+		getBets();
+	}, []);
+	
+	const getBets = () => {
+		firebase.db.collection('bets').onSnapshot(handleSnapshot)
+	}
+
+	const handleSnapshot = (snapshot) => {
+		const bets = snapshot.docs.map(doc => {
+			return { id: doc.id, ...doc.data() }
+		})
+		setBets(bets);
+	}
+
 	return (
 		<div className='bets-container'>
 			<h2>Bets Lists</h2>
@@ -12,6 +32,11 @@ const BetsLists = () => {
 				<Link to='/create'>
 					<button>Create Bet</button>
 				</Link>
+				<div>
+					{bets.map((bet, index) => (
+						<BetItem key={bet.id} showCount={true} bet={bet} index={index + 1} />
+					))}
+				</div>
 			</div>
 		</div>
 	);
