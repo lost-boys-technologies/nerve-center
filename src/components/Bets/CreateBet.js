@@ -23,19 +23,36 @@ const INITIAL_STATE = {
     approvalPeriod: '',
 }
 
-const CreateBet = () => {
+const CreateBet = (props) => {
     const { handleSubmit, handleChange, values, errors} = useFormValidation(INITIAL_STATE, validateCreateBet, handleCreateBet);
     const {firebase, user} = React.useContext(FirebaseContext);
 
     let history = useHistory();
 
     function handleCreateBet() {
-        // TODO Update logic
-        console.log('bet created');
+        if (!user) {
+            props.history.push('/login');
+        } else {
+            const { challenger, betDetails, dateCompletion } = values;
+            const newBet = {
+                challenger,
+                betDetails,
+                dateCompletion,
+                postedBy: {
+                    id: user.uid,
+                    name: user.displayName
+                },
+                votes: [],
+                comments: [],
+                created: Date.now()
+            }
+            firebase.db.collection('bets').add(newBet);
+            props.history.push('/bets');
+        }
     }
 
     const handleCancelBtn = () => {
-        if (window.confirm("Press a button!")) {
+        if (window.confirm("Are you sure?")) {
             history.push('/bets')
         }
     }
