@@ -1,6 +1,11 @@
 @import '../../variables';
 
 // Bets Container
+.bet-item-container {
+    
+    .fa-thumbs-up { color: $cyan-color; }
+    .fa-thumbs-down { color: $flat-red; }
+}
 
 // Create Bet Container
 .create-bet-container {

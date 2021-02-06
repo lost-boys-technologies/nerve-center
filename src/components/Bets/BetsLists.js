@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import FirebaseContext from '../../firebase/context';
 import { Link } from 'react-router-dom';
-// import BetItem from './LinkItem';
+import BetItem from './BetItem';
 // import CreateBet from './CreateBet';
 
 import './bets.scss';
@@ -33,9 +33,9 @@ const BetsLists = (props) => {
 					<button>Create Bet</button>
 				</Link>
 				<div>
-					{/* {bets.map((bet, index) => (
+					{bets.map((bet, index) => (
 						<BetItem key={bet.id} showCount={true} bet={bet} index={index + 1} />
-					))} */}
+					))}
 				</div>
 			</div>
 		</div>
