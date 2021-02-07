@@ -7,9 +7,12 @@ const BetItem = ({ bet, index, showCount }) => {
         <div className='bet-item-container'>
             <div>
                 {showCount && <span>{index}</span>}
-                <div className='bet-approval'><i class="far fa-thumbs-up"></i></div>
-                <div className='bet-rejection'><i class="far fa-thumbs-down"></i></div>
+                <div className='bet-approval'><i class='far fa-thumbs-up'></i></div>
+                <div className='bet-rejection'><i class='far fa-thumbs-down'></i></div>
             </div>
+            {/* <div className=''>
+                // TODO Work through UX approach 
+            </div> */}
         </div>
     )
 }

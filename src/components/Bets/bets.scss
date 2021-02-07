@@ -1,10 +1,19 @@
 @import '../../variables';
 
 // Bets Container
-.bet-item-container {
-    
-    .fa-thumbs-up { color: $cyan-color; }
-    .fa-thumbs-down { color: $flat-red; }
+.bets-container {
+
+    .create-bet-btn {
+        display: flex;
+        justify-content: flex-end;
+        margin-right: 20px;
+    }
+
+    // Bet Item Container
+    .bet-item-container {
+        .fa-thumbs-up { color: $cyan-color; }
+        .fa-thumbs-down { color: $flat-red; }
+    }
 }
 
 // Create Bet Container

@@ -32,11 +32,11 @@ const BetsLists = (props) => {
 				<Link to='/create'>
 					<button>Create Bet</button>
 				</Link>
-				<div>
-					{bets.map((bet, index) => (
-						<BetItem key={bet.id} showCount={true} bet={bet} index={index + 1} />
-					))}
-				</div>
+			</div>
+			<div>
+				{bets.map((bet, index) => (
+					<BetItem key={bet.id} showCount={true} bet={bet} index={index + 1} />
+				))}
 			</div>
 		</div>
 	);
