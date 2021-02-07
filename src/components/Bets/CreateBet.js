@@ -59,8 +59,8 @@ const CreateBet = (props) => {
 
     return (
         <div className='create-bet-container'>
-            <h2>Create Your Bet</h2>
             <form onSubmit={handleSubmit} className='create-bet form'>
+            <h2>Create Your Bet</h2>
                 <label>{user.displayName ? `${user.displayName}, who` : `Who`} do you want to challenge?</label>
                 {/* // TODO Switch over to <select /> */}
                 <input
