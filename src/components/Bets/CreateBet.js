@@ -44,7 +44,9 @@ const CreateBet = (props) => {
                 },
                 votes: [],
                 comments: [],
-                created: Date.now()
+                created: Date.now(),
+                pending: false,
+                established: false,
             }
             firebase.db.collection('bets').add(newBet);
             props.history.push('/bets');
