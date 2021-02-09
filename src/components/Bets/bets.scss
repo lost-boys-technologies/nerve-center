@@ -11,24 +11,29 @@
 
     // Bet Item Container
     .bet-item-container {
-        display: flex;
-        background-color: $white-color-opaque;
-        margin: 10px;
 
         .pending-bets {
+            border: 1px solid red;
+            float: left;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            width: 100%;
-            border: 1px solid red;
+            background-color: $white-color-opaque;
+            min-height: 200px;
+            width: 45%;
+            margin: 10px;
         }
 
         .established-bets {
+            border: 1px solid blue;
+            float: right;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
-            width: 100%;
-            border: 1px solid blue;
+            background-color: $white-color-opaque;
+            min-height: 200px;
+            width: 45%;
+            margin: 10px;
         }
 
         .fa-thumbs-up { color: $cyan-color; }
