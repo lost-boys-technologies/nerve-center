@@ -6,6 +6,8 @@ const BetItem = ({ bet, index, showCount }) => {
     console.log('bet', bet);
     const { challenger, betDetails, dateCompletion, pending } = bet;
 
+    //? Need to rethink the below split, not sure if I like this process
+
     return (
         <div className='bet-item-container'>
             {pending ? (
