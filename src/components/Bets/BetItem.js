@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import Collapse from 'react-bootstrap/Collapse';
-import Button from 'react-bootstrap/Button';
 
 // TODO Will need to setup additional validation to only allow approval voting BY the person being challenged
 
 const BetItem = ({ bet, index, showCount }) => {
-    const [open, setOpen] = useState(false);
+    const [toggle, setToggle] = useState(false);
     const { challenger, betDetails, dateCompletion } = bet;
 
     return (
@@ -21,19 +19,16 @@ const BetItem = ({ bet, index, showCount }) => {
                 <div className='bet-approval'><i className='far fa-thumbs-up'></i></div>
                 <div className='bet-rejection'><i className='far fa-thumbs-down'></i></div>
             </div>
-            <div>
-                <Button
-                    onClick={() => setOpen(!open)}
-                    aria-controls="example-collapse-text"
-                    aria-expanded={open}
-                >
-                    click
-                </Button>
-                <Collapse in={!open}>
-                    <div id="example-collapse-text">
-                        {betDetails}
-                    </div>
-                </Collapse>
+            <div
+                className="btn navbar-toggler"
+                onClick={() => setToggle(!toggle)}
+            >
+                Click
+            </div>
+            <div className={`bet-details-toggle ${toggle ? 'show' : ''}`}>
+                <div className='bet-details'>
+                    {betDetails}
+                </div>
             </div>
         </div>
     )

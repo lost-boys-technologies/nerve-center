@@ -14,6 +14,25 @@
         background-color: $white-color-opaque;
         margin: 10px;
 
+        .bet-details-toggle {
+            display: flex;
+            background-color: #353b48;
+            transition: height 1s ease;
+            height: 0;
+            overflow: hidden;
+
+            &.show {
+                height: 100px;
+            }
+        }
+
+        .bet-details {
+            color: $white-color;
+            display: flex;
+            align-items: center;
+            padding: 0 50px;
+        }
+
         .fa-thumbs-up { color: $cyan-color; }
         .fa-thumbs-down { color: $flat-red; }
     }
