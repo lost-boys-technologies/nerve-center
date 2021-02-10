@@ -11,12 +11,7 @@
 
     // Bet Item Container
     .bet-item-container {
-        border: 1px solid red;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
         background-color: $white-color-opaque;
-        min-height: 100px;
         margin: 10px;
 
         .fa-thumbs-up { color: $cyan-color; }
