@@ -20,10 +20,10 @@ const BetItem = ({ bet, index, showCount }) => {
                 <div className='bet-rejection'><i className='far fa-thumbs-down'></i></div>
             </div>
             <div
-                className="btn navbar-toggler"
+                className="more-details"
                 onClick={() => setToggle(!toggle)}
             >
-                Click
+                More Details
             </div>
             <div className={`bet-details-toggle ${toggle ? 'show' : ''}`}>
                 <div className='bet-details'>
