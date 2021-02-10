@@ -3,7 +3,6 @@ import React from 'react';
 // TODO Will need to setup additional validation to only allow approval voting BY the person being challenged
 
 const BetItem = ({ bet, index, showCount }) => {
-    console.log('bet', bet);
     const { challenger, betDetails, dateCompletion, pending } = bet;
 
     //? Need to rethink the below split, not sure if I like this process
