@@ -18,9 +18,6 @@ const BetItem = ({ bet, index, showCount }) => {
                     <div className='bet-challenger'>
                         {challenger}
                     </div>
-                    <div className='bet-details'>
-                        {betDetails}
-                    </div>
                     <div className='bet-voting'>
                         {showCount && <span>{index}</span>}
                         <div className='bet-approval'><i class='far fa-thumbs-up'></i></div>
