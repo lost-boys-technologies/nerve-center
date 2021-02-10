@@ -9,26 +9,17 @@ const BetItem = ({ bet, index, showCount }) => {
 
     return (
         <div className='bet-item-container'>
-            {pending ? (
-                <div className='pending-bets'>
-                    <div className='bet-timelimit'>
-                        {dateCompletion}
-                    </div>
-                    <div className='bet-challenger'>
-                        {challenger}
-                    </div>
-                    <div className='bet-voting'>
-                        {showCount && <span>{index}</span>}
-                        <div className='bet-approval'><i class='far fa-thumbs-up'></i></div>
-                        <div className='bet-rejection'><i class='far fa-thumbs-down'></i></div>
-                    </div>                    
-                </div>
-            ) : (
-                <div className='established-bets'>
-                    {betDetails}
-                    {showCount && <span>{index}</span>}
-                </div>
-            )}
+            <div className='bet-timelimit'>
+                {dateCompletion}
+            </div>
+            <div className='bet-challenger'>
+                {challenger}
+            </div>
+            <div className='bet-voting'>
+                {showCount && <span>{index}</span>}
+                <div className='bet-approval'><i class='far fa-thumbs-up'></i></div>
+                <div className='bet-rejection'><i class='far fa-thumbs-down'></i></div>
+            </div>
         </div>
     )
 }
