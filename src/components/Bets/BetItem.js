@@ -8,27 +8,29 @@ const BetItem = ({ bet, index, showCount }) => {
 
     return (
         <div className='bet-item-container'>
-            <div className='bet-card'>
-                <div className='bet-timelimit'>
-                    {dateCompletion}
+            <div className='full-bet-card'>
+                <div className='bet-card'>
+                    <div className='bet-timelimit'>
+                        {dateCompletion}
+                    </div>
+                    <div className='bet-challenger'>
+                        {challenger}
+                    </div>
+                    <div className='bet-voting'>
+                        <div className='voting bet-approval'><i className='far fa-thumbs-up fa-2x'></i></div>
+                        <div className='voting bet-rejection'><i className='far fa-thumbs-down fa-2x'></i></div>
+                    </div>
                 </div>
-                <div className='bet-challenger'>
-                    {challenger}
+                <div
+                    className="more-details"
+                    onClick={() => setToggle(!toggle)}
+                >
+                    More Details
                 </div>
-                <div className='bet-voting'>
-                    <div className='voting bet-approval'><i className='far fa-thumbs-up fa-2x'></i></div>
-                    <div className='voting bet-rejection'><i className='far fa-thumbs-down fa-2x'></i></div>
-                </div>
-            </div>
-            <div
-                className="more-details"
-                onClick={() => setToggle(!toggle)}
-            >
-                More Details
-            </div>
-            <div className={`bet-details-toggle ${toggle ? 'show' : ''}`}>
-                <div className='bet-details'>
-                    {betDetails}
+                <div className={`bet-details-toggle ${toggle ? 'show' : ''}`}>
+                    <div className='bet-details'>
+                        {betDetails}
+                    </div>
                 </div>
             </div>
         </div>
