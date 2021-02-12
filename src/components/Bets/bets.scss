@@ -13,19 +13,22 @@
     .bet-item-container {
         display: flex;
         flex-direction: column;
-        background-color: $white-color-opaque;
         margin: 10px;
 
         .bet-card {
             display: flex;
             flex-direction: row;
             justify-content: space-between;
+            background-color: $white-color-opaque;
+            border: 1px solid $cyan-blue-color;
         }
 
         .bet-voting {
             display: flex;
             flex-direction: column;
             background-color: $soft-white;
+            border-left: 1px solid $cyan-blue-color;
+            min-width: 42px;
             padding: 0 10px;
 
             .voting {
@@ -44,15 +47,25 @@
             justify-content: center;
             align-items: center;
             background-color: $soft-white;
+            margin: 0 63px 0 0;
             height: 30px;
+
+            border-right: 1px solid $cyan-blue-color;
+            border-bottom: 1px solid $cyan-blue-color;
+            border-left: 1px solid $cyan-blue-color;
         }
 
         .bet-details-toggle {
             display: flex;
-            background-color: #353b48;
+            background-color: $cyan-blue-color;
             transition: height 1s ease;
+            margin: 0 63px 0 0;
             height: 0;
             overflow: hidden;
+
+            border-right: 1px solid $cyan-blue-color;
+            border-bottom: 1px solid $cyan-blue-color;
+            border-left: 1px solid $cyan-blue-color;
 
             &.show {
                 height: 100px;
