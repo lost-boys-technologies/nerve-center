@@ -19,12 +19,23 @@
         .bet-card {
             display: flex;
             flex-direction: row;
+            justify-content: space-between;
         }
 
         .bet-voting {
             display: flex;
-            justify-content: flex-end;
             flex-direction: column;
+            background-color: $soft-white;
+            padding: 0 10px;
+
+            .voting {
+                margin: 5px;
+
+                &.bet-approval {
+                    border-bottom: 1px solid $cyan-blue-color;
+                    padding: 0 0 10px 0;
+                }
+            }
         }
 
         .more-details {
@@ -32,9 +43,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #dcdde1;
-            height: 25px;
-            margin-top: 10px;
+            background-color: $soft-white;
+            height: 30px;
         }
 
         .bet-details-toggle {
