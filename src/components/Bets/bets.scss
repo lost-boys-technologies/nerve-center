@@ -11,8 +11,21 @@
 
     // Bet Item Container
     .bet-item-container {
+        display: flex;
+        flex-direction: column;
         background-color: $white-color-opaque;
         margin: 10px;
+
+        .bet-card {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .bet-voting {
+            display: flex;
+            justify-content: flex-end;
+            flex-direction: column;
+        }
 
         .more-details {
             cursor: pointer;

@@ -8,16 +8,17 @@ const BetItem = ({ bet, index, showCount }) => {
 
     return (
         <div className='bet-item-container'>
-            <div className='bet-timelimit'>
-                {dateCompletion}
-            </div>
-            <div className='bet-challenger'>
-                {challenger}
-            </div>
-            <div className='bet-voting'>
-                {showCount && <span>{index}</span>}
-                <div className='bet-approval'><i className='far fa-thumbs-up'></i></div>
-                <div className='bet-rejection'><i className='far fa-thumbs-down'></i></div>
+            <div className='bet-card'>
+                <div className='bet-timelimit'>
+                    {dateCompletion}
+                </div>
+                <div className='bet-challenger'>
+                    {challenger}
+                </div>
+                <div className='bet-voting'>
+                    <div className='voting bet-approval'><i className='far fa-thumbs-up fa-2x'></i></div>
+                    <div className='voting bet-rejection'><i className='far fa-thumbs-down fa-2x'></i></div>
+                </div>
             </div>
             <div
                 className="more-details"
