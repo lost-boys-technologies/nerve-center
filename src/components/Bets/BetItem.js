@@ -4,8 +4,7 @@ import React, { useState } from 'react';
 
 const BetItem = ({ bet, index, showCount }) => {
     const [toggle, setToggle] = useState(false);
-    const { challenger, betDetails, dateCompletion } = bet;
-    console.log('bet', bet);
+    const { challenger, betDetails, dateCompletion, postedBy } = bet;
 
     return (
         <div className='bet-item-container'>
@@ -16,7 +15,9 @@ const BetItem = ({ bet, index, showCount }) => {
                     </div>
                     <span className='divider' />
                     <div className='bet-challenger'>
-                        {challenger}
+                        <p>
+                            <span>{challenger}</span> is challenging <span>{postedBy.name}</span>
+                        </p>
                     </div>
                     <div className='bet-voting'>
                         <div className='voting bet-approval'><i className='far fa-thumbs-up fa-2x'></i></div>

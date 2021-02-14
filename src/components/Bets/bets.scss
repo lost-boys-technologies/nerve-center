@@ -30,7 +30,12 @@
             .bet-challenger {
                 display: flex;
                 align-items: center;
-                padding: 0 150px 0 0;
+                padding: 10px;
+                margin: 0 auto;
+
+                span {
+                    font-weight: 700;
+                }
             }
 
             .bet-card {
