@@ -100,10 +100,12 @@ const CreateBet = (props) => {
                 />
                 {errors.dateCompletion && <p className='error-text'>{errors.dateCompletion}</p>}
                 {/* // TODO Work through this */}
+                {/* //! Currently Fixing This */}
                 <label>Approval Period</label>
                 <select name='approvalPeriod' >
                     {termLimits.map(termLimit => <option value={values.approvalPeriod}>{termLimit}</option>)}
                 </select>
+                {errors.approvalPeriod && <p className='error-text'>{errors.approvalPeriod}</p>}
                 <div className='button-container'>
                     <button className='button submit' type='submit'>
                         Submit
