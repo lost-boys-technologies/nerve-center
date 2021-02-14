@@ -6,6 +6,8 @@ const BetItem = ({ bet, index, showCount }) => {
     const [toggle, setToggle] = useState(false);
     const { challenger, betDetails, dateCompletion, postedBy } = bet;
 
+    console.log('bet', bet);
+
     return (
         <div className='bet-item-container'>
             <div className='full-bet-card'>
@@ -16,7 +18,7 @@ const BetItem = ({ bet, index, showCount }) => {
                     <span className='divider' />
                     <div className='bet-challenger'>
                         <p>
-                            <span>{challenger}</span> is challenging <span>{postedBy.name}</span>
+                            <span>{postedBy.name}</span> is challenging <span>{challenger}</span>
                         </p>
                     </div>
                     <div className='bet-voting'>

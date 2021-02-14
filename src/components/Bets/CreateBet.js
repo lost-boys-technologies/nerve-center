@@ -102,7 +102,7 @@ const CreateBet = (props) => {
                 {/* // TODO Work through this */}
                 <label>Approval Period</label>
                 <select name='approvalPeriod' >
-                    {termLimits.map(termLimit => <option>{termLimit}</option>)}
+                    {termLimits.map(termLimit => <option value={values.approvalPeriod}>{termLimit}</option>)}
                 </select>
                 <div className='button-container'>
                     <button className='button submit' type='submit'>
