@@ -5,14 +5,16 @@ import React, { useState } from 'react';
 const BetItem = ({ bet, index, showCount }) => {
     const [toggle, setToggle] = useState(false);
     const { challenger, betDetails, dateCompletion } = bet;
+    console.log('bet', bet);
 
     return (
         <div className='bet-item-container'>
             <div className='full-bet-card'>
                 <div className='bet-card'>
-                    <div className='bet-timelimit'>
+                    <div className='bet-time-limit'>
                         {dateCompletion}
                     </div>
+                    <span className='divider' />
                     <div className='bet-challenger'>
                         {challenger}
                     </div>

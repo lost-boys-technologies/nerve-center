@@ -19,6 +19,20 @@
         .full-bet-card {
             width: 50%;
 
+            .bet-time-limit {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-right: 1px solid $cyan-blue-color;
+                padding: 20px;
+            }
+
+            .bet-challenger {
+                display: flex;
+                align-items: center;
+                padding: 0 150px 0 0;
+            }
+
             .bet-card {
                 display: flex;
                 flex-direction: row;
