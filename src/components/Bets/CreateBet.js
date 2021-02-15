@@ -33,11 +33,12 @@ const CreateBet = (props) => {
         if (!user) {
             props.history.push('/login');
         } else {
-            const { challenger, betDetails, dateCompletion } = values;
+            const { challenger, betDetails, dateCompletion, approvalPeriod } = values;
             const newBet = {
                 challenger,
                 betDetails,
                 dateCompletion,
+                approvalPeriod,
                 postedBy: {
                     id: user.uid,
                     name: user.displayName
@@ -99,11 +100,9 @@ const CreateBet = (props) => {
                     className={errors.dateCompletion && 'error-input'}
                 />
                 {errors.dateCompletion && <p className='error-text'>{errors.dateCompletion}</p>}
-                {/* // TODO Work through this */}
-                {/* //! Currently Fixing This */}
                 <label>Approval Period</label>
-                <select name='approvalPeriod' >
-                    {termLimits.map(termLimit => <option value={values.approvalPeriod}>{termLimit}</option>)}
+                <select name='approvalPeriod' value={values.approvalPeriod} onChange={handleChange}>
+                    {termLimits.map(termLimit => <option>{termLimit}</option>)}
                 </select>
                 {errors.approvalPeriod && <p className='error-text'>{errors.approvalPeriod}</p>}
                 <div className='button-container'>
