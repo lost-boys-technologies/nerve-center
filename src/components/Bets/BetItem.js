@@ -32,9 +32,15 @@ const BetItem = ({ bet, index, showCount }) => {
                 >
                     More Details
                 </div>
-                <div className={`bet-details-toggle ${toggle ? 'show' : ''}`}>
+                <div className={`more-details-container ${toggle ? 'show' : ''}`}>
                     <div className='bet-details'>
                         {betDetails}
+                    </div>
+                    <div className='bet-terms'>
+
+                    </div>
+                    <div className='takers'>
+
                     </div>
                 </div>
             </div>
