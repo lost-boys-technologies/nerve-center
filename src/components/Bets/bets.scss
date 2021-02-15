@@ -80,7 +80,9 @@
     
             .more-details-container {
                 display: flex;
+                flex-direction: column;
                 background-color: $cyan-blue-color;
+                color: $ivory-color;
                 transition: height 1s ease;
                 margin: 0 63px 0 0;
                 height: 0;
@@ -96,10 +98,8 @@
             }
     
             .bet-details {
-                color: $ivory-color;
                 display: flex;
                 align-items: center;
-                padding: 0 50px;
             }
         }
 

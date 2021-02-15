@@ -15,6 +15,10 @@ export default function validateCreateLink(values) {
 	}
 
 	// Bet Terms Errors
+	if (!values.betTerms) {
+		errors.betTerms = 'Please indicate an approval time limit';
+	}
+
 	// Bet Amount Errors
 
 	// Date Completion Errors

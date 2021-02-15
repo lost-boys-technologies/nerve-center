@@ -10,7 +10,7 @@ import './bets.scss';
 //* Finalize Submit button
 
 //! REMOVE BEFORE DEPLOY
-const betTerms = ['money', 'meal', 'other'];
+const betTermItems = ['money', 'meal', 'other'];
 const termLimits = ['1 day', '2 days', '3 days', '1 week']
 //! ^^^ REMOVE BEFORE DEPLOY ^^^
 
@@ -33,10 +33,11 @@ const CreateBet = (props) => {
         if (!user) {
             props.history.push('/login');
         } else {
-            const { challenger, betDetails, dateCompletion, approvalPeriod } = values;
+            const { challenger, betDetails, dateCompletion, approvalPeriod, betTerms } = values;
             const newBet = {
                 challenger,
                 betDetails,
+                betTerms,
                 dateCompletion,
                 approvalPeriod,
                 postedBy: {
@@ -85,9 +86,14 @@ const CreateBet = (props) => {
                 {errors.betDetails && <p className='error-text'>{errors.betDetails}</p>}
                 {/* // TODO Will need to handle logic for bet terms and bet amount */}
                 <label>Bet Terms</label>
-                <select name="betTerms">
-                    {betTerms.map(betTerm => <option >{betTerm}</option>)}
+                <select
+                    name="betTerms"
+                    value={values.betTerms} 
+                    onChange={handleChange}
+                >
+                    {betTermItems.map(betTermItem => <option >{betTermItem}</option>)}
                 </select>
+                {errors.betTerms && <p className='error-text'>{errors.betTerms}</p>}
                 {/* //!See Above */}
                 <label>Bet Amount</label>
                 <input name='betAmount' type="number" min="0.01" step="0.01" max="2500" />
@@ -101,7 +107,11 @@ const CreateBet = (props) => {
                 />
                 {errors.dateCompletion && <p className='error-text'>{errors.dateCompletion}</p>}
                 <label>Approval Period</label>
-                <select name='approvalPeriod' value={values.approvalPeriod} onChange={handleChange}>
+                <select
+                    name='approvalPeriod'
+                    value={values.approvalPeriod} 
+                    onChange={handleChange}
+                >
                     {termLimits.map(termLimit => <option>{termLimit}</option>)}
                 </select>
                 {errors.approvalPeriod && <p className='error-text'>{errors.approvalPeriod}</p>}
