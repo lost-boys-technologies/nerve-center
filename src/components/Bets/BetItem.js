@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 
 const BetItem = ({ bet, index, showCount }) => {
     const [toggle, setToggle] = useState(false);
-    const { challenger, betDetails, dateCompletion, postedBy } = bet;
+    const { challenger, betDetails, dateCompletion, postedBy, betTerms, approvalPeriod } = bet;
 
     console.log('bet', bet);
 
@@ -37,10 +37,9 @@ const BetItem = ({ bet, index, showCount }) => {
                         {betDetails}
                     </div>
                     <div className='bet-terms'>
-                        Bet Terms:
+                        Bet Terms: {betTerms}
                     </div>
-                    <div>
-                        
+                    <div>}
                     </div>
                     <div className='takers'>
                         Takers: Simon, Evan, Kyle

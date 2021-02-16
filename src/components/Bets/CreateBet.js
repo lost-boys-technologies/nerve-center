@@ -95,7 +95,7 @@ const CreateBet = (props) => {
                     value={values.betTerms} 
                     onChange={handleChange}
                 >
-                    {betTermItems.map(betTermItem => <option onChange={handleBetTerms}>{betTermItem}</option>)}
+                    {betTermItems.map(betTermItem => <option>{betTermItem}</option>)}
                 </select>
                 {errors.betTerms && <p className='error-text'>{errors.betTerms}</p>}
                 {/* //! /BET TERM FIXES */}
