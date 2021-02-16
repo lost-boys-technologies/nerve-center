@@ -98,18 +98,22 @@ const CreateBet = (props) => {
                     {betTermItems.map(betTermItem => <option>{betTermItem}</option>)}
                 </select>
                 {errors.betTerms && <p className='error-text'>{errors.betTerms}</p>}
-                {/* //! /BET TERM FIXES */}
-                <label>Bet Amount</label>
-                <input name='betAmount' type="number" min="0.01" step="0.01" max="2500" />
-                <label>Bet Completion</label>
-                <input
-                    onChange={handleChange}
-                    value={values.dateCompletion}
-                    name='dateCompletion'
-                    type='date'
-                    className={errors.dateCompletion && 'error-input'}
-                />
+                {values.betTerms === 'other' && (
+                    <React.Fragment>
+                        <label>Bet Amount</label>
+                        <input name='betAmount' type="number" min="0.01" step="0.01" max="2500" />
+                        <label>Bet Completion</label>
+                        <input
+                            onChange={handleChange}
+                            value={values.dateCompletion}
+                            name='dateCompletion'
+                            type='date'
+                            className={errors.dateCompletion && 'error-input'}
+                        />
+                    </React.Fragment>
+                )}
                 {errors.dateCompletion && <p className='error-text'>{errors.dateCompletion}</p>}
+                {/* //! /BET TERM FIXES */}
                 <label>Approval Period</label>
                 <select
                     name='approvalPeriod'
