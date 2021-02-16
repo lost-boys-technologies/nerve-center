@@ -62,7 +62,54 @@ const CreateBet = (props) => {
     }
 
     const handleBetTerms = () => {
-        console.log('hello');
+        switch (values.betTerms) {
+            case 'money':
+                return (
+                    <React.Fragment>
+                        <label>Bet Amount</label>
+                        <input name='betAmount' type="number" min="0.01" step="0.01" max="2500" />
+                        <label>Bet Completion</label>
+                        <input
+                            onChange={handleChange}
+                            value={values.dateCompletion}
+                            name='dateCompletion'
+                            type='date'
+                            className={errors.dateCompletion && 'error-input'}
+                        />
+                    </React.Fragment>
+                );
+                break;
+            case 'meal':
+                return (
+                    <React.Fragment>
+                        <label>Meal</label>
+                        <input
+                            onChange={handleChange}
+                            value={values.betMeal}
+                            name='challenger'
+                            type='text'
+                            className={errors.betMeal && 'error-input'}
+                        />
+                    </React.Fragment>
+                );
+                break;
+            case 'other':
+                return (
+                    <React.Fragment>
+                        <label>Other</label>
+                        <input
+                            onChange={handleChange}
+                            value={values.betOther}
+                            name='challenger'
+                            type='text'
+                            className={errors.betOther && 'error-input'}
+                        />
+                    </React.Fragment>
+                )
+                break;
+            default:
+                break;
+        }
     }
 
     return (
@@ -98,20 +145,9 @@ const CreateBet = (props) => {
                     {betTermItems.map(betTermItem => <option>{betTermItem}</option>)}
                 </select>
                 {errors.betTerms && <p className='error-text'>{errors.betTerms}</p>}
-                {values.betTerms === 'other' && (
-                    <React.Fragment>
-                        <label>Bet Amount</label>
-                        <input name='betAmount' type="number" min="0.01" step="0.01" max="2500" />
-                        <label>Bet Completion</label>
-                        <input
-                            onChange={handleChange}
-                            value={values.dateCompletion}
-                            name='dateCompletion'
-                            type='date'
-                            className={errors.dateCompletion && 'error-input'}
-                        />
-                    </React.Fragment>
-                )}
+                <React.Fragment>
+                    {handleBetTerms()}
+                </React.Fragment>
                 {errors.dateCompletion && <p className='error-text'>{errors.dateCompletion}</p>}
                 {/* //! /BET TERM FIXES */}
                 <label>Approval Period</label>
