@@ -61,6 +61,10 @@ const CreateBet = (props) => {
         }
     }
 
+    const handleBetTerms = () => {
+        console.log('hello');
+    }
+
     return (
         <div className='create-bet-container'>
             <form onSubmit={handleSubmit} className='create-bet form'>
@@ -84,17 +88,17 @@ const CreateBet = (props) => {
                     className={errors.betDetails && 'error-input'}
                 />
                 {errors.betDetails && <p className='error-text'>{errors.betDetails}</p>}
-                {/* // TODO Will need to handle logic for bet terms and bet amount */}
+                {/* //! BET TERM FIXES */}
                 <label>Bet Terms</label>
                 <select
                     name="betTerms"
                     value={values.betTerms} 
                     onChange={handleChange}
                 >
-                    {betTermItems.map(betTermItem => <option >{betTermItem}</option>)}
+                    {betTermItems.map(betTermItem => <option onChange={handleBetTerms}>{betTermItem}</option>)}
                 </select>
                 {errors.betTerms && <p className='error-text'>{errors.betTerms}</p>}
-                {/* //!See Above */}
+                {/* //! /BET TERM FIXES */}
                 <label>Bet Amount</label>
                 <input name='betAmount' type="number" min="0.01" step="0.01" max="2500" />
                 <label>Bet Completion</label>
@@ -111,6 +115,7 @@ const CreateBet = (props) => {
                     name='approvalPeriod'
                     value={values.approvalPeriod} 
                     onChange={handleChange}
+                    className={errors.approvalPeriod && 'error-input'}
                 >
                     {termLimits.map(termLimit => <option>{termLimit}</option>)}
                 </select>
