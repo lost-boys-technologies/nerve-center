@@ -150,6 +150,11 @@
             justify-content: center;
             margin: 5px 0;
         }
+
+        .bet-terms {
+            display: flex;
+            flex-direction: row;
+        }
     }
 
     textarea { resize: none }
