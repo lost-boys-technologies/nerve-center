@@ -71,6 +71,7 @@ const CreateBet = (props) => {
                         <input 
                             value={values.cashAmount}
                             onChange={handleChange}
+                            className={errors.cashAmount && 'error-input'}
                             name='cashAmount'
                             type='number'
                             min='1.00'
@@ -89,6 +90,7 @@ const CreateBet = (props) => {
                             value={values.mealPriceLimit}
                             name='challenger'
                             type='text'
+                            placehold
                             className={errors.betMeal && 'error-input'}
                         />
                         <label>Restaurant (optional)</label>
@@ -149,14 +151,14 @@ const CreateBet = (props) => {
                             name='betTerms'
                             value={values.betTerms} 
                             onChange={handleChange}
+                            className={errors.betTerms && 'error-input'}
                         >
                             {betTermItems.map(betTermItem => <option>{betTermItem}</option>)}
                         </select>
-                        
+                        {errors.betTerms && <p className='error-text'>{errors.betTerms}</p>}
                     </div>
                     {handleBetTerms()}
                 </div>
-                {errors.betTerms && <p className='error-text'>{errors.betTerms}</p>}
                 <label>Approval Period</label>
                 <select
                     name='approvalPeriod'

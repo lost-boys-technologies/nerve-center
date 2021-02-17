@@ -4,25 +4,26 @@ export default function validateCreateLink(values) {
 
 	// Challenger Name Errors
 	if (!values.challenger) {
-		errors.challenger = 'Challenger\'s name required.';
+		errors.challenger = 'Challenger\'s name required';
 	}
 
 	// Bet Details Errors
 	if (!values.betDetails) {
 		errors.betDetails = 'Bet details are required'
 	} else if (values.betDetails.length < 15) {
-		errors.betDetails = 'Please enter in bet details - must be more than 15 characters.';
+		errors.betDetails = 'Please enter in bet details - must be more than 15 characters';
 	}
 
 	// Bet Terms Errors
 	if (!values.betTerms && values.betTerms !== 'Select Terms') {
-		errors.betTerms = 'Please select a valid bet term.';
+		console.log('hit');
+		errors.betTerms = 'Invalid bet term';
 	}
 
 	// TODO 
 	// Cash Amount Errors
 	if (values.betTerms === 'Money' && !values.cashAmount) {
-		errors.cashAmount = 'Please enter an amount.'
+		errors.cashAmount = 'Please enter an amount'
 	}
 
 	// Bet Meal Errors
@@ -30,12 +31,12 @@ export default function validateCreateLink(values) {
 
 	// Date Completion Errors
 	if (!values.dateCompletion) {
-		errors.dateCompletion = 'Date of bet completion is required.';
+		errors.dateCompletion = 'Date of bet completion is required';
 	}
 
 	// Approval Period Errors
 	if (!values.approvalPeriod) {
-		errors.approvalPeriod = 'Please indicate the grace period for the taker(s).';
+		errors.approvalPeriod = 'Please indicate the grace period for the taker(s)';
 	}
 
 	return errors;
