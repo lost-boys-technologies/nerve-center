@@ -6,14 +6,6 @@ import validateCreateBet from '../Auth/validateCreateBet';
 
 import './bets.scss';
 
-// TODO
-//* Finalize Submit button
-
-//! REMOVE BEFORE DEPLOY
-const betTermItems = ['Select Terms', 'Money', 'Meal', 'Other'];
-const termLimits = ['1 day', '2 days', '3 days', '1 week']
-//! ^^^ REMOVE BEFORE DEPLOY ^^^
-
 const INITIAL_STATE = {
     challenger: '',
     betDetails: '',
@@ -28,6 +20,9 @@ const CreateBet = (props) => {
     const {firebase, user} = React.useContext(FirebaseContext);
 
     let history = useHistory();
+
+    const betTermItems = ['Select Terms', 'Money', 'Meal', 'Other'];
+    const termLimits = ['1 day', '2 days', '3 days', '1 week']
 
     function handleCreateBet() {
         if (!user) {
@@ -84,23 +79,29 @@ const CreateBet = (props) => {
             case 'Meal':
                 return (
                     <div className='meal-price'>
-                        <label>Meal Price Limit</label>
-                        <input
-                            onChange={handleChange}
-                            value={values.mealPriceLimit}
-                            name='challenger'
-                            type='text'
-                            placehold
-                            className={errors.betMeal && 'error-input'}
-                        />
-                        <label>Restaurant (optional)</label>
-                        <input
-                            onChange={handleChange}
-                            value={values.betRestaurant}
-                            name='challenger'
-                            type='text'
-                            className={errors.betMeal && 'error-input'}
-                        />
+                        <div className='meal-price-limit'>
+                            <label>Price Limit</label>
+                            <input 
+                                value={values.mealPriceLimit}
+                                onChange={handleChange}
+                                className={errors.mealPriceLimit && 'error-input'}
+                                name='mealPriceLimit'
+                                type='number'
+                                min='1.00'
+                                step='any'
+                                max='9999.99'
+                            />
+                            {errors.mealPriceLimit && <p className='error-text'>{errors.mealPriceLimit}</p>}
+                        </div>
+                        <div className='restaurant'>
+                            <label>Restaurant (optional)</label>
+                            <input
+                                onChange={handleChange}
+                                value={values.betRestaurant}
+                                name='restaurant'
+                                type='text'
+                            />
+                        </div>
                     </div>
                 );
             case 'Other':
@@ -110,7 +111,7 @@ const CreateBet = (props) => {
                         <input
                             onChange={handleChange}
                             value={values.betOther}
-                            name='challenger'
+                            name='other'
                             type='text'
                             className={errors.betOther && 'error-input'}
                         />

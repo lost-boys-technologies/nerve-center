@@ -17,16 +17,20 @@ export default function validateCreateLink(values) {
 	// Bet Terms Errors
 	if (!values.betTerms && values.betTerms !== 'Select Terms') {
 		console.log('hit');
-		errors.betTerms = 'Invalid bet term';
+		errors.betTerms = 'Invalid term';
 	}
 
 	// TODO 
 	// Cash Amount Errors
 	if (values.betTerms === 'Money' && !values.cashAmount) {
-		errors.cashAmount = 'Please enter an amount'
+		errors.cashAmount = 'Please enter an amount';
 	}
 
 	// Bet Meal Errors
+	if (values.betTerms === 'Meal' && !values.mealPriceLimit) {
+		errors.mealPriceLimit = 'Please enter an amount';
+	}
+
 	// Bet Other Errors
 
 	// Date Completion Errors
