@@ -151,9 +151,21 @@
             margin: 5px 0;
         }
 
-        .bet-terms {
+        .bet-terms-container {
             display: flex;
             flex-direction: row;
+            justify-content: flex-start;
+
+            .bet-terms {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            .cash-amounts {
+                display: flex;
+                flex-direction: column;
+            }
         }
     }
 

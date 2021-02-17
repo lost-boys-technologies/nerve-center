@@ -66,7 +66,7 @@ const CreateBet = (props) => {
         switch (values.betTerms) {
             case 'Money':
                 return (
-                    <>
+                    <div className='cash-amounts'>
                         <label>Cash Amount</label>
                         <input 
                             value={values.cashAmount}
@@ -78,11 +78,11 @@ const CreateBet = (props) => {
                             max='9999.99'
                         />
                         {errors.cashAmount && <p className='error-text'>{errors.cashAmount}</p>}
-                    </>
+                    </div>
                 );
             case 'Meal':
                 return (
-                    <>
+                    <div className='meal-price'>
                         <label>Meal Price Limit</label>
                         <input
                             onChange={handleChange}
@@ -99,11 +99,11 @@ const CreateBet = (props) => {
                             type='text'
                             className={errors.betMeal && 'error-input'}
                         />
-                    </>
+                    </div>
                 );
             case 'Other':
                 return (
-                    <>
+                    <div className='other'>
                         <label>Other</label>
                         <input
                             onChange={handleChange}
@@ -112,7 +112,7 @@ const CreateBet = (props) => {
                             type='text'
                             className={errors.betOther && 'error-input'}
                         />
-                    </>
+                    </div>
                 )
             default:
             break;
@@ -142,18 +142,21 @@ const CreateBet = (props) => {
                     className={errors.betDetails && 'error-input'}
                 />
                 {errors.betDetails && <p className='error-text'>{errors.betDetails}</p>}
-                <div className='bet-terms'>
-                    <label>Bet Terms</label>
-                    <select
-                        name='betTerms'
-                        value={values.betTerms} 
-                        onChange={handleChange}
-                    >
-                        {betTermItems.map(betTermItem => <option>{betTermItem}</option>)}
-                    </select>
-                    {errors.betTerms && <p className='error-text'>{errors.betTerms}</p>}
+                <div className='bet-terms-container'>
+                    <div className='bet-terms'>
+                        <label>Bet Terms</label>
+                        <select
+                            name='betTerms'
+                            value={values.betTerms} 
+                            onChange={handleChange}
+                        >
+                            {betTermItems.map(betTermItem => <option>{betTermItem}</option>)}
+                        </select>
+                        
+                    </div>
                     {handleBetTerms()}
                 </div>
+                {errors.betTerms && <p className='error-text'>{errors.betTerms}</p>}
                 <label>Approval Period</label>
                 <select
                     name='approvalPeriod'
