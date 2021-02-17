@@ -20,7 +20,6 @@ export default function validateCreateLink(values) {
 		errors.betTerms = 'Invalid term';
 	}
 
-	// TODO 
 	// Cash Amount Errors
 	if (values.betTerms === 'Money' && !values.cashAmount) {
 		errors.cashAmount = 'Please enter an amount';
@@ -32,6 +31,9 @@ export default function validateCreateLink(values) {
 	}
 
 	// Bet Other Errors
+	if (values.betTerms === 'Other' && !values.betOther) {
+		errors.betOther = 'Please describe the bet';
+	}
 
 	// Date Completion Errors
 	if (!values.dateCompletion) {

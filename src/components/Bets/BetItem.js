@@ -39,8 +39,6 @@ const BetItem = ({ bet, index, showCount }) => {
                     <div className='bet-terms'>
                         Bet Terms: {betTerms}
                     </div>
-                    <div>}
-                    </div>
                     <div className='takers'>
                         Takers: Simon, Evan, Kyle
                     </div>

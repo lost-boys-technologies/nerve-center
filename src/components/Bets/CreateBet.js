@@ -11,6 +11,9 @@ const INITIAL_STATE = {
     betDetails: '',
     betTerms: '',
     cashAmount: '',
+    mealPriceLimit: '',
+    betRestaurant: '',
+    betOther: '',
     dateCompletion: '',
     approvalPeriod: '',
 }
@@ -28,12 +31,15 @@ const CreateBet = (props) => {
         if (!user) {
             props.history.push('/login');
         } else {
-            const { challenger, betDetails, dateCompletion, approvalPeriod, betTerms, cashAmount } = values;
+            const { challenger, betDetails, dateCompletion, approvalPeriod, betTerms, cashAmount, mealPriceLimit, betRestaurant, betOther } = values;
             const newBet = {
                 challenger,
                 betDetails,
                 betTerms,
                 cashAmount,
+                mealPriceLimit,
+                betRestaurant,
+                betOther,
                 dateCompletion,
                 approvalPeriod,
                 postedBy: {
@@ -106,8 +112,8 @@ const CreateBet = (props) => {
                 );
             case 'Other':
                 return (
-                    <div className='other'>
-                        <label>Other</label>
+                    <div className='other-bet'>
+                        <label>Other Type Of Bet</label>
                         <input
                             onChange={handleChange}
                             value={values.betOther}
@@ -115,6 +121,7 @@ const CreateBet = (props) => {
                             type='text'
                             className={errors.betOther && 'error-input'}
                         />
+                        {errors.betOther && <p className='error-text'>{errors.betOther}</p>}
                     </div>
                 )
             default:
