@@ -105,7 +105,7 @@ const CreateBet = (props) => {
                             <input
                                 onChange={handleChange}
                                 value={values.betRestaurant}
-                                name='restaurant'
+                                name='betRestaurant'
                                 type='text'
                             />
                         </div>
@@ -118,7 +118,7 @@ const CreateBet = (props) => {
                         <input
                             onChange={handleChange}
                             value={values.betOther}
-                            name='other'
+                            name='betOther'
                             type='text'
                             className={errors.betOther && 'error-input'}
                         />
