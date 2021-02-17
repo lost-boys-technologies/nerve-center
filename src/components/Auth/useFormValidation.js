@@ -35,6 +35,9 @@ const useFormValidation = (initialState, validate, authenticate) => {
 		const validationErrors = validate(values);
 		setErrors(validationErrors);
 		setSubmitting(true);
+
+		// TODO error message if submit fails
+		console.log('validation errors', validationErrors);
 	};
 
 	const handleGoogleLogin = event => {

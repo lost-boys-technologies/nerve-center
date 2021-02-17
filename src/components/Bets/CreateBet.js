@@ -28,6 +28,7 @@ const CreateBet = (props) => {
     const termLimits = ['1 day', '2 days', '3 days', '1 week']
 
     function handleCreateBet() {
+        console.log('hit');
         if (!user) {
             props.history.push('/login');
         } else {
@@ -167,6 +168,15 @@ const CreateBet = (props) => {
                     </div>
                     {handleBetTerms()}
                 </div>
+                <label>Bet Completion</label>
+                <input
+                    onChange={handleChange}
+                    value={values.dateCompletion}
+                    name='dateCompletion'
+                    type='date'
+                    className={errors.dateCompletion && 'error-input'}
+                />
+                {errors.dateCompletion && <p className='error-text'>{errors.dateCompletion}</p>}
                 <label>Approval Period</label>
                 <select
                     name='approvalPeriod'
