@@ -96,11 +96,6 @@
                     height: 100px;
                 }
             }
-    
-            .bet-details {
-                // display: flex;
-                // align-items: center;
-            }
         }
 
         .fa-thumbs-up { color: $cyan-color; }
@@ -117,15 +112,21 @@
 
     .button-container {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        justify-content: flex-end;
 
         button {
-            margin: 10px 0 0 0;
-            width: 100%;
+            margin: 10px 0 0 20px;
+            width: 100px;
+        }
+
+        .submit {
+            color: $white-color;
+            background-color: $cyan-blue-color;
         }
 
         .cancel {
-            background-color: $flat-red;
+            background-color: $light-grey-color;
         }
     }
 
