@@ -6,7 +6,7 @@ const BetItem = ({ bet, index, showCount }) => {
     const [toggle, setToggle] = useState(false);
     const { challenger, betDetails, dateCompletion, postedBy, betTerms, approvalPeriod } = bet;
 
-    console.log('bet', bet.betTerms);
+    console.log('bet', bet);
 
     const displayBetTerms = () => {
         switch (betTerms) {

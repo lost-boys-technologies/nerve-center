@@ -28,7 +28,6 @@ const CreateBet = (props) => {
     const termLimits = ['1 day', '2 days', '3 days', '1 week']
 
     function handleCreateBet() {
-        console.log('hit');
         if (!user) {
             props.history.push('/login');
         } else {
