@@ -6,7 +6,26 @@ const BetItem = ({ bet, index, showCount }) => {
     const [toggle, setToggle] = useState(false);
     const { challenger, betDetails, dateCompletion, postedBy, betTerms, approvalPeriod } = bet;
 
-    console.log('bet', bet);
+    console.log('bet', bet.betTerms);
+
+    const displayBetTerms = () => {
+        switch (betTerms) {
+            case 'Money':
+                return (
+                    <div>Money</div>
+                );
+            case 'Meal': 
+                return (
+                    <div>Meal</div>
+                );
+            case 'Other':
+                return (
+                    <div>Other</div>
+                )
+            default:
+            break;
+        }
+    }
 
     return (
         <div className='bet-item-container'>
@@ -37,7 +56,10 @@ const BetItem = ({ bet, index, showCount }) => {
                         {betDetails}
                     </div>
                     <div className='bet-terms'>
-                        Bet Terms: {betTerms}
+                        Bet Terms: {displayBetTerms()}
+                    </div>
+                    <div className='approval-period'>
+                        Approval Period: {approvalPeriod}
                     </div>
                     <div className='takers'>
                         Takers: Simon, Evan, Kyle
