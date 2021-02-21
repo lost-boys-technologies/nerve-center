@@ -33,13 +33,15 @@ const BetsLists = (props) => {
 				</Link>
 			</div>
 			<div className='pending-bets'>
+				<h3>Pending Bets</h3>
 				{bets.map((bet, index) => (
 					<BetItem key={bet.id} showCount={true} bet={bet} index={index + 1} />
 				))}
 			</div>
 			{/* //! Construction Zone */}
 			<div className='active-bets'>
-				THIS SECTION IS A WORK IN PROGRESS
+				<h3>Active Bets</h3>
+				<span>THIS SECTION IS A WORK IN PROGRESS</span>
 			</div>
 			{/* //! End Construction Zone */}
 		</div>

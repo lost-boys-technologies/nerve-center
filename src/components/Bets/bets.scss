@@ -2,14 +2,18 @@
 
 // Bets LIST Container
 .bets-container {
-    border: 1px solid red;
     display: flex;
     flex-direction: row;
-    margin: 30px 0 0 0;
+    margin: 35px 0 0 0;
+
+    h3 {
+        text-align: center;
+        color: $cyan-blue-color;
+    }
 
     .create-bet-btn {
         position: absolute;
-        top: 55px;
+        top: 56.5px;
         right: 20px;
     }
 
@@ -20,10 +24,21 @@
     }
 
     .active-bets {
-        border: 1px solid $ivory-color; //! Temporary
         display: flex;
         flex-direction: column;
         flex-basis: 50%;
+
+        //! Temporary
+        span {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: $white-color-opaque;
+            color: $red-color;
+            font-size: 50px;
+            text-align: center;
+            height: 100%;
+        }
     }
 }
 
