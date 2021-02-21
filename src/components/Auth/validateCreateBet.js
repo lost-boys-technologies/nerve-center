@@ -41,7 +41,7 @@ export default function validateCreateLink(values) {
 	}
 
 	// Approval Period Errors
-	if (!values.approvalPeriod) {
+	if (!values.approvalPeriod && values.approvalPeriod !== 'Select Term Limits') {
 		errors.approvalPeriod = 'Please indicate the grace period for the taker(s)';
 	}
 

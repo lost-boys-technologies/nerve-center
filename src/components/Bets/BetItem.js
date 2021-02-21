@@ -4,23 +4,29 @@ import React, { useState } from 'react';
 
 const BetItem = ({ bet, index, showCount }) => {
     const [toggle, setToggle] = useState(false);
-    const { challenger, betDetails, dateCompletion, postedBy, betTerms, approvalPeriod } = bet;
-
-    console.log('bet', bet);
+    const { challenger, betDetails, dateCompletion, postedBy, betTerms, cashAmount, mealPriceLimit, betRestaurant, betOther, approvalPeriod } = bet;
 
     const displayBetTerms = () => {
+        console.log('bet', bet);
+
         switch (betTerms) {
             case 'Money':
                 return (
-                    <div>Money</div>
+                    <div className='money-terms-container'>
+                        <span className='money-stmt'>{betTerms} in the amount of ${cashAmount}</span>
+                    </div>
                 );
             case 'Meal': 
                 return (
-                    <div>Meal</div>
+                    <div className='meal-terms-container'>
+                        <span className='meal-stmt'>{betTerms} that will be less than ${mealPriceLimit} at {betRestaurant ? `${betRestaurant}` : 'a restaurant picked later'}</span>
+                    </div>
                 );
             case 'Other':
                 return (
-                    <div>Other</div>
+                    <div className='other-terms-container'>
+                        <span className='other-stmt'>{betTerms}: <br />{betOther}</span>
+                    </div>
                 )
             default:
             break;

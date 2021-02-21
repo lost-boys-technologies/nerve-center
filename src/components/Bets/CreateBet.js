@@ -25,7 +25,7 @@ const CreateBet = (props) => {
     let history = useHistory();
 
     const betTermItems = ['Select Terms', 'Money', 'Meal', 'Other'];
-    const termLimits = ['1 day', '2 days', '3 days', '1 week']
+    const termLimits = ['Select Term Limits', '1 day', '2 days', '3 days', '1 week']
 
     function handleCreateBet() {
         if (!user) {
