@@ -1,106 +1,150 @@
 @import '../../variables';
 
-// Bets Container
+// Bets LIST Container
 .bets-container {
+    border: 1px solid red;
+    display: flex;
+    flex-direction: row;
+    margin: 30px 0 0 0;
 
     .create-bet-btn {
-        display: flex;
-        justify-content: flex-end;
-        margin: 20px 20px 0 0;
+        position: absolute;
+        top: 55px;
+        right: 20px;
     }
 
-    // Bet Item Container
-    .bet-item-container {
+    .pending-bets {
         display: flex;
         flex-direction: column;
-        margin: 10px;
-        flex-wrap: wrap;
+        flex-basis: 50%;
+    }
 
-        .full-bet-card {
-            width: 50%;
+    .active-bets {
+        border: 1px solid $ivory-color; //! Temporary
+        display: flex;
+        flex-direction: column;
+        flex-basis: 50%;
+    }
+}
 
-            .bet-time-limit {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                border-right: 1px solid $cyan-blue-color;
-                padding: 20px;
-            }
+// Bet Item Container
+.bet-item-container {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    flex-wrap: wrap;
 
-            .bet-challenger {
-                display: flex;
-                align-items: center;
-                padding: 10px;
-                margin: 0 auto;
+    .full-bet-card {
+        // width: 100%;
 
-                span {
-                    font-weight: 700;
-                }
-            }
+        .bet-time-limit {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-right: 1px solid $cyan-blue-color;
+            padding: 20px;
+        }
 
-            .bet-card {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                background-color: $white-color-opaque;
-                border: 1px solid $cyan-blue-color;
+        .bet-challenger {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            margin: 0 auto;
+
+            span {
+                font-weight: 700;
             }
-    
-            .bet-voting {
-                display: flex;
-                flex-direction: column;
-                background-color: $ivory-color;
-                border-left: 1px solid $cyan-blue-color;
-                min-width: 42px;
-                padding: 0 10px;
-    
-                .voting {
-                    margin: 5px;
-    
-                    &.bet-approval {
-                        border-bottom: 1px solid $cyan-blue-color;
-                        padding: 0 0 10px 0;
-                    }
-                }
-            }
-    
-            .more-details {
-                cursor: pointer;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                background-color: $ivory-color;
-                margin: 0 63px 0 0;
-                height: 30px;
-    
-                border-right: 1px solid $cyan-blue-color;
-                border-bottom: 1px solid $cyan-blue-color;
-                border-left: 1px solid $cyan-blue-color;
-            }
-    
-            .more-details-container {
-                display: flex;
-                flex-direction: column;
-                background-color: $cyan-blue-color;
-                color: $ivory-color;
-                transition: height 1s ease;
-                margin: 0 63px 0 0;
-                height: 0;
-                overflow: hidden;
-    
-                border-right: 1px solid $cyan-blue-color;
-                border-bottom: 1px solid $cyan-blue-color;
-                border-left: 1px solid $cyan-blue-color;
-    
-                &.show {
-                    height: 100px;
+        }
+
+        .bet-card {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            background-color: $white-color-opaque;
+            border: 1px solid $cyan-blue-color;
+        }
+
+        .bet-voting {
+            display: flex;
+            flex-direction: column;
+            background-color: $ivory-color;
+            border-left: 1px solid $cyan-blue-color;
+            min-width: 42px;
+            padding: 0 10px;
+
+            .voting {
+                margin: 5px;
+
+                &.bet-approval {
+                    border-bottom: 1px solid $cyan-blue-color;
+                    padding: 0 0 10px 0;
                 }
             }
         }
 
-        .fa-thumbs-up { color: $cyan-color; }
-        .fa-thumbs-down { color: $flat-red; }
+        .more-details {
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: $ivory-color;
+            margin: 0 63px 0 0;
+            height: 30px;
+
+            border-right: 1px solid $cyan-blue-color;
+            border-bottom: 1px solid $cyan-blue-color;
+            border-left: 1px solid $cyan-blue-color;
+        }
+
+        .more-details-container {
+            display: flex;
+            flex-direction: column;
+            background-color: $cyan-blue-color;
+            color: $ivory-color;
+            transition: height 1s ease;
+            margin: 0 63px 0 0;
+            height: 0;
+            overflow: hidden;
+
+            border-right: 1px solid $cyan-blue-color;
+            border-bottom: 1px solid $cyan-blue-color;
+            border-left: 1px solid $cyan-blue-color;
+
+            &.show {
+                //! Work out this approach
+                height: 150px;
+            }
+
+            .bet-terms-container {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+
+                .money-terms-container {
+                    
+                }
+
+                .meal-terms-container {
+
+                }
+
+                .other-terms-container {
+
+                }
+            }
+
+            .approval-period {
+
+            }
+
+            .takers {
+
+            }
+        }
     }
+
+    .fa-thumbs-up { color: $cyan-color; }
+    .fa-thumbs-down { color: $flat-red; }
 }
 
 // Create Bet Container

@@ -32,11 +32,16 @@ const BetsLists = (props) => {
 					<button>Create Bet</button>
 				</Link>
 			</div>
-			<div className='active-bets'>
+			<div className='pending-bets'>
 				{bets.map((bet, index) => (
 					<BetItem key={bet.id} showCount={true} bet={bet} index={index + 1} />
 				))}
 			</div>
+			{/* //! Construction Zone */}
+			<div className='active-bets'>
+				THIS SECTION IS A WORK IN PROGRESS
+			</div>
+			{/* //! End Construction Zone */}
 		</div>
 	);
 };

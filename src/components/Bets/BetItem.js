@@ -25,7 +25,7 @@ const BetItem = ({ bet, index, showCount }) => {
             case 'Other':
                 return (
                     <div className='other-terms-container'>
-                        <span className='other-stmt'>{betTerms}: <br />{betOther}</span>
+                        <span className='other-stmt'>{betTerms}: {betOther}</span>
                     </div>
                 )
             default:
