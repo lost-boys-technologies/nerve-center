@@ -61,7 +61,7 @@ const BetItem = ({ bet, index, showCount }) => {
                     <div className='bet-details'>
                         {betDetails}
                     </div>
-                    <div className='bet-terms'>
+                    <div className='bet-terms-container'>
                         Bet Terms: {displayBetTerms()}
                     </div>
                     <div className='approval-period'>

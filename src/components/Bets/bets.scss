@@ -93,7 +93,7 @@
                 border-left: 1px solid $cyan-blue-color;
     
                 &.show {
-                    height: auto;
+                    height: 100px;
                 }
             }
         }
@@ -166,7 +166,7 @@
 
             .bet-terms {
                 display: flex;
-                flex-direction: row;
+                flex-direction: column;
                 justify-content: center;
                 margin: 0 10px 0 0;
             }
