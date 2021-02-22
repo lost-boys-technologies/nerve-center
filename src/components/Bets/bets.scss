@@ -130,6 +130,22 @@
                 height: 150px;
             }
 
+            .created-date {
+                display: flex;
+                justify-content: flex-end;
+                padding: 5px 10px 0 0;
+            }
+
+            .bet-title {
+                font-size: 16px;
+                font-weight: 700;
+                padding: 2px 0 2px 5px;
+            }
+
+            .bet-details {
+                padding: 0 0 5px 10px;
+            }
+
             .bet-summary-container {
                 display: flex;
                 flex-direction: column;
@@ -137,33 +153,14 @@
                 .bet-summary {
                     font-size: 16px;
                     font-weight: 700;
+                    padding: 2px 0 2px 5px;
                 }
             }
 
             .bet-terms-container {
                 display: flex;
-                flex-direction: row;
+                flex-direction: column;
                 flex-wrap: wrap;
-
-                .money-terms-container {
-                    
-                }
-
-                .meal-terms-container {
-
-                }
-
-                .other-terms-container {
-
-                }
-            }
-
-            .approval-period {
-
-            }
-
-            .takers {
-
             }
         }
     }

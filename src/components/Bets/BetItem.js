@@ -18,21 +18,15 @@ const BetItem = ({ bet, index, showCount }) => {
         switch (betTerms) {
             case 'Money':
                 return (
-                    <div className='money-terms-container'>
-                        <span className='money-stmt'>{betTerms} in the amount of ${cashAmount}</span>
-                    </div>
+                    <div className='bet-stmt'>Money, in the amount of <strong>${cashAmount}</strong></div>
                 );
             case 'Meal': 
                 return (
-                    <div className='meal-terms-container'>
-                        <span className='meal-stmt'>{betTerms} that will be less than ${mealPriceLimit} at {betRestaurant ? `${betRestaurant}` : 'a restaurant picked later'}</span>
-                    </div>
+                    <div className='bet-stmt'>A meal that will be less than <strong>${mealPriceLimit}</strong> at <strong>{betRestaurant ? `${betRestaurant}` : 'a restaurant picked later'}</strong></div>
                 );
             case 'Other':
                 return (
-                    <div className='other-terms-container'>
-                        <span className='other-stmt'>{betTerms}: {betOther}</span>
-                    </div>
+                    <div className='bet-stmt'>{betOther}</div>
                 )
             default:
             break;
@@ -64,20 +58,16 @@ const BetItem = ({ bet, index, showCount }) => {
                     More Details
                 </div>
                 <div className={`more-details-container ${toggle ? 'show' : ''}`}>
-                    <div className=''>
-                        {formatDate(created)}
+                    <div className='created-date'>
+                        created: {formatDate(created)}
                     </div>
                     <div className='bet-summary-container'>
-                        <span className='bet-summary'>Summary of Bet</span> {betDetails}
+                        <span className='bet-title'>Summary of Bet</span>
+                        <span className='bet-details'>{betDetails}</span>
                     </div>
                     <div className='bet-terms-container'>
-                        Bet Terms:<br /> {displayBetTerms()}
-                    </div>
-                    <div className='approval-period'>
-                        Approval Period: {approvalPeriod}
-                    </div>
-                    <div className='takers'>
-                        Takers: Simon, Evan, Kyle
+                        <span className='bet-title'>Bet Terms</span>
+                        <span className='bet-details'>{displayBetTerms()}</span>
                     </div>
                 </div>
             </div>
