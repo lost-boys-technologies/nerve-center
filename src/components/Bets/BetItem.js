@@ -6,18 +6,15 @@ const BetItem = ({ bet, index, showCount }) => {
     const [toggle, setToggle] = useState(false);
     const { challenger, dateCompletion, created, betDetails, postedBy, betTerms, cashAmount, mealPriceLimit, betRestaurant, betOther, approvalPeriod } = bet;
 
-    const formatedDate = () => {
-        //! I really don't like this
-        let cleanDate = new Date(created).toISOString().replace(/T.*/,'').split('-')
-        const year = cleanDate.shift(cleanDate);
-        cleanDate.push(year.toString());
+    const formatDate = (date) => {
+        let cleanDate = new Date(date).toISOString().replace(/T.*/,'').split('-')
+        const extractYear = cleanDate.shift(cleanDate);
+        cleanDate.push(extractYear.toString());
         const perfectDate = cleanDate.join('/');
         return perfectDate
     }
 
     const displayBetTerms = () => {
-        // console.log('bet', bet);
-
         switch (betTerms) {
             case 'Money':
                 return (
@@ -47,7 +44,7 @@ const BetItem = ({ bet, index, showCount }) => {
             <div className='full-bet-card'>
                 <div className='bet-card'>
                     <div className='bet-time-limit'>
-                        {dateCompletion}
+                        {formatDate(dateCompletion)}
                     </div>
                     <span className='divider' />
                     <div className='bet-challenger'>
@@ -68,7 +65,7 @@ const BetItem = ({ bet, index, showCount }) => {
                 </div>
                 <div className={`more-details-container ${toggle ? 'show' : ''}`}>
                     <div className=''>
-                        {formatedDate()}
+                        {formatDate(created)}
                     </div>
                     <div className='bet-summary-container'>
                         <span className='bet-summary'>Summary of Bet</span> {betDetails}
