@@ -4,10 +4,19 @@ import React, { useState } from 'react';
 
 const BetItem = ({ bet, index, showCount }) => {
     const [toggle, setToggle] = useState(false);
-    const { challenger, betDetails, dateCompletion, postedBy, betTerms, cashAmount, mealPriceLimit, betRestaurant, betOther, approvalPeriod } = bet;
+    const { challenger, dateCompletion, created, betDetails, postedBy, betTerms, cashAmount, mealPriceLimit, betRestaurant, betOther, approvalPeriod } = bet;
+
+    const formatedDate = () => {
+        //! I really don't like this
+        let cleanDate = new Date(created).toISOString().replace(/T.*/,'').split('-')
+        const year = cleanDate.shift(cleanDate);
+        cleanDate.push(year.toString());
+        const perfectDate = cleanDate.join('/');
+        return perfectDate
+    }
 
     const displayBetTerms = () => {
-        console.log('bet', bet);
+        // console.log('bet', bet);
 
         switch (betTerms) {
             case 'Money':
@@ -58,11 +67,14 @@ const BetItem = ({ bet, index, showCount }) => {
                     More Details
                 </div>
                 <div className={`more-details-container ${toggle ? 'show' : ''}`}>
-                    <div className='bet-details'>
-                        {betDetails}
+                    <div className=''>
+                        {formatedDate()}
+                    </div>
+                    <div className='bet-summary-container'>
+                        <span className='bet-summary'>Summary of Bet</span> {betDetails}
                     </div>
                     <div className='bet-terms-container'>
-                        Bet Terms: {displayBetTerms()}
+                        Bet Terms:<br /> {displayBetTerms()}
                     </div>
                     <div className='approval-period'>
                         Approval Period: {approvalPeriod}
