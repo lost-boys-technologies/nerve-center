@@ -4,7 +4,7 @@
 .bets-container {
     display: flex;
     flex-direction: row;
-    margin: 35px 0 0 0;
+    // margin: 35px 0 0 0;
 
     h3 {
         text-align: center;
@@ -236,6 +236,10 @@
                 justify-content: center;
                 flex-wrap: wrap;
                 margin: 0 10px 0 0;
+
+                select {
+                    height: 35px;
+                }
             }
 
             .cash-amounts {
@@ -269,6 +273,24 @@
                 width: 289px;
             }
         }
+
+        .bet-timelines {
+            display: flex;
+            flex-direction: row;
+            // justify-content: space-evenly;
+
+            .bet-completion {
+                display: flex;
+                flex-direction: column;
+                margin: 0 28px 0 0;
+                width: 136px;
+            }
+
+            .approval-period {
+                display: flex;
+                flex-direction: column;
+            }
+        }
     }
 
     textarea { resize: none }
@@ -278,7 +300,10 @@
         background-color: $white-color-opaque;
         padding: 10px 35px 35px;
         
-        input { height: 25px; }
-        select { height: 32.5px; }
+        input { height: 29px; }
+        select {
+            height: 32.5px;
+            text-align: center;
+        }
     }
 }

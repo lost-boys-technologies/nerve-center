@@ -69,8 +69,8 @@ const CreateBet = (props) => {
             title: 'Are you sure?',
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#244f7b',
-            cancelButtonColor: '#DFE6E9',
+            confirmButtonColor: '#244F7B',
+            cancelButtonColor: '#95A5A6',
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
@@ -78,7 +78,7 @@ const CreateBet = (props) => {
                     title: 'Deleted!',
                     text: 'Bet has been cancelled',
                     icon: 'success',
-                    confirmButtonColor: '#244f7b',
+                    confirmButtonColor: '#244F7B',
                 })
             }
             history.push('/bets')
@@ -189,25 +189,31 @@ const CreateBet = (props) => {
                     </div>
                     {handleBetTerms()}
                 </div>
-                <label>Bet Completion</label>
-                <input
-                    onChange={handleChange}
-                    value={values.dateCompletion}
-                    name='dateCompletion'
-                    type='date'
-                    className={errors.dateCompletion && 'error-input'}
-                />
-                {errors.dateCompletion && <p className='error-text'>{errors.dateCompletion}</p>}
-                <label>Approval Period</label>
-                <select
-                    name='approvalPeriod'
-                    value={values.approvalPeriod} 
-                    onChange={handleChange}
-                    className={errors.approvalPeriod && 'error-input'}
-                >
-                    {termLimits.map(termLimit => <option>{termLimit}</option>)}
-                </select>
-                {errors.approvalPeriod && <p className='error-text'>{errors.approvalPeriod}</p>}
+                <div className='bet-timelines'>
+                    <div className='bet-completion'>
+                        <label>Bet Completion</label>
+                        <input
+                            onChange={handleChange}
+                            value={values.dateCompletion}
+                            name='dateCompletion'
+                            type='date'
+                            className={errors.dateCompletion && 'error-input'}
+                        />
+                        {errors.dateCompletion && <p className='error-text'>{errors.dateCompletion}</p>}
+                    </div>
+                    <div className='approval-period'>
+                        <label>Approval Period</label>
+                        <select
+                            name='approvalPeriod'
+                            value={values.approvalPeriod} 
+                            onChange={handleChange}
+                            className={errors.approvalPeriod && 'error-input'}
+                        >
+                            {termLimits.map(termLimit => <option>{termLimit}</option>)}
+                        </select>
+                        {errors.approvalPeriod && <p className='error-text'>{errors.approvalPeriod}</p>}
+                    </div>
+                </div>
                 <div className='button-container'>
                     <button className='button submit' type='submit'>
                         Submit
