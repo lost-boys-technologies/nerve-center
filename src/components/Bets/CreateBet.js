@@ -66,16 +66,16 @@ const CreateBet = (props) => {
 
     const handleCancelBtn = () => {
         Swal.fire({
-            title: 'Are you sure?',
+            title: 'Are you sure you want to cancel?',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#244F7B',
             cancelButtonColor: '#95A5A6',
-            confirmButtonText: 'Yes, delete it!'
+            confirmButtonText: 'Yes, cancel it!'
         }).then((result) => {
             if (result.isConfirmed) {
                 Swal.fire({
-                    title: 'Deleted!',
+                    title: 'Cancelled!',
                     text: 'Bet has been cancelled',
                     icon: 'success',
                     confirmButtonColor: '#244F7B',
