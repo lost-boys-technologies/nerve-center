@@ -157,11 +157,11 @@
                 }
             }
 
-            .bet-terms-container {
-                display: flex;
-                flex-direction: column;
-                flex-wrap: wrap;
-            }
+            // .bet-terms-container {
+            //     display: flex;
+            //     flex-direction: column;
+            //     flex-wrap: wrap;
+            // }
         }
     }
 
@@ -229,6 +229,18 @@
             flex-direction: row;
             justify-content: flex-start;
             align-items: flex-start;
+
+            .dollar-bill {
+                position: relative;
+                display: block;
+
+                &:before {
+                    position: absolute;
+                    content: '$';
+                    top: 8px;
+                    left: 6px;
+                }
+            }
 
             .bet-terms {
                 display: flex;
@@ -300,9 +312,12 @@
         background-color: $white-color-opaque;
         padding: 10px 35px 35px;
         
-        input { height: 29px; }
+        input {
+            height: 30px;
+            text-align: center;
+        }
         select {
-            height: 32.5px;
+            height: 35px;
             text-align: center;
         }
     }

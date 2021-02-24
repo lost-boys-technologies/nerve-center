@@ -91,6 +91,7 @@ const CreateBet = (props) => {
                 return (
                     <div className='cash-amounts'>
                         <label>Cash Amount</label>
+                        <span className='dollar-bill'></span>
                         <input 
                             value={values.cashAmount}
                             onChange={handleChange}
@@ -99,7 +100,8 @@ const CreateBet = (props) => {
                             type='number'
                             min='1.00'
                             step='any'
-                            max='9999.99'
+                            max='1000.00'
+                            id='cashAmounts'
                         />
                         {errors.cashAmount && <p className='error-text'>{errors.cashAmount}</p>}
                     </div>
@@ -109,6 +111,7 @@ const CreateBet = (props) => {
                     <div className='meal-price'>
                         <div className='meal-price-limit'>
                             <label>Price Limit</label>
+                            <span className='dollar-bill'></span>
                             <input 
                                 value={values.mealPriceLimit}
                                 onChange={handleChange}
@@ -117,7 +120,7 @@ const CreateBet = (props) => {
                                 type='number'
                                 min='1.00'
                                 step='any'
-                                max='9999.99'
+                                max='1000.00'
                             />
                             {errors.mealPriceLimit && <p className='error-text'>{errors.mealPriceLimit}</p>}
                         </div>
