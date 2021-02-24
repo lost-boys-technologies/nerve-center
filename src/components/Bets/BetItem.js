@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 
 const BetItem = ({ bet, index, showCount }) => {
     const [toggle, setToggle] = useState(false);
-    const { challenger, dateCompletion, created, betDetails, postedBy, betTerms, cashAmount, mealPriceLimit, betRestaurant, betOther, approvalPeriod } = bet;
+    const { challenger, dateCompletion, created, betDetails, postedBy, betTerms, cashAmount, mealPriceLimit, betRestaurant, betOther } = bet;
 
     const formatDate = (date) => {
         let cleanDate = new Date(date).toISOString().replace(/T.*/,'').split('-')

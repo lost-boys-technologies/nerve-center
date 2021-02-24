@@ -4,6 +4,7 @@ import { FirebaseContext } from '../../firebase';
 import useFormValidation from '../Auth/useFormValidation';
 import validateCreateBet from '../Auth/validateCreateBet';
 
+import Swal from 'sweetalert2';
 import './bets.scss';
 
 const INITIAL_STATE = {
@@ -58,9 +59,23 @@ const CreateBet = (props) => {
     }
 
     const handleCancelBtn = () => {
-        if (window.confirm('Are you sure?')) {
+        Swal.fire({
+            title: 'Are you sure?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+                )
+            }
             history.push('/bets')
-        }
+        })
     }
 
     const handleBetTerms = () => {

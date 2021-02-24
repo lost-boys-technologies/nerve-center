@@ -1,5 +1,6 @@
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import { useHistory } from 'react-router-dom';
 
 const showAlert = ([message1, message2, message3], isSuccess) => {
     const Alert = withReactContent(Swal);
