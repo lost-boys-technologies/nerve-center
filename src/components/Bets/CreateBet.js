@@ -54,6 +54,12 @@ const CreateBet = (props) => {
                 established: false,
             }
             firebase.db.collection('bets').add(newBet);
+            Swal.fire({
+                icon: 'success',
+                title: 'Bet Successfully Created!',
+                showConfirmButton: false,
+                timer: 1500
+            })
             props.history.push('/bets');
         }
     }
@@ -63,16 +69,17 @@ const CreateBet = (props) => {
             title: 'Are you sure?',
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
+            confirmButtonColor: '#244f7b',
+            cancelButtonColor: '#DFE6E9',
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                Swal.fire(
-                'Deleted!',
-                'Your file has been deleted.',
-                'success'
-                )
+                Swal.fire({
+                    title: 'Deleted!',
+                    text: 'Bet has been cancelled',
+                    icon: 'success',
+                    confirmButtonColor: '#244f7b',
+                })
             }
             history.push('/bets')
         })
