@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { withRouter } from 'react-router-dom';
+import FirebaseContext from '../../firebase/context';
 
 // TODO Will need to setup additional validation to only allow approval voting BY the person being challenged
 
-const BetItem = ({ bet, index, showCount }) => {
+const BetItem = ({ bet, index, showCount, history }) => {
+    const { firebase, user } = useContext(FirebaseContext);
     const [toggle, setToggle] = useState(false);
     const { challenger, dateCompletion, created, betDetails, postedBy, betTerms, cashAmount, mealPriceLimit, betRestaurant, betOther } = bet;
 
@@ -33,6 +36,24 @@ const BetItem = ({ bet, index, showCount }) => {
         }
     }
 
+    const handleVote = () => {
+        if (!user) {
+            history.push('/login')
+        } else {
+            const voteRef = firebase.db.collection('bets').doc(bet.id);
+            voteRef.get().then(doc => {
+                if (doc.exists) {
+                    const previousVotes = doc.data().votes;
+                    const vote = { votedBy: { id: user.uid, name: user.displayName }};
+                    const updatedVotes = [...previousVotes, vote];
+                    console.log('updatedVotes', updatedVotes);
+                    voteRef.update({ votes: updatedVotes });
+                }
+            })
+        }
+    }
+
+    console.log('bets', bet);
     return (
         <div className='bet-item-container'>
             <div className='full-bet-card'>
@@ -47,7 +68,7 @@ const BetItem = ({ bet, index, showCount }) => {
                         </p>
                     </div>
                     <div className='bet-voting'>
-                        <div className='voting bet-approval'><i className='far fa-thumbs-up fa-2x'></i></div>
+                        <div className='voting bet-approval' onClick={handleVote}><i className='far fa-thumbs-up fa-2x'></i></div>
                         <div className='voting bet-rejection'><i className='far fa-thumbs-down fa-2x'></i></div>
                     </div>
                 </div>
@@ -75,4 +96,4 @@ const BetItem = ({ bet, index, showCount }) => {
     )
 }
 
-export default BetItem;
+export default withRouter(BetItem);
