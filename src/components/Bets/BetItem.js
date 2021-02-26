@@ -46,14 +46,12 @@ const BetItem = ({ bet, index, showCount, history }) => {
                     const previousVotes = doc.data().votes;
                     const vote = { votedBy: { id: user.uid, name: user.displayName }};
                     const updatedVotes = [...previousVotes, vote];
-                    console.log('updatedVotes', updatedVotes);
                     voteRef.update({ votes: updatedVotes });
                 }
             })
         }
     }
 
-    console.log('bets', bet);
     return (
         <div className='bet-item-container'>
             <div className='full-bet-card'>
