@@ -43,10 +43,11 @@ const BetItem = ({ bet, index, showCount, history }) => {
             const voteRef = firebase.db.collection('bets').doc(bet.id);
             voteRef.get().then(doc => {
                 if (doc.exists) {
-                    // const previousVotes = doc.data().votes;
-                    // const vote = { votedBy: { id: user.uid, name: user.displayName }};
-                    // const updatedVotes = [...previousVotes, vote];
-                    // voteRef.update({ votes: updatedVotes });
+                    // upvote.votedBy.id !== user.uid
+                    const previousUpvotes = doc.data().upvotes;
+                    const upvote = { votedBy: { id: user.uid, name: user.displayName }};
+                    const updatedUpvotes = [...previousUpvotes, upvote];
+                    voteRef.update({ upvotes: updatedUpvotes });
                 }
             })
         }
