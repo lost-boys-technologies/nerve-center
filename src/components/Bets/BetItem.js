@@ -36,20 +36,24 @@ const BetItem = ({ bet, index, showCount, history }) => {
         }
     }
 
-    const handleVote = () => {
+    const handleUpvote = () => {
         if (!user) {
             history.push('/login')
         } else {
             const voteRef = firebase.db.collection('bets').doc(bet.id);
             voteRef.get().then(doc => {
                 if (doc.exists) {
-                    const previousVotes = doc.data().votes;
-                    const vote = { votedBy: { id: user.uid, name: user.displayName }};
-                    const updatedVotes = [...previousVotes, vote];
-                    voteRef.update({ votes: updatedVotes });
+                    // const previousVotes = doc.data().votes;
+                    // const vote = { votedBy: { id: user.uid, name: user.displayName }};
+                    // const updatedVotes = [...previousVotes, vote];
+                    // voteRef.update({ votes: updatedVotes });
                 }
             })
         }
+    }
+
+    const handleDownvote = () => {
+        console.log('downvote');
     }
 
     return (
@@ -66,8 +70,8 @@ const BetItem = ({ bet, index, showCount, history }) => {
                         </p>
                     </div>
                     <div className='bet-voting'>
-                        <div className='voting bet-approval' onClick={handleVote}><i className='far fa-thumbs-up fa-2x'></i></div>
-                        <div className='voting bet-rejection'><i className='far fa-thumbs-down fa-2x'></i></div>
+                        <div className='voting bet-approval' onClick={handleUpvote}><i className='far fa-thumbs-up fa-2x'></i></div>
+                        <div className='voting bet-rejection' onClick={handleDownvote}><i className='far fa-thumbs-down fa-2x'></i></div>
                     </div>
                 </div>
                 <div

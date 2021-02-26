@@ -47,7 +47,8 @@ const CreateBet = (props) => {
                     id: user.uid,
                     name: user.displayName
                 },
-                votes: [],
+                upvotes: [],
+                downVotes: [],
                 comments: [],
                 created: Date.now(),
                 pending: false,
