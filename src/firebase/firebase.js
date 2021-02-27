@@ -15,7 +15,9 @@ class Firebase {
         const newUser = await this.auth.createUserWithEmailAndPassword(
             email,
             password
-        )
+        );
+
+        await this.db.collection('users').doc(newUser.user.uid).set({ uid: newUser.user.uid, name: name },{ merge: true });
 
         return await newUser.user.updateProfile({
             displayName: name,
