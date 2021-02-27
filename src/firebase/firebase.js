@@ -11,28 +11,29 @@ class Firebase {
     }
 
     async register(name, email, password) {
-        // firebase.db.collection('users').add({ user: name });
         const newUser = await this.auth.createUserWithEmailAndPassword(
             email,
             password
         );
 
         await this.db.collection('users').doc(newUser.user.uid).set({ uid: newUser.user.uid, name: name },{ merge: true });
-
+        // TODO Rewrite logic for email verification and have user logout after registering
+        // await this.auth.currentUser.sendEmailVerification();
         return await newUser.user.updateProfile({
             displayName: name,
         })
     }
 
-    async loginByGoogle() {
-        const googleAuthProvider = this.auth.GoogleAuthProvider;
-        const provider = new googleAuthProvider();
-        provider.addScope('profile');
-        provider.addScope('email');
-        googleAuthProvider.this.auth().signInWithPopup(provider).then(function(result) {
-            return result.user;
-        })
-    }
+    // TODO add google option
+    // async loginByGoogle() {
+    //     const googleAuthProvider = this.auth.GoogleAuthProvider;
+    //     const provider = new googleAuthProvider();
+    //     provider.addScope('profile');
+    //     provider.addScope('email');
+    //     googleAuthProvider.this.auth().signInWithPopup(provider).then(function(result) {
+    //         return result.user;
+    //     })
+    // }
 
     async login(email, password) {
         return await this.auth.signInWithEmailAndPassword(email, password)
