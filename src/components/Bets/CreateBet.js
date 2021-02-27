@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { FirebaseContext } from '../../firebase';
 import useFormValidation from '../Auth/useFormValidation';
@@ -22,11 +22,32 @@ const INITIAL_STATE = {
 const CreateBet = (props) => {
     const { handleSubmit, handleChange, values, errors} = useFormValidation(INITIAL_STATE, validateCreateBet, handleCreateBet);
     const {firebase, user} = React.useContext(FirebaseContext);
+    // const [allUsers, setAllUsers] = useState([]);
 
     let history = useHistory();
 
     const betTermItems = ['Select Terms', 'Money', 'Meal', 'Other'];
     const termLimits = ['Select Term Limits', '1 day', '2 days', '3 days', '1 week']
+
+    useEffect(() => {
+        getUsers();
+    }, []);
+
+    const getUsers = () => {
+        // firebase.db.collection('bets').onSnapshot(handleSnapshot)
+        const info = firebase.db.collection('bets');
+        console.log('info', info.doc());
+    }
+
+    const handleSnapshot = (snapshot) => {
+        console.log('snapshot', snapshot);
+        console.log('firebase', firebase);
+        // const users = snapshot.docs.map(doc => {
+        //     console.log('doc.user', user);
+        //     return { id: doc.id, ...doc.data() }
+        // })
+        // setAllUsers(users);
+    }
 
     function handleCreateBet() {
         if (!user) {
@@ -168,6 +189,17 @@ const CreateBet = (props) => {
                     type='text'
                     className={errors.challenger && 'error-input'}
                 />
+                {/* //! Contruction Zone */}
+                {/* <label>Bet Terms</label>
+                <select
+                    name='challenger'
+                    value={values.betTerms} 
+                    onChange={handleChange}
+                    className={errors.betTerms && 'error-input'}
+                >
+                    {betTermItems.map(betTermItem => <option>{betTermItem}</option>)}
+                </select> */}
+                {/* //! Construction Zone */}
                 {errors.challenger && <p className='error-text'>{errors.challenger}</p>}
                 <label>Bet Details</label>
                 <textarea
