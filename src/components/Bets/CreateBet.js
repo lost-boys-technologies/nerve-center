@@ -4,11 +4,8 @@ import { FirebaseContext } from '../../firebase';
 import useFormValidation from '../Auth/useFormValidation';
 import validateCreateBet from '../Auth/validateCreateBet';
 
-import Checkbox from '@material-ui/core/Checkbox';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
-import CheckBoxIcon from '@material-ui/icons/CheckBox';
 
 import Swal from 'sweetalert2';
 import './bets.scss';
