@@ -4,8 +4,12 @@ import { FirebaseContext } from '../../firebase';
 import useFormValidation from '../Auth/useFormValidation';
 import validateCreateBet from '../Auth/validateCreateBet';
 
-import Autocomplete from '@material-ui/lab/Autocomplete';
+import Checkbox from '@material-ui/core/Checkbox';
 import TextField from '@material-ui/core/TextField';
+import Autocomplete from '@material-ui/lab/Autocomplete';
+import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
+import CheckBoxIcon from '@material-ui/icons/CheckBox';
+
 import Swal from 'sweetalert2';
 import './bets.scss';
 
@@ -178,25 +182,31 @@ const CreateBet = (props) => {
             <form onSubmit={handleSubmit} className='create-bet form' autoComplete="off">
             <h2>Create Your Bet</h2>
                 <label>{user.displayName ? `${user.displayName}, who` : `Who`} do you want to challenge?</label>
-                <select
+                {/* <select
                     name='challenger'
                     value={values.challenger} 
                     onChange={handleChange}
                     className={errors.challenger && 'error-input'}
                 >
                     {allUsers.map(user => <option>{user.name}</option>)}
-                </select>
+                </select> */}
                 {/* //! Construction Zone */}
+                {/* // TODO I feel like I'm very close on setting the values for the multiple selects */}
                 <Autocomplete
                     multiple
+                    limitTags={3}
+                    disableCloseOnSelect
+                    name='challenger'
+                    onChange={handleChange}
+                    inputValue={values.challenger}
+                    className={errors.challenger && 'error-input'}
                     id="tags-standard"
                     options={allUsers.map(user => user.name)}
                     renderInput={(params) => (
                     <TextField
                         {...params}
                         variant="standard"
-                        label="Multiple values"
-                        placeholder="Challengers"
+                        label="Challengers"
                     />
                     )}
                 />

@@ -16,7 +16,6 @@ export default function validateCreateLink(values) {
 
 	// Bet Terms Errors
 	if (!values.betTerms && values.betTerms !== 'Select Terms') {
-		console.log('hit');
 		errors.betTerms = 'Invalid term';
 	}
 
