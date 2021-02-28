@@ -4,6 +4,8 @@ import { FirebaseContext } from '../../firebase';
 import useFormValidation from '../Auth/useFormValidation';
 import validateCreateBet from '../Auth/validateCreateBet';
 
+import Autocomplete from '@material-ui/lab/Autocomplete';
+import TextField from '@material-ui/core/TextField';
 import Swal from 'sweetalert2';
 import './bets.scss';
 
@@ -184,6 +186,21 @@ const CreateBet = (props) => {
                 >
                     {allUsers.map(user => <option>{user.name}</option>)}
                 </select>
+                {/* //! Construction Zone */}
+                <Autocomplete
+                    multiple
+                    id="tags-standard"
+                    options={allUsers.map(user => user.name)}
+                    renderInput={(params) => (
+                    <TextField
+                        {...params}
+                        variant="standard"
+                        label="Multiple values"
+                        placeholder="Challengers"
+                    />
+                    )}
+                />
+                {/* //! Construction Zone */}
                 {errors.challenger && <p className='error-text'>{errors.challenger}</p>}
                 <label>Bet Details</label>
                 <textarea
