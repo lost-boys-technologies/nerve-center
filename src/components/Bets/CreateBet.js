@@ -23,22 +23,20 @@ const CreateBet = (props) => {
     const { handleSubmit, handleChange, values, errors} = useFormValidation(INITIAL_STATE, validateCreateBet, handleCreateBet);
     const {firebase, user} = React.useContext(FirebaseContext);
     const [allUsers, setAllUsers] = useState([]);
-
     let history = useHistory();
 
     const betTermItems = ['Select Terms', 'Money', 'Meal', 'Other'];
-    const termLimits = ['Select Term Limits', '1 day', '2 days', '3 days', '1 week']
+    const termLimits = ['Select Term Limits', '1 day', '2 days', '3 days', '1 week'];
 
     useEffect(() => {
         getUsers();
     }, []);
 
     const getUsers = () => {
-        firebase.db.collection('users').onSnapshot(handleSnapshot)
+        firebase.db.collection('users').onSnapshot(handleSnapshot);
     }
 
     const handleSnapshot = (snapshot) => {
-
         const users = snapshot.docs.map(doc => {
             return { id: doc.id, ...doc.data() }
         });
