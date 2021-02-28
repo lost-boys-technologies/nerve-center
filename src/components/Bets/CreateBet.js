@@ -22,7 +22,7 @@ const INITIAL_STATE = {
 const CreateBet = (props) => {
     const { handleSubmit, handleChange, values, errors} = useFormValidation(INITIAL_STATE, validateCreateBet, handleCreateBet);
     const {firebase, user} = React.useContext(FirebaseContext);
-    // const [allUsers, setAllUsers] = useState([]);
+    const [allUsers, setAllUsers] = useState([]);
 
     let history = useHistory();
 
@@ -34,19 +34,16 @@ const CreateBet = (props) => {
     }, []);
 
     const getUsers = () => {
-        // firebase.db.collection('bets').onSnapshot(handleSnapshot)
-        const info = firebase.db.collection('bets');
-        console.log('info', info.doc());
+        firebase.db.collection('users').onSnapshot(handleSnapshot)
     }
 
     const handleSnapshot = (snapshot) => {
-        console.log('snapshot', snapshot);
-        console.log('firebase', firebase);
-        // const users = snapshot.docs.map(doc => {
-        //     console.log('doc.user', user);
-        //     return { id: doc.id, ...doc.data() }
-        // })
-        // setAllUsers(users);
+
+        const users = snapshot.docs.map(doc => {
+            return { id: doc.id, ...doc.data() }
+        });
+        const trimUsers = users.filter(filteredUser => filteredUser.uid !== user.uid);
+        setAllUsers(trimUsers);
     }
 
     function handleCreateBet() {
@@ -178,28 +175,17 @@ const CreateBet = (props) => {
 
     return (
         <div className='create-bet-container'>
-            <form onSubmit={handleSubmit} className='create-bet form' autocomplete="off">
+            <form onSubmit={handleSubmit} className='create-bet form' autoComplete="off">
             <h2>Create Your Bet</h2>
                 <label>{user.displayName ? `${user.displayName}, who` : `Who`} do you want to challenge?</label>
-                {/* // TODO Switch over to <select /> */}
-                <input
-                    onChange={handleChange}
-                    value={values.challenger}
-                    name='challenger'
-                    type='text'
-                    className={errors.challenger && 'error-input'}
-                />
-                {/* //! Contruction Zone */}
-                {/* <label>Bet Terms</label>
                 <select
                     name='challenger'
-                    value={values.betTerms} 
+                    value={values.challenger} 
                     onChange={handleChange}
-                    className={errors.betTerms && 'error-input'}
+                    className={errors.challenger && 'error-input'}
                 >
-                    {betTermItems.map(betTermItem => <option>{betTermItem}</option>)}
-                </select> */}
-                {/* //! Construction Zone */}
+                    {allUsers.map(user => <option>{user.name}</option>)}
+                </select>
                 {errors.challenger && <p className='error-text'>{errors.challenger}</p>}
                 <label>Bet Details</label>
                 <textarea
