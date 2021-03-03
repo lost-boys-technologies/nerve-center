@@ -1,11 +1,13 @@
-export default function validateCreateLink(values) {
+export default function validateCreateBet(values) {
 	let errors = {};
 	const validEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test;
 
+	// TODO FIX
+	//! MAKE SURE YOU HAVE VALIDATION
 	// Challenger Name Errors
-	if (!values.challenger) {
-		errors.challenger = 'Challenger\'s name required';
-	}
+	// if (!multipleSelectValue) {
+	// 	errors.challenger = 'Challenger\'s name required';
+	// }
 
 	// Bet Details Errors
 	if (!values.betDetails) {

@@ -53,9 +53,9 @@ const CreateBet = (props) => {
         if (!user) {
             props.history.push('/login');
         } else {
-            const { challenger, betDetails, dateCompletion, approvalPeriod, betTerms, cashAmount, mealPriceLimit, betRestaurant, betOther } = values;
+            const { betDetails, dateCompletion, approvalPeriod, betTerms, cashAmount, mealPriceLimit, betRestaurant, betOther } = values;
             const newBet = {
-                challenger,
+                multipleSelectValue,
                 betDetails,
                 betTerms,
                 cashAmount,
@@ -178,8 +178,8 @@ const CreateBet = (props) => {
 
     const handleMultiSelect = (event, values) => {
         setMultipleSelectValue(values)
-
-        // TODO I am so... SOOO close to figuring out where I'm messing up, I think I'm just too tired to see the solution that's probably staring right back at me.
+        // ! TAKE NOTE - This is causing memory leak
+        // TODO Fix the leak
         // const allTakers = 
         // setMultipleSelectValue(allUsers[0])
         // console.log('event value', event.target);

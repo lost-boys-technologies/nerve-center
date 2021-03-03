@@ -7,7 +7,7 @@ import FirebaseContext from '../../firebase/context';
 const BetItem = ({ bet, index, showCount, history }) => {
     const { firebase, user } = useContext(FirebaseContext);
     const [toggle, setToggle] = useState(false);
-    const { challenger, dateCompletion, created, betDetails, postedBy, betTerms, cashAmount, mealPriceLimit, betRestaurant, betOther } = bet;
+    const { multipleSelectValue, dateCompletion, created, betDetails, postedBy, betTerms, cashAmount, mealPriceLimit, betRestaurant, betOther } = bet;
 
     const formatDate = (date) => {
         let cleanDate = new Date(date).toISOString().replace(/T.*/,'').split('-')
@@ -69,7 +69,7 @@ const BetItem = ({ bet, index, showCount, history }) => {
                     <span className='divider' />
                     <div className='bet-challenger'>
                         <p>
-                            <span>{postedBy.name}</span> is challenging <span>{challenger}</span>
+                            <span>{postedBy.name}</span> is challenging <span>{multipleSelectValue}</span>
                         </p>
                     </div>
                     <div className='bet-voting'>
