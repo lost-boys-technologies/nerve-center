@@ -18,6 +18,11 @@ const useFormValidation = (initialState, validate, authenticate) => {
 	}, [errors, isSubmitting, authenticate]);
 
 	const handleChange = event => {
+		//! Construction Zone
+		console.log('event', event.target);
+		// let value = Array.from(e.target.selectedOptions, option => option.value);
+		// this.setState({values: value});
+		//! Construction Zone
 		event.persist();
 		setValues(previousValues => ({
 			...previousValues,
