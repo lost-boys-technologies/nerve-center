@@ -174,6 +174,14 @@ const CreateBet = (props) => {
         }
     }
 
+    const handleMultiSelect = event => {
+        console.log('event', event);
+
+		// console.log('event', event.target);
+		// let value = Array.from(event.target.selectedOptions, option => option.value);
+		// this.setState({values: value});
+    }
+
     return (
         <div className='create-bet-container'>
             <form onSubmit={handleSubmit} className='create-bet form' autoComplete="off">
@@ -193,8 +201,7 @@ const CreateBet = (props) => {
                     limitTags={3}
                     disableCloseOnSelect
                     name='challenger'
-                    onChange={handleChange}
-                    inputValue={values.challenger}
+                    onChange={handleMultiSelect}
                     className={errors.challenger && 'error-input'}
                     id="tags-standard"
                     options={allUsers.map(user => user.name)}
@@ -203,6 +210,7 @@ const CreateBet = (props) => {
                         {...params}
                         variant="standard"
                         label="Challengers"
+                        // values={}
                     />
                     )}
                 />
