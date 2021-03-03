@@ -188,7 +188,6 @@ const CreateBet = (props) => {
                     {allUsers.map(user => <option>{user.name}</option>)}
                 </select> */}
                 {/* //! Construction Zone */}
-                {/* // TODO I feel like I'm very close on setting the values for the multiple selects */}
                 <Autocomplete
                     multiple
                     limitTags={3}
