@@ -26,6 +26,8 @@ const CreateBet = (props) => {
     const { handleSubmit, handleChange, values, errors} = useFormValidation(INITIAL_STATE, validateCreateBet, handleCreateBet);
     const {firebase, user} = React.useContext(FirebaseContext);
     const [allUsers, setAllUsers] = useState([]);
+    const [multipleSelectValue, setMultipleSelectValue] = useState([]);
+
     let history = useHistory();
 
     const betTermItems = ['Select Terms', 'Money', 'Meal', 'Other'];
@@ -174,14 +176,20 @@ const CreateBet = (props) => {
         }
     }
 
-    const handleMultiSelect = event => {
-        console.log('event', event);
+    const handleMultiSelect = (event, values) => {
+        setMultipleSelectValue(values)
 
+        // TODO I am so... SOOO close to figuring out where I'm messing up, I think I'm just too tired to see the solution that's probably staring right back at me.
+        // const allTakers = 
+        // setMultipleSelectValue(allUsers[0])
+        // console.log('event value', event.target);
+        // let value = Array.from(event.target, option => option.value);
+        // console.log('value', value);
+        // setMultipleSelectValue(value);
 		// console.log('event', event.target);
 		// let value = Array.from(event.target.selectedOptions, option => option.value);
 		// this.setState({values: value});
     }
-
     return (
         <div className='create-bet-container'>
             <form onSubmit={handleSubmit} className='create-bet form' autoComplete="off">
@@ -199,6 +207,7 @@ const CreateBet = (props) => {
                 <Autocomplete
                     multiple
                     limitTags={3}
+                    filterSelectedOptions
                     disableCloseOnSelect
                     name='challenger'
                     onChange={handleMultiSelect}
@@ -210,7 +219,6 @@ const CreateBet = (props) => {
                         {...params}
                         variant="standard"
                         label="Challengers"
-                        // values={}
                     />
                     )}
                 />
