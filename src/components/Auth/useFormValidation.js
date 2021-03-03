@@ -36,7 +36,6 @@ const useFormValidation = (initialState, validate, authenticate) => {
 		setErrors(validationErrors);
 		setSubmitting(true);
 
-		// TODO error message if submit fails
 		console.log('validation errors', validationErrors);
 	};
 
