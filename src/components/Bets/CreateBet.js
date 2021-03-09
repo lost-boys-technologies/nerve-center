@@ -176,8 +176,8 @@ const CreateBet = (props) => {
         }
     }
 
-    const handleMultiSelect = (event, values) => {
-        setMultipleSelectValue(values);
+    const handleMultiSelect = (event, val) => {
+        setMultipleSelectValue(val);
         // ! TAKE NOTE - This is causing memory leak
         // TODO Fix the leak
     }
@@ -199,21 +199,24 @@ const CreateBet = (props) => {
                     renderInput={(params) => (
                     <TextField
                         {...params}
-                        variant='standard'
                         label='Challengers'
+                        variant='outlined'
                     />
                     )}
                 />
                 {errors.challenger && <p className='error-text'>{errors.challenger}</p>}
-                <label>Bet Details</label>
-                <textarea
+                <TextField
+                    id={errors.betDetails ? 'outlined-multiline-flexible' : 'outlined-error-helper-text'}
+                    label={errors.betDetails ? 'error' : 'Bet Details'}
+                    multiline
+                    rows={5}
                     onChange={handleChange}
                     value={values.betDetails}
                     name='betDetails'
-                    rows='5'
-                    className={errors.betDetails && 'error-input'}
+                    variant="outlined"
+                    error={errors.betDetails && true}
+                    helperText={errors.betDetails}
                 />
-                {errors.betDetails && <p className='error-text'>{errors.betDetails}</p>}
                 <div className='bet-terms-container'>
                     <div className='bet-terms'>
                         <label>Bet Terms</label>
