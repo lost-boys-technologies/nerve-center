@@ -177,33 +177,15 @@ const CreateBet = (props) => {
     }
 
     const handleMultiSelect = (event, values) => {
-        setMultipleSelectValue(values)
+        setMultipleSelectValue(values);
         // ! TAKE NOTE - This is causing memory leak
         // TODO Fix the leak
-        // const allTakers = 
-        // setMultipleSelectValue(allUsers[0])
-        // console.log('event value', event.target);
-        // let value = Array.from(event.target, option => option.value);
-        // console.log('value', value);
-        // setMultipleSelectValue(value);
-		// console.log('event', event.target);
-		// let value = Array.from(event.target.selectedOptions, option => option.value);
-		// this.setState({values: value});
     }
     return (
         <div className='create-bet-container'>
             <form onSubmit={handleSubmit} className='create-bet form' autoComplete="off">
             <h2>Create Your Bet</h2>
                 <label>{user.displayName ? `${user.displayName}, who` : `Who`} do you want to challenge?</label>
-                {/* <select
-                    name='challenger'
-                    value={values.challenger} 
-                    onChange={handleChange}
-                    className={errors.challenger && 'error-input'}
-                >
-                    {allUsers.map(user => <option>{user.name}</option>)}
-                </select> */}
-                {/* //! Construction Zone */}
                 <Autocomplete
                     multiple
                     limitTags={3}
@@ -212,17 +194,16 @@ const CreateBet = (props) => {
                     name='challenger'
                     onChange={handleMultiSelect}
                     className={errors.challenger && 'error-input'}
-                    id="tags-standard"
+                    id='tags-standard'
                     options={allUsers.map(user => user.name)}
                     renderInput={(params) => (
                     <TextField
                         {...params}
-                        variant="standard"
-                        label="Challengers"
+                        variant='standard'
+                        label='Challengers'
                     />
                     )}
                 />
-                {/* //! Construction Zone */}
                 {errors.challenger && <p className='error-text'>{errors.challenger}</p>}
                 <label>Bet Details</label>
                 <textarea
