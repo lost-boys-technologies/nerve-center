@@ -112,20 +112,27 @@ const CreateBet = (props) => {
             case 'Money':
                 return (
                     <div className='cash-amounts'>
-                        <label>Cash Amount</label>
                         <span className='dollar-bill'></span>
-                        <input 
-                            value={values.cashAmount}
-                            onChange={handleChange}
-                            className={errors.cashAmount && 'error-input'}
-                            name='cashAmount'
+                        <TextField
+                            id='outlined-number'
+                            label='Amount'
                             type='number'
-                            min='1.00'
-                            step='any'
-                            max='1000.00'
-                            id='cashAmounts'
+                            onChange={handleChange}
+                            name='cashAmount'
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                            InputProps={{
+                                inputProps: {
+                                    min: '1.00',
+                                    max: '1000.00',
+                                    step: 'any',
+                                }
+                            }}
+                            variant='outlined'
+                            size='small'
                         />
-                        {errors.cashAmount && <p className='error-text'>{errors.cashAmount}</p>}
+                        {/* {errors.cashAmount && <p className='error-text'>{errors.cashAmount}</p>} */}
                     </div>
                 );
             case 'Meal':
@@ -183,7 +190,7 @@ const CreateBet = (props) => {
     }
     return (
         <div className='create-bet-container'>
-            <form onSubmit={handleSubmit} className='create-bet form' autoComplete="off">
+            <form onSubmit={handleSubmit} className='create-bet form' autoComplete='off'>
             <h2>Create Your Bet</h2>
                 <span className='title'>{user.displayName ? `${user.displayName}, who` : `Who`} do you want to challenge?</span>
                 <Autocomplete
@@ -219,21 +226,21 @@ const CreateBet = (props) => {
                     className='text-fields'
                     value={values.betDetails}
                     name='betDetails'
-                    variant="outlined"
+                    variant='outlined'
                 />
                 <div className='bet-terms-container'>
                     <div className='bet-completion'>
                         <TextField
-                            id="outlined-select-currency-native"
+                            id='outlined-select-currency-native'
                             select
-                            label="Terms"
+                            label='Terms'
                             name='betTerms'
                             value={values.betTerms}
                             onChange={handleChange}
                             SelectProps={{
                                 native: true,
                             }}
-                            variant="outlined"
+                            variant='outlined'
                             size='small'
                             >
                                 {betTermItems.map(betTermItem => <option>{betTermItem}</option>)}
