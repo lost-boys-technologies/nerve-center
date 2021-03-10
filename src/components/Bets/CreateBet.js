@@ -221,7 +221,6 @@ const CreateBet = (props) => {
                     name='betDetails'
                     variant="outlined"
                 />
-                {/* //! Construction Zone */}
                 <div className='bet-terms-container'>
                     <div className='bet-completion'>
                         <TextField
@@ -242,22 +241,6 @@ const CreateBet = (props) => {
                     </div>
                     {handleBetTerms()}
                 </div>
-                {/* //! End Construction Zone */}
-                {/* <div className='bet-terms-container'>
-                    <div className='bet-terms'>
-                        <label>Bet Terms</label>
-                        <select
-                            name='betTerms'
-                            value={values.betTerms} 
-                            onChange={handleChange}
-                            className={errors.betTerms && 'error-input'}
-                        >
-                            {betTermItems.map(betTermItem => <option>{betTermItem}</option>)}
-                        </select>
-                        {errors.betTerms && <p className='error-text'>{errors.betTerms}</p>}
-                    </div>
-                    {handleBetTerms()}
-                </div> */}
                 <div className='bet-timelines'>
                     <div className='bet-completion'>
                         <label>Bet Completion</label>
