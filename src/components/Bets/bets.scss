@@ -176,6 +176,15 @@
     align-items: center;
     flex-direction: column;
 
+    .title {
+        padding: 0 0 15px 0;
+        text-align: center;
+    }
+
+    .text-fields {
+        padding: 0 0 15px 0;
+    }
+
     .button-container {
         display: flex;
         flex-direction: row;

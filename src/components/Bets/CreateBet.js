@@ -30,7 +30,7 @@ const CreateBet = (props) => {
 
     let history = useHistory();
 
-    const betTermItems = ['Select Terms', 'Money', 'Meal', 'Other'];
+    const betTermItems = ['', 'Money', 'Meal', 'Other'];
     const termLimits = ['Select Term Limits', '1 day', '2 days', '3 days', '1 week'];
 
     useEffect(() => {
@@ -185,7 +185,7 @@ const CreateBet = (props) => {
         <div className='create-bet-container'>
             <form onSubmit={handleSubmit} className='create-bet form' autoComplete="off">
             <h2>Create Your Bet</h2>
-                <label>{user.displayName ? `${user.displayName}, who` : `Who`} do you want to challenge?</label>
+                <span className='title'>{user.displayName ? `${user.displayName}, who` : `Who`} do you want to challenge?</span>
                 <Autocomplete
                     multiple
                     limitTags={3}
@@ -193,31 +193,57 @@ const CreateBet = (props) => {
                     disableCloseOnSelect
                     name='challenger'
                     onChange={handleMultiSelect}
-                    className={errors.challenger && 'error-input'}
+                    className='text-fields challenger'
                     id='tags-standard'
                     options={allUsers.map(user => user.name)}
                     renderInput={(params) => (
                     <TextField
+                        id={errors.betDetails ? 'outlined-multiline-flexible' : 'outlined-error-helper-text'}
                         {...params}
-                        label='Challengers'
+                        label={errors.betDetails ? 'error' : 'Challenger(s)'}
+                        error={errors.betDetails && true}
+                        helperText={errors.betDetails}
                         variant='outlined'
+                        size='small'
                     />
                     )}
                 />
-                {errors.challenger && <p className='error-text'>{errors.challenger}</p>}
                 <TextField
                     id={errors.betDetails ? 'outlined-multiline-flexible' : 'outlined-error-helper-text'}
                     label={errors.betDetails ? 'error' : 'Bet Details'}
+                    error={errors.betDetails && true}
+                    helperText={errors.betDetails}
                     multiline
-                    rows={5}
+                    rows={3}
                     onChange={handleChange}
+                    className='text-fields'
                     value={values.betDetails}
                     name='betDetails'
                     variant="outlined"
-                    error={errors.betDetails && true}
-                    helperText={errors.betDetails}
                 />
+                {/* //! Construction Zone */}
                 <div className='bet-terms-container'>
+                    <div className='bet-completion'>
+                        <TextField
+                            id="outlined-select-currency-native"
+                            select
+                            label="Terms"
+                            name='betTerms'
+                            value={values.betTerms}
+                            onChange={handleChange}
+                            SelectProps={{
+                                native: true,
+                            }}
+                            variant="outlined"
+                            size='small'
+                            >
+                                {betTermItems.map(betTermItem => <option>{betTermItem}</option>)}
+                        </TextField>
+                    </div>
+                    {handleBetTerms()}
+                </div>
+                {/* //! End Construction Zone */}
+                {/* <div className='bet-terms-container'>
                     <div className='bet-terms'>
                         <label>Bet Terms</label>
                         <select
@@ -231,7 +257,7 @@ const CreateBet = (props) => {
                         {errors.betTerms && <p className='error-text'>{errors.betTerms}</p>}
                     </div>
                     {handleBetTerms()}
-                </div>
+                </div> */}
                 <div className='bet-timelines'>
                     <div className='bet-completion'>
                         <label>Bet Completion</label>

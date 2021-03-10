@@ -17,7 +17,7 @@ export default function validateCreateBet(values) {
 	}
 
 	// Bet Terms Errors
-	if (!values.betTerms && values.betTerms !== 'Select Terms') {
+	if (!values.betTerms && values.betTerms !== '') {
 		errors.betTerms = 'Invalid term';
 	}
 
