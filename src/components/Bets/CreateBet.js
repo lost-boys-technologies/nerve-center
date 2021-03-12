@@ -104,6 +104,7 @@ const CreateBet = (props) => {
             cancelButtonColor: '#95A5A6',
             confirmButtonText: 'Yes, cancel it!'
         }).then((result) => {
+            console.log(result);
             if (result.isConfirmed) {
                 Swal.fire({
                     title: 'Cancelled!',
@@ -111,8 +112,8 @@ const CreateBet = (props) => {
                     icon: 'success',
                     confirmButtonColor: '#244F7B',
                 })
+                history.push('/bets')
             }
-            history.push('/bets')
         })
     }
 
