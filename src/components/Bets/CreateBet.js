@@ -6,6 +6,7 @@ import validateCreateBet from '../Auth/validateCreateBet';
 
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 import Swal from 'sweetalert2';
 import './bets.scss';
@@ -325,12 +326,12 @@ const CreateBet = (props) => {
                     </div>
                 </div>
                 <div className='button-container'>
-                    <button className='button submit' type='submit'>
+                    <Button variant="contained" color="primary" type='submit'>
                         Submit
-                    </button>
-                    <button className='button cancel' onClick={handleCancelBtn} type='button'>
+                    </Button>
+                    <Button variante='outlined' onClick={handleCancelBtn} type='button'>
                         Cancel
-                    </button>
+                    </Button>
                 </div>
             </form>
         </div>
