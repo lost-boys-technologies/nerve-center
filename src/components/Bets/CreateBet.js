@@ -326,10 +326,10 @@ const CreateBet = (props) => {
                     </div>
                 </div>
                 <div className='button-container'>
-                    <Button variant="contained" color="primary" type='submit'>
+                    <Button className='button submit' variant="contained" color="primary" type='submit'>
                         Submit
                     </Button>
-                    <Button variante='outlined' onClick={handleCancelBtn} type='button'>
+                    <Button className='button cancel' variant='outlined' onClick={handleCancelBtn}>
                         Cancel
                     </Button>
                 </div>
