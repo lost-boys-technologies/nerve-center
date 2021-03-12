@@ -306,16 +306,22 @@ const CreateBet = (props) => {
                         </form>
                     </div>
                     <div className='approval-period'>
-                        <label>Approval Period</label>
-                        <select
+                        <TextField
+                            id='outlined-select-currency-native'
+                            select
+                            label='Approval Period'
                             name='approvalPeriod'
-                            value={values.approvalPeriod} 
+                            className='text-fields bet-terms-select'
+                            value={values.approvalPeriod}
                             onChange={handleChange}
-                            className={errors.approvalPeriod && 'error-input'}
-                        >
-                            {termLimits.map(termLimit => <option>{termLimit}</option>)}
-                        </select>
-                        {errors.approvalPeriod && <p className='error-text'>{errors.approvalPeriod}</p>}
+                            SelectProps={{
+                                native: true,
+                            }}
+                            variant='outlined'
+                            size='small'
+                            >
+                                {termLimits.map(termLimit => <option>{termLimit}</option>)}
+                        </TextField>
                     </div>
                 </div>
                 <div className='button-container'>
