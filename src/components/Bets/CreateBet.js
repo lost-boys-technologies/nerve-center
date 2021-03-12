@@ -4,8 +4,9 @@ import { FirebaseContext } from '../../firebase';
 import useFormValidation from '../Auth/useFormValidation';
 import validateCreateBet from '../Auth/validateCreateBet';
 
-import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
+import TextField from '@material-ui/core/TextField';
+import MenuItem from '@material-ui/core/MenuItem';
 
 import Swal from 'sweetalert2';
 import './bets.scss';
@@ -30,7 +31,7 @@ const CreateBet = (props) => {
 
     let history = useHistory();
 
-    const betTermItems = ['', 'Money', 'Meal', 'Other'];
+    const betTermItems = ['Select', 'Money', 'Meal', 'Other'];
     const termLimits = ['Select Term Limits', '1 day', '2 days', '3 days', '1 week'];
 
     useEffect(() => {
@@ -118,6 +119,7 @@ const CreateBet = (props) => {
                             label='Amount'
                             type='number'
                             onChange={handleChange}
+                            className='text-fields'
                             name='cashAmount'
                             InputLabelProps={{
                                 shrink: true,
@@ -205,13 +207,15 @@ const CreateBet = (props) => {
                     options={allUsers.map(user => user.name)}
                     renderInput={(params) => (
                     <TextField
-                        id={errors.betDetails ? 'outlined-multiline-flexible' : 'outlined-error-helper-text'}
-                        {...params}
-                        label={errors.betDetails ? 'error' : 'Challenger(s)'}
-                        error={errors.betDetails && true}
-                        helperText={errors.betDetails}
                         variant='outlined'
-                        size='small'
+                        id='outlined-multiline-flexible'
+                        {...params}
+                        label={'Challenger(s)'}
+                        //! for when I figure out validation
+                        // id={errors.betDetails ? 'outlined-multiline-flexible' : 'outlined-error-helper-text'}
+                        // label={errors.betDetails ? 'error' : 'Challenger(s)'}
+                        // error={errors.betDetails && true}
+                        // helperText={errors.betDetails}
                     />
                     )}
                 />
@@ -235,6 +239,7 @@ const CreateBet = (props) => {
                             select
                             label='Terms'
                             name='betTerms'
+                            className='bet-terms-select'
                             value={values.betTerms}
                             onChange={handleChange}
                             SelectProps={{

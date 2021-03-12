@@ -1,6 +1,5 @@
 export default function validateCreateBet(values) {
 	let errors = {};
-	const validEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test;
 
 	// TODO FIX
 	//! MAKE SURE YOU HAVE VALIDATION
@@ -17,7 +16,7 @@ export default function validateCreateBet(values) {
 	}
 
 	// Bet Terms Errors
-	if (!values.betTerms && values.betTerms !== '') {
+	if (!values.betTerms && values.betTerms !== 'Select') {
 		errors.betTerms = 'Invalid term';
 	}
 

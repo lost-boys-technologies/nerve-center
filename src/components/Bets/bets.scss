@@ -176,6 +176,12 @@
     align-items: center;
     flex-direction: column;
 
+    .form {
+        input {
+            height: 35px !important;
+        }
+    }
+
     .title {
         padding: 0 0 15px 0;
         text-align: center;
@@ -246,7 +252,7 @@
                 &:before {
                     position: absolute;
                     content: '$';
-                    top: 15px;
+                    top: 18.5px;
                     left: 6px;
                 }
             }
@@ -305,6 +311,10 @@
                 flex-direction: column;
                 margin: 0 28px 0 0;
                 width: 136px;
+
+                #outlined-select-currency-native {
+                    height: 52px;
+                }
             }
 
             .approval-period {
