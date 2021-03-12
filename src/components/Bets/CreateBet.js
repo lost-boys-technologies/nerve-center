@@ -141,27 +141,41 @@ const CreateBet = (props) => {
                 return (
                     <div className='meal-price'>
                         <div className='meal-price-limit'>
-                            <label>Price Limit</label>
-                            <span className='dollar-bill'></span>
-                            <input 
-                                value={values.mealPriceLimit}
-                                onChange={handleChange}
-                                className={errors.mealPriceLimit && 'error-input'}
-                                name='mealPriceLimit'
+                        <span className='dollar-bill'></span>
+                            <TextField
+                                id='outlined-number'
+                                label='Amount'
                                 type='number'
-                                min='1.00'
-                                step='any'
-                                max='1000.00'
+                                onChange={handleChange}
+                                className='text-fields'
+                                name='mealPriceLimit'
+                                InputLabelProps={{
+                                    shrink: true,
+                                }}
+                                InputProps={{
+                                    inputProps: {
+                                        min: '1.00',
+                                        max: '1000.00',
+                                        step: 'any',
+                                    }
+                                }}
+                                variant='outlined'
+                                size='small'
                             />
-                            {errors.mealPriceLimit && <p className='error-text'>{errors.mealPriceLimit}</p>}
                         </div>
                         <div className='restaurant'>
-                            <label>Restaurant (optional)</label>
-                            <input
+                            <TextField
+                                id="outlined-basic"
+                                label="Restaurant"
+                                type='text'
+                                name='betRestaurant'
+                                InputLabelProps={{
+                                    shrink: true,
+                                }}
                                 onChange={handleChange}
                                 value={values.betRestaurant}
-                                name='betRestaurant'
-                                type='text'
+                                variant="outlined"
+                                size='small'
                             />
                         </div>
                     </div>
@@ -169,13 +183,18 @@ const CreateBet = (props) => {
             case 'Other':
                 return (
                     <div className='other-bet'>
-                        <label>Other Type Of Bet</label>
-                        <input
+                        <TextField
+                            id="outlined-basic"
+                            label="Other Type Of Bet"
+                            type='text'
+                            name='betOther'
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
                             onChange={handleChange}
                             value={values.betOther}
-                            name='betOther'
-                            type='text'
-                            className={errors.betOther && 'error-input'}
+                            variant="outlined"
+                            size='small'
                         />
                         {errors.betOther && <p className='error-text'>{errors.betOther}</p>}
                     </div>
@@ -239,7 +258,7 @@ const CreateBet = (props) => {
                             select
                             label='Terms'
                             name='betTerms'
-                            className='bet-terms-select'
+                            className='text-fields bet-terms-select'
                             value={values.betTerms}
                             onChange={handleChange}
                             SelectProps={{
