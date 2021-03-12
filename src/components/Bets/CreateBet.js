@@ -6,7 +6,6 @@ import validateCreateBet from '../Auth/validateCreateBet';
 
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import TextField from '@material-ui/core/TextField';
-import MenuItem from '@material-ui/core/MenuItem';
 
 import Swal from 'sweetalert2';
 import './bets.scss';
@@ -28,6 +27,7 @@ const CreateBet = (props) => {
     const {firebase, user} = React.useContext(FirebaseContext);
     const [allUsers, setAllUsers] = useState([]);
     const [multipleSelectValue, setMultipleSelectValue] = useState([]);
+    const [minDateCalc, setMinDateCalc] = useState('');
 
     let history = useHistory();
 
@@ -36,7 +36,14 @@ const CreateBet = (props) => {
 
     useEffect(() => {
         getUsers();
+        getMinDate();
     }, []);
+
+    //TODO Move to utils folder
+    const getMinDate = () => {
+        const cleanDate = new Date().toISOString().replace(/T.*/,'');
+        setMinDateCalc(cleanDate);        
+    }
 
     const getUsers = () => {
         firebase.db.collection('users').onSnapshot(handleSnapshot);
@@ -209,6 +216,7 @@ const CreateBet = (props) => {
         // ! TAKE NOTE - This is causing memory leak
         // TODO Fix the leak
     }
+
     return (
         <div className='create-bet-container'>
             <form onSubmit={handleSubmit} className='create-bet form' autoComplete='off'>
@@ -279,12 +287,18 @@ const CreateBet = (props) => {
                                 id="date"
                                 label="Bet Completion"
                                 type="date"
+                                disablePast
                                 className='text-fields'
                                 onChange={handleChange}
                                 name='dateCompletion'
                                 value={values.dateCompletion}
                                 InputLabelProps={{
                                     shrink: true,
+                                }}
+                                InputProps={{
+                                    inputProps: {
+                                        min: minDateCalc
+                                    }
                                 }}
                                 variant='outlined'
                                 size='small'

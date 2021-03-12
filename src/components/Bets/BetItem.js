@@ -9,6 +9,7 @@ const BetItem = ({ bet, index, showCount, history }) => {
     const [toggle, setToggle] = useState(false);
     const { multipleSelectValue, dateCompletion, created, betDetails, postedBy, betTerms, cashAmount, mealPriceLimit, betRestaurant, betOther } = bet;
 
+    // TODO Move this to a utils
     const formatDate = (date) => {
         let cleanDate = new Date(date).toISOString().replace(/T.*/,'').split('-')
         const extractYear = cleanDate.shift(cleanDate);
