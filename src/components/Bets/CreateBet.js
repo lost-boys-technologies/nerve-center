@@ -274,15 +274,22 @@ const CreateBet = (props) => {
                 </div>
                 <div className='bet-timelines'>
                     <div className='bet-completion'>
-                        <label>Bet Completion</label>
-                        <input
-                            onChange={handleChange}
-                            value={values.dateCompletion}
-                            name='dateCompletion'
-                            type='date'
-                            className={errors.dateCompletion && 'error-input'}
-                        />
-                        {errors.dateCompletion && <p className='error-text'>{errors.dateCompletion}</p>}
+                        <form>
+                            <TextField
+                                id="date"
+                                label="Bet Completion"
+                                type="date"
+                                className='text-fields'
+                                onChange={handleChange}
+                                name='dateCompletion'
+                                value={values.dateCompletion}
+                                InputLabelProps={{
+                                    shrink: true,
+                                }}
+                                variant='outlined'
+                                size='small'
+                            />
+                        </form>
                     </div>
                     <div className='approval-period'>
                         <label>Approval Period</label>
