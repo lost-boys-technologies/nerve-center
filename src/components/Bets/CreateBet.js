@@ -110,7 +110,8 @@ const CreateBet = (props) => {
                     title: 'Cancelled!',
                     text: 'Bet has been cancelled',
                     icon: 'success',
-                    confirmButtonColor: '#244F7B',
+                    showConfirmButton: false,
+                    timer: 1000
                 })
                 history.push('/bets')
             }

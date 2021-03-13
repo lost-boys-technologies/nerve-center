@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import BetItem from './BetItem';
 // import CreateBet from './CreateBet';
 import Button from '@material-ui/core/Button';
+import AddIcon from '@material-ui/icons/Add';
 
 import './bets.scss';
 
@@ -29,8 +30,8 @@ const BetsLists = (props) => {
 	return (
 		<div className='bets-container'>
 			<div className='create-bet-btn'>
-				<Link to='/create'>
-					<Button variant='contained'>Create Bet</Button>
+				<Link className='create-bet-link' to='/create'>
+					<Button variant='contained' endIcon={<AddIcon />}>Create Bet</Button>
 				</Link>
 			</div>
 			<div className='pending-bets'>
