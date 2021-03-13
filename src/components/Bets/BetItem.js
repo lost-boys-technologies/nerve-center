@@ -2,12 +2,13 @@ import React, { useState, useContext } from 'react';
 import { withRouter } from 'react-router-dom';
 import FirebaseContext from '../../firebase/context';
 
-// TODO Will need to setup additional validation to only allow approval voting BY the person being challenged
+import Swal from 'sweetalert2';
 
 const BetItem = ({ bet, index, showCount, history }) => {
     const { firebase, user } = useContext(FirebaseContext);
     const [toggle, setToggle] = useState(false);
-    const { multipleSelectValue, dateCompletion, created, betDetails, postedBy, betTerms, cashAmount, mealPriceLimit, betRestaurant, betOther } = bet;
+    const [disableVote, setDisableVote] = useState(false);
+    const { multipleSelectValue, dateCompletion, created, betDetails, postedBy, betTerms, cashAmount, mealPriceLimit, betRestaurant, betOther, upvotes } = bet;
 
     // TODO Move this to a utils
     const formatDate = (date) => {
@@ -44,13 +45,27 @@ const BetItem = ({ bet, index, showCount, history }) => {
             const voteRef = firebase.db.collection('bets').doc(bet.id);
             voteRef.get().then(doc => {
                 if (doc.exists) {
-                    console.log('user.uis', user.uid);
-                    console.log('postedBy', postedBy.id);
-                    // upvote.votedBy.id !== user.uid
-                    // const previousUpvotes = doc.data().upvotes;
-                    // const upvote = { votedBy: { id: user.uid, name: user.displayName }};
-                    // const updatedUpvotes = [...previousUpvotes, upvote];
-                    // voteRef.update({ upvotes: updatedUpvotes });
+                    // TODO Tidy this up
+                    //! This is just wrong on so many levels - I need the user ID or else this is dangerous but I'm tired and going with it for now
+                    if (user.uid !== postedBy.id && multipleSelectValue.includes(user.displayName)) {
+                        const previousUpvotes = doc.data().upvotes;
+                        const haveYouVoted = previousUpvotes.find(previousUpvote => previousUpvote && previousUpvote.votedBy && previousUpvote.votedBy.id)
+                        if (!haveYouVoted) {
+                            const upvote = { votedBy: { id: user.uid, name: user.displayName }};
+                            const updatedUpvotes = [...previousUpvotes, upvote];
+                            voteRef.update({ upvotes: updatedUpvotes });
+                        } else {
+                            Swal.fire({
+                                imageUrl: 'https://media.giphy.com/media/TkCyizr5RDDyyvDk3a/giphy.gif',
+                                title: `you can only vote once, ${user.displayName}!`,
+                                showConfirmButton: false,
+                                timer: 5000
+                            })
+                        }
+                    } else {
+                        // TODO Tidy this up
+                        setDisableVote(true);
+                    }
                 }
             })
         }
@@ -64,7 +79,6 @@ const BetItem = ({ bet, index, showCount, history }) => {
         if (challengers.length > 1) {
             let names = challengers.map((challenger) => challenger);
             let finalName = names.pop();
-            console.log('names', names);
             return names.length ? names.join(', ') + ' and ' + finalName : finalName
         }
 
@@ -76,7 +90,8 @@ const BetItem = ({ bet, index, showCount, history }) => {
             <div className='full-bet-card'>
                 <div className='bet-card'>
                     <div className='bet-time-limit'>
-                        {formatDate(dateCompletion)}
+                        {/* {formatDate(dateCompletion)} */}
+                        <span>Upvotes: {upvotes.length}</span>
                     </div>
                     <span className='divider' />
                     <div className='bet-challenger'>
@@ -85,7 +100,7 @@ const BetItem = ({ bet, index, showCount, history }) => {
                         </p>
                     </div>
                     <div className='bet-voting'>
-                        <div className='voting bet-approval' onClick={handleUpvote}><i className='far fa-thumbs-up fa-2x'></i></div>
+                        <div id={disableVote && 'disabled'} className='voting bet-approval' onClick={handleUpvote}><i className='far fa-thumbs-up fa-2x'></i></div>
                         <div className='voting bet-rejection' onClick={handleDownvote}><i className='far fa-thumbs-down fa-2x'></i></div>
                     </div>
                 </div>
