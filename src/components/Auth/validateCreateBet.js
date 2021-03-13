@@ -22,12 +22,12 @@ export default function validateCreateBet(values) {
 
 	// Cash Amount Errors
 	if (values.betTerms === 'Money' && !values.cashAmount) {
-		errors.cashAmount = 'Please enter an amount';
+		errors.cashAmount = 'Invalid amt';
 	}
 
 	// Bet Meal Errors
 	if (values.betTerms === 'Meal' && !values.mealPriceLimit) {
-		errors.mealPriceLimit = 'Please enter an amount';
+		errors.mealPriceLimit = 'Invalid amt';
 	}
 
 	// Bet Other Errors
@@ -37,7 +37,7 @@ export default function validateCreateBet(values) {
 
 	// Date Completion Errors
 	if (!values.dateCompletion) {
-		errors.dateCompletion = 'Date of bet completion is required';
+		errors.dateCompletion = 'Bet completion date is required';
 	}
 
 	// Approval Period Errors

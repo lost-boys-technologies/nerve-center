@@ -124,8 +124,10 @@ const CreateBet = (props) => {
                     <div className='cash-amounts'>
                         <span className='dollar-bill'></span>
                         <TextField
-                            id='outlined-number'
-                            label='Amount'
+                            id={errors.cashAmount ? 'outline-number' : 'outlined-error-helper-text'}
+                            label={errors.cashAmount ? 'error' : 'Amount'}
+                            error={errors.cashAmount && true}
+                            helperText={errors.cashAmount}
                             type='number'
                             onChange={handleChange}
                             className='text-fields'
@@ -143,7 +145,6 @@ const CreateBet = (props) => {
                             variant='outlined'
                             size='small'
                         />
-                        {/* {errors.cashAmount && <p className='error-text'>{errors.cashAmount}</p>} */}
                     </div>
                 );
             case 'Meal':
@@ -152,8 +153,10 @@ const CreateBet = (props) => {
                         <div className='meal-price-limit'>
                         <span className='dollar-bill'></span>
                             <TextField
-                                id='outlined-number'
-                                label='Amount'
+                                id={errors.mealPriceLimit ? 'outlined-number' : 'outlined-error-helper-text'}
+                                label={errors.mealPriceLimit ? 'error' : 'Amount'}
+                                error={errors.mealPriceLimit && true}
+                                helperText={errors.mealPriceLimit}
                                 type='number'
                                 onChange={handleChange}
                                 className='text-fields'
@@ -193,8 +196,10 @@ const CreateBet = (props) => {
                 return (
                     <div className='other-bet'>
                         <TextField
-                            id="outlined-basic"
-                            label="Other Type Of Bet"
+                            id={errors.betOther ? 'outlined-basic' : 'outlined-error-helper-text'}
+                            label={errors.betOther ? 'error' : 'Other Type Of Bet'}
+                            error={errors.betOther && true}
+                            helperText={errors.betOther}
                             type='text'
                             name='betOther'
                             InputLabelProps={{
@@ -205,7 +210,6 @@ const CreateBet = (props) => {
                             variant="outlined"
                             size='small'
                         />
-                        {errors.betOther && <p className='error-text'>{errors.betOther}</p>}
                     </div>
                 )
             default:
@@ -264,10 +268,12 @@ const CreateBet = (props) => {
                 <div className='bet-terms-container'>
                     <div className='bet-completion'>
                         <TextField
-                            id='outlined-select-currency-native'
                             select
-                            label='Terms'
                             name='betTerms'
+                            id={errors.betTerms ? 'outlined-select' : 'outlined-error-helper-text'}
+                            label={errors.betTerms ? 'error' : 'Terms'}
+                            error={errors.betTerms && true}
+                            helperText={errors.betTerms}
                             className='text-fields bet-terms-select'
                             value={values.betTerms}
                             onChange={handleChange}
@@ -286,8 +292,10 @@ const CreateBet = (props) => {
                     <div className='bet-completion'>
                         <form>
                             <TextField
-                                id="date"
-                                label="Bet Completion"
+                                id={errors.dateCompletion ? 'date' : 'outlined-error-helper-text'}
+                                label={errors.dateCompletion ? 'error' : 'Bet Completion'}
+                                error={errors.dateCompletion && true}
+                                helperText={errors.dateCompletion}
                                 type="date"
                                 disablePast
                                 className='text-fields'
@@ -309,9 +317,11 @@ const CreateBet = (props) => {
                     </div>
                     <div className='approval-period'>
                         <TextField
-                            id='outlined-select-currency-native'
+                            id={errors.approvalPeriod ? 'date' : 'outlined-select'}
+                            label={errors.approvalPeriod ? 'error' : 'Approval Period'}
+                            error={errors.approvalPeriod && true}
+                            helperText={errors.approvalPeriod}
                             select
-                            label='Approval Period'
                             name='approvalPeriod'
                             className='text-fields bet-terms-select'
                             value={values.approvalPeriod}
