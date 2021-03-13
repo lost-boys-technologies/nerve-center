@@ -60,6 +60,15 @@ const BetItem = ({ bet, index, showCount, history }) => {
         console.log('downvote');
     }
 
+    const splitChallengers = (challengers) => {
+        if (challengers.length > 1) {
+            let names = challengers.map((challenger) => challenger);
+            let finalName = names.pop();
+            console.log('names', names);
+            return names.length ? names.join(', ') + ' and ' + finalName : finalName
+        }
+    }
+
     return (
         <div className='bet-item-container'>
             <div className='full-bet-card'>
@@ -70,7 +79,7 @@ const BetItem = ({ bet, index, showCount, history }) => {
                     <span className='divider' />
                     <div className='bet-challenger'>
                         <p>
-                            <span>{postedBy.name}</span> is challenging <span>{multipleSelectValue}</span>
+                            <span>{postedBy.name}</span> is challenging <span>{splitChallengers(multipleSelectValue)}</span>
                         </p>
                     </div>
                     <div className='bet-voting'>
