@@ -3,6 +3,7 @@ import FirebaseContext from '../../firebase/context';
 import { Link } from 'react-router-dom';
 import BetItem from './BetItem';
 // import CreateBet from './CreateBet';
+import Button from '@material-ui/core/Button';
 
 import './bets.scss';
 
@@ -29,7 +30,7 @@ const BetsLists = (props) => {
 		<div className='bets-container'>
 			<div className='create-bet-btn'>
 				<Link to='/create'>
-					<button>Create Bet</button>
+					<Button variant='contained'>Create Bet</Button>
 				</Link>
 			</div>
 			<div className='pending-bets'>

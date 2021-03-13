@@ -177,8 +177,8 @@ const CreateBet = (props) => {
                         </div>
                         <div className='restaurant'>
                             <TextField
-                                id="outlined-basic"
-                                label="Restaurant"
+                                id='outlined-basic'
+                                label='Restaurant'
                                 type='text'
                                 name='betRestaurant'
                                 InputLabelProps={{
@@ -186,7 +186,7 @@ const CreateBet = (props) => {
                                 }}
                                 onChange={handleChange}
                                 value={values.betRestaurant}
-                                variant="outlined"
+                                variant='outlined'
                                 size='small'
                             />
                         </div>
@@ -207,7 +207,7 @@ const CreateBet = (props) => {
                             }}
                             onChange={handleChange}
                             value={values.betOther}
-                            variant="outlined"
+                            variant='outlined'
                             size='small'
                         />
                     </div>
@@ -296,7 +296,7 @@ const CreateBet = (props) => {
                                 label={errors.dateCompletion ? 'error' : 'Bet Completion'}
                                 error={errors.dateCompletion && true}
                                 helperText={errors.dateCompletion}
-                                type="date"
+                                type='date'
                                 disablePast
                                 className='text-fields'
                                 onChange={handleChange}
@@ -337,7 +337,7 @@ const CreateBet = (props) => {
                     </div>
                 </div>
                 <div className='button-container'>
-                    <Button className='button submit' variant="contained" color="primary" type='submit'>
+                    <Button className='button submit' variant='contained' color='primary' type='submit'>
                         Submit
                     </Button>
                     <Button className='button cancel' variant='outlined' onClick={handleCancelBtn}>
