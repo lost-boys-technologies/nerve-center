@@ -64,6 +64,7 @@ const BetItem = ({ bet, index, showCount, history }) => {
                         }
                     } else {
                         // TODO Tidy this up
+                        //* Add popover or something
                         setDisableVote(true);
                     }
                 }
