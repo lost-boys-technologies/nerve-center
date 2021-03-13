@@ -67,6 +67,8 @@ const BetItem = ({ bet, index, showCount, history }) => {
             console.log('names', names);
             return names.length ? names.join(', ') + ' and ' + finalName : finalName
         }
+
+        return challengers;
     }
 
     return (

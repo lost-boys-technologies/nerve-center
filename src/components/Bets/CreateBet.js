@@ -108,7 +108,6 @@ const CreateBet = (props) => {
             if (result.isConfirmed) {
                 Swal.fire({
                     title: 'Cancelled!',
-                    text: 'Bet has been cancelled',
                     icon: 'success',
                     showConfirmButton: false,
                     timer: 1000
