@@ -1,6 +1,9 @@
 import React, { useState, useContext } from 'react';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import FirebaseContext from '../../firebase/context';
+
+import Button from '@material-ui/core/Button';
+import BlockIcon from '@material-ui/icons/Block';
 
 import Swal from 'sweetalert2';
 
@@ -10,6 +13,7 @@ const BetItem = ({ bet, index, showCount, history }) => {
     const [disableVote, setDisableVote] = useState(false);
     const { multipleSelectValue, dateCompletion, created, betDetails, postedBy, betTerms, cashAmount, mealPriceLimit, betRestaurant, betOther, upvotes } = bet;
 
+    const postedByAuthUser = user && user.uid === bet.postedBy.id;
     // TODO Move this to a utils
     const formatDate = (date) => {
         let cleanDate = new Date(date).toISOString().replace(/T.*/,'').split('-')
@@ -98,9 +102,41 @@ const BetItem = ({ bet, index, showCount, history }) => {
         return challengers;
     }
 
+    const handleDeleteBet = () => {
+        Swal.fire({
+            title: 'Do you want to save the changes?',
+            showCancelButton: true,
+            confirmButtonText: `Delete`,
+            denyButtonText: `Cancel`,
+            confirmButtonColor: '#244F7B',
+            denyButtonColor: '#95A5A6',
+          }).then((result) => {
+            if (result.isConfirmed) {
+                const betRef = firebase.db.collection('bets').doc(bet.id);
+                betRef.delete().then(() => {
+                console.log(`Document with ID ${bet.id} deleted`);
+                }).catch(err => {
+                console.error('Error deleting document:', err);
+                })
+                Swal.fire('Deleted!', '', 'success')
+            }
+        })
+    }
+
     return (
         <div className='bet-item-container'>
             <div className='full-bet-card'>
+                {postedByAuthUser && (
+                    <Button
+                        variant='contained'
+                        className='cancel-bet'
+                        color='secondary'
+                        onClick={handleDeleteBet}
+                        startIcon={<BlockIcon />}
+                    >
+                        Cancel
+                    </Button>
+                )}
                 <div className='bet-card'>
                     <div className='bet-time-limit'>
                         {/* {formatDate(dateCompletion)} */}
@@ -118,7 +154,7 @@ const BetItem = ({ bet, index, showCount, history }) => {
                     </div>
                 </div>
                 <div
-                    className="more-details"
+                    className='more-details'
                     onClick={() => setToggle(!toggle)}
                 >
                     More Details
