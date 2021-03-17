@@ -81,6 +81,10 @@
             justify-content: space-between;
             background-color: $white-color-opaque;
             border: 1px solid $cyan-blue-color;
+
+            &.no-vote {
+                margin: 0 62px 0 0;
+            }
         }
 
         .bet-voting {

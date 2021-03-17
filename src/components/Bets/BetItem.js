@@ -126,18 +126,7 @@ const BetItem = ({ bet, index, showCount, history }) => {
     return (
         <div className='bet-item-container'>
             <div className='full-bet-card'>
-                {postedByAuthUser && (
-                    <Button
-                        variant='contained'
-                        className='cancel-bet'
-                        color='secondary'
-                        onClick={handleDeleteBet}
-                        startIcon={<BlockIcon />}
-                    >
-                        Cancel
-                    </Button>
-                )}
-                <div className='bet-card'>
+                <div className={`bet-card ${postedByAuthUser && 'no-vote'}`}>
                     <div className='bet-time-limit'>
                         {/* {formatDate(dateCompletion)} */}
                         <span>Upvotes: {upvotes.length}</span>
@@ -148,10 +137,25 @@ const BetItem = ({ bet, index, showCount, history }) => {
                             <span>{postedBy.name}</span> is challenging <span>{splitChallengers(multipleSelectValue)}</span>
                         </p>
                     </div>
-                    <div className='bet-voting'>
-                        <div className={`voting bet-approval ${disableVote && 'disabled'}`} onClick={handleUpvote}><i className='far fa-thumbs-up fa-2x'></i></div>
-                        <div className='voting bet-rejection' onClick={handleDownvote}><i className='far fa-thumbs-down fa-2x'></i></div>
-                    </div>
+                    {!postedByAuthUser ? (
+                        <div className='bet-voting'>
+                            <div className={`voting bet-approval ${disableVote && 'disabled'}`} onClick={handleUpvote}><i className='far fa-thumbs-up fa-2x'></i></div>
+                            <div className='voting bet-rejection' onClick={handleDownvote}><i className='far fa-thumbs-down fa-2x'></i></div>
+                        </div>
+                    ) : (
+                        // TODO move the button to where the voting is
+                        <div className='non-bet-voting'>
+                            <Button
+                                variant='contained'
+                                className='cancel-bet'
+                                color='secondary'
+                                onClick={handleDeleteBet}
+                                startIcon={<BlockIcon />}
+                            >
+                                Cancel
+                            </Button>
+                        </div>
+                    )}
                 </div>
                 <div
                     className='more-details'
