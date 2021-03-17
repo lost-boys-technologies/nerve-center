@@ -105,10 +105,11 @@ const BetItem = ({ bet, index, showCount, history }) => {
     const handleDeleteBet = () => {
         Swal.fire({
             title: 'Do you want to save the changes?',
-            showDenyButton: true,
             showCancelButton: true,
-            confirmButtonText: `Save`,
-            denyButtonText: `Don't save`,
+            confirmButtonText: `Delete`,
+            denyButtonText: `Cancel`,
+            confirmButtonColor: '#244F7B',
+            denyButtonColor: '#95A5A6',
           }).then((result) => {
             if (result.isConfirmed) {
                 const betRef = firebase.db.collection('bets').doc(bet.id);
@@ -117,7 +118,7 @@ const BetItem = ({ bet, index, showCount, history }) => {
                 }).catch(err => {
                 console.error('Error deleting document:', err);
                 })
-                Swal.fire('Saved!', '', 'success')
+                Swal.fire('Deleted!', '', 'success')
             }
         })
     }

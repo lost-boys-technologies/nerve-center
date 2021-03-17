@@ -14,7 +14,7 @@ const BetsLists = (props) => {
 
 	useEffect(() => {
 		getBets();
-	}, [bets]);
+	}, []);
 	
 	const getBets = () => {
 		firebase.db.collection('bets').onSnapshot(handleSnapshot)
