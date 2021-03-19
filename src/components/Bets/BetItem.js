@@ -149,9 +149,9 @@ const BetItem = ({ bet, index, showCount, history }) => {
                                 className='cancel-bet-area'
                                 color='secondary'
                                 onClick={handleDeleteBet}
-                                startIcon={<BlockIcon />}
+                                // startIcon={<BlockIcon />}
                             >
-                                Cancel
+                                Cancel Bet
                             </Button>
                         </div>
                     )}
