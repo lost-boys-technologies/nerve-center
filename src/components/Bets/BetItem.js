@@ -143,11 +143,10 @@ const BetItem = ({ bet, index, showCount, history }) => {
                             <div className='voting bet-rejection' onClick={handleDownvote}><i className='far fa-thumbs-down fa-2x'></i></div>
                         </div>
                     ) : (
-                        // TODO move the button to where the voting is
                         <div className='non-bet-voting'>
                             <Button
                                 variant='contained'
-                                className='cancel-bet'
+                                className='cancel-bet-area'
                                 color='secondary'
                                 onClick={handleDeleteBet}
                                 startIcon={<BlockIcon />}
