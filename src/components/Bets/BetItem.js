@@ -56,6 +56,7 @@ const BetItem = ({ bet, index, showCount, history }) => {
                 }
 
                 //! Construction Zone - NO MULTIPLE VOTES BY USER
+
                 // if (doc.exists) {
                 //     // TODO Tidy this up
                 //     //! This is just wrong on so many levels - I need the user ID or else this is dangerous but I'm tired and going with it for now
@@ -83,6 +84,7 @@ const BetItem = ({ bet, index, showCount, history }) => {
                 //     //     setDisableVote(true);
                 //     // }
                 // }
+
                 //! End Construction Zone
             })
         }
