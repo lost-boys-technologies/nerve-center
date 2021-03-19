@@ -81,11 +81,29 @@
             justify-content: space-between;
             background-color: $white-color-opaque;
             border: 1px solid $cyan-blue-color;
+
+            &.no-vote {
+                margin: 0 -1 0;
+                border-top-right-radius: 4px;
+                border-bottom-right-radius: 4px;
+            }
+
+            .non-bet-voting {
+                display: flex;
+                margin: 0 -1px 0 0;
+                
+                .cancel-bet-area {
+                    border-top-left-radius: 0;
+                    border-bottom-left-radius: 0;
+                    width: 110px;
+                }
+            }
         }
 
         .bet-voting {
             display: flex;
             flex-direction: column;
+            justify-content: center;
             background-color: $ivory-color;
             border-left: 1px solid $cyan-blue-color;
             min-width: 42px;
@@ -93,8 +111,8 @@
 
             .voting {
                 cursor: pointer;
-                // margin: 5px;
                 padding: 6px;
+
 
                 &.disabled { cursor: not-allowed }
 
@@ -111,7 +129,7 @@
             justify-content: center;
             align-items: center;
             background-color: $ivory-color;
-            margin: 0 63px 0 0;
+            margin: 0 65px 0 0;
             height: 30px;
 
             border-right: 1px solid $cyan-blue-color;
@@ -125,7 +143,7 @@
             background-color: $cyan-blue-color;
             color: $ivory-color;
             transition: height 1s ease;
-            margin: 0 63px 0 0;
+            margin: 0 65px 0 0;
             height: 0;
             overflow: hidden;
 
