@@ -11,7 +11,6 @@ import './bets.scss';
 const BetsLists = (props) => {
 	const { firebase, user } = useContext(FirebaseContext);
 	const [bets, setBets] = useState([]);
-	console.log('user', user);
 
 	useEffect(() => {
 		getBets();

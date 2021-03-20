@@ -50,12 +50,30 @@ const BetItem = ({ bet, index, showCount, history }) => {
             voteRef.get().then(doc => {
                 if (doc.exists) {
                     const previousUpvotes = doc.data().upvotes;
-                    const upVote = { votedBy: { id: user.uid, name: user.displayName }};
-                    const updatedUpvotes = [...previousUpvotes, upVote]
-                    voteRef.update({ upvotes: updatedUpvotes })
+                    const hasVoted = previousUpvotes.map(previousUpvote => {
+                        // TODO I feel like I'm inching closer
+                        //* I need to see if `alreadyVoted` ON A SPECIFIC BET is true or false
+                        //* If it is another bet.id, proceed with adding the user's vote (and subsequent change to alreadyVoted and bet.id)
+                        if (Boolean(bet.id) && previousUpvote.votedBy.alreadyVoted) {
+                            Swal.fire({
+                                imageUrl: 'https://media.giphy.com/media/TkCyizr5RDDyyvDk3a/giphy.gif',
+                                title: `you can only vote once, ${user.displayName}!`,
+                                showConfirmButton: false,
+                                timer: 3500
+                            })
+                            return true;
+                        } else {
+                            console.log('hit');
+                        }
+                        return previousUpvote;
+                    })
+                    // const upVote = { votedBy: { id: user.uid, name: user.displayName, alreadyVoted: true, betId: bet.id }};
+                    // const updatedUpvotes = [...previousUpvotes, upVote]
+                    // voteRef.update({ upvotes: updatedUpvotes })
 
                     //! Construction Zone - NO MULTIPLE VOTES BY USER
 
+                    /*
                     if (user.uid !== postedBy.id && multipleSelectValue.includes(user.displayName)) {
                         const previousUpvotes = doc.data().upvotes;
                         const haveYouVoted = previousUpvotes.find(previousUpvote => previousUpvote && previousUpvote.votedBy && previousUpvote.votedBy.id ? previousUpvote.votedBy.id : 'nope')
@@ -80,6 +98,7 @@ const BetItem = ({ bet, index, showCount, history }) => {
                         setDisableVote(true);
                     }
 
+                    */
                     //! End Construction Zone
                 }
             })
