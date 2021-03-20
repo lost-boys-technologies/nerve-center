@@ -53,39 +53,35 @@ const BetItem = ({ bet, index, showCount, history }) => {
                     const upVote = { votedBy: { id: user.uid, name: user.displayName }};
                     const updatedUpvotes = [...previousUpvotes, upVote]
                     voteRef.update({ upvotes: updatedUpvotes })
+
+                    //! Construction Zone - NO MULTIPLE VOTES BY USER
+
+                    if (user.uid !== postedBy.id && multipleSelectValue.includes(user.displayName)) {
+                        const previousUpvotes = doc.data().upvotes;
+                        const haveYouVoted = previousUpvotes.find(previousUpvote => previousUpvote && previousUpvote.votedBy && previousUpvote.votedBy.id ? previousUpvote.votedBy.id : 'nope')
+                        console.log('haveyouvoted');
+                        //! This doesn't work - all sorts of broken
+                        if (user.uid !== haveYouVoted && haveYouVoted !== 'nope') {
+                            const upvote = { votedBy: { id: user.uid, name: user.displayName }};
+                            const updatedUpvotes = [...previousUpvotes, upvote];
+                            voteRef.update({ upvotes: updatedUpvotes });
+                        } 
+                        else {
+                            Swal.fire({
+                                imageUrl: 'https://media.giphy.com/media/TkCyizr5RDDyyvDk3a/giphy.gif',
+                                title: `you can only vote once, ${user.displayName}!`,
+                                showConfirmButton: false,
+                                timer: 3500
+                            })
+                        }
+                    } else {
+                        // TODO Tidy this up
+                        //* Add popover or something
+                        setDisableVote(true);
+                    }
+
+                    //! End Construction Zone
                 }
-
-                //! Construction Zone - NO MULTIPLE VOTES BY USER
-
-                // if (doc.exists) {
-                //     // TODO Tidy this up
-                //     //! This is just wrong on so many levels - I need the user ID or else this is dangerous but I'm tired and going with it for now
-                //     if (user.uid !== postedBy.id && multipleSelectValue.includes(user.displayName)) {
-                //         // const previousUpvotes = doc.data().upvotes;
-                //         // const haveYouVoted = previousUpvotes.find(previousUpvote => previousUpvote && previousUpvote.votedBy && previousUpvote.votedBy.id ? previousUpvote.votedBy.id : 'nope')
-                //         console.log('haveyouvoted');
-                //         //! This doesn't work - all sorts of broken
-                //         // if (user.uid !== haveYouVoted && haveYouVoted !== 'nope') {
-                //         //     const upvote = { votedBy: { id: user.uid, name: user.displayName }};
-                //         //     const updatedUpvotes = [...previousUpvotes, upvote];
-                //         //     voteRef.update({ upvotes: updatedUpvotes });
-                //         // } 
-                //         // else {
-                //         //     Swal.fire({
-                //         //         imageUrl: 'https://media.giphy.com/media/TkCyizr5RDDyyvDk3a/giphy.gif',
-                //         //         title: `you can only vote once, ${user.displayName}!`,
-                //         //         showConfirmButton: false,
-                //         //         timer: 3500
-                //         //     })
-                //         // }
-                //     // } else {
-                //     //     // TODO Tidy this up
-                //     //     //* Add popover or something
-                //     //     setDisableVote(true);
-                //     // }
-                // }
-
-                //! End Construction Zone
             })
         }
     }
