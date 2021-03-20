@@ -50,23 +50,26 @@ const BetItem = ({ bet, index, showCount, history }) => {
             voteRef.get().then(doc => {
                 if (doc.exists) {
                     const previousUpvotes = doc.data().upvotes;
-                    const hasVoted = previousUpvotes.map(previousUpvote => {
-                        // TODO I feel like I'm inching closer
-                        //* I need to see if `alreadyVoted` ON A SPECIFIC BET is true or false
-                        //* If it is another bet.id, proceed with adding the user's vote (and subsequent change to alreadyVoted and bet.id)
-                        if (Boolean(bet.id) && previousUpvote.votedBy.alreadyVoted) {
-                            Swal.fire({
-                                imageUrl: 'https://media.giphy.com/media/TkCyizr5RDDyyvDk3a/giphy.gif',
-                                title: `you can only vote once, ${user.displayName}!`,
-                                showConfirmButton: false,
-                                timer: 3500
-                            })
-                            return true;
-                        } else {
-                            console.log('hit');
-                        }
-                        return previousUpvote;
-                    })
+                    console.log('PREVIOUS UPVOTES', previousUpvotes);
+                    // if (!previousUpvotes) {
+                        const hasVoted = previousUpvotes.map(previousUpvote => {
+                            // TODO I feel like I'm inching closer
+                            //* I need to see if `alreadyVoted` ON A SPECIFIC BET is true or false
+                            //* If it is another bet.id, proceed with adding the user's vote (and subsequent change to alreadyVoted and bet.id)
+                            if (bet.id === previousUpvote.votedBy.betId && previousUpvote.votedBy.alreadyVoted) {
+                                Swal.fire({
+                                    imageUrl: 'https://media.giphy.com/media/TkCyizr5RDDyyvDk3a/giphy.gif',
+                                    title: `you can only vote once, ${user.displayName}!`,
+                                    showConfirmButton: false,
+                                    timer: 3500
+                                })
+                            } else {
+                                console.log('Previous Upvotes exsist - else');
+                            }
+                        })
+                    // } else {
+                    //     console.log('no previous bets');
+                    // }
                     // const upVote = { votedBy: { id: user.uid, name: user.displayName, alreadyVoted: true, betId: bet.id }};
                     // const updatedUpvotes = [...previousUpvotes, upVote]
                     // voteRef.update({ upvotes: updatedUpvotes })
