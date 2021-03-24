@@ -60,19 +60,24 @@ const BetItem = ({ bet, index, showCount, history }) => {
                         // ? Possibly use for loop
                         for (let i = 0; i < previousUpvotes.length; i++) {
                             let hasVoted = previousUpvotes[i].votedBy.alreadyVoted;
-                            if (hasVoted) {
-                                console.log('you have voted');
+                            console.log('has voted', hasVoted);
+                            if (hasVoted !== undefined && hasVoted) {
+                                console.log('you have VOTED');
+                            } else {
+                                console.log('else inside hasVoted');
+                                // const upVote = { votedBy: { id: user.uid, name: user.displayName, alreadyVoted: true, betId: bet.id }};
+                                // const updatedUpvotes = [...previousUpvotes, upVote]
+                                // voteRef.update({ upvotes: updatedUpvotes });
                             }
                         }
                     } else {
-                        console.log('no previous upvotes');
+                        console.log('else to no previous votes');
+                        const upVote = { votedBy: { id: user.uid, name: user.displayName, alreadyVoted: true, betId: bet.id }};
+                        const updatedUpvotes = [...previousUpvotes, upVote]
+                        voteRef.update({ upvotes: updatedUpvotes });
                     }
 
                     //! End Attempt 32,392
-                    // const previousUpvotes = doc.data().upvotes;
-                    const upVote = { votedBy: { id: user.uid, name: user.displayName, alreadyVoted: true, betId: bet.id }};
-                    const updatedUpvotes = [...previousUpvotes, upVote]
-                    // voteRef.update({ upvotes: updatedUpvotes })
                 }
             })
         }
