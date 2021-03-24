@@ -42,7 +42,6 @@ const BetItem = ({ bet, index, showCount, history }) => {
     }
 
     const handleUpvote = () => {
-        console.log('bets', bet.id);
         if (!user) {
             history.push('/login')
         } else {
@@ -52,10 +51,9 @@ const BetItem = ({ bet, index, showCount, history }) => {
                     //! Attempt 32,392
                     const previousUpvotes = doc.data().upvotes;
                     if (Boolean(previousUpvotes.length)) {
-                        // ? NOTES: below is what i need to figure out. I need to map previousUpvotes but it breaks - go line by line to fix
-                        // ? Possibly use for loop
                         for (let i = 0; i < previousUpvotes.length; i++) {
                             let hasVoted = previousUpvotes[i].votedBy.alreadyVoted;
+                            console.log('hasVoted', hasVoted);
                             if (hasVoted !== undefined && hasVoted) {
                                 Swal.fire({
                                     imageUrl: 'https://media.giphy.com/media/TkCyizr5RDDyyvDk3a/giphy.gif',
@@ -72,9 +70,13 @@ const BetItem = ({ bet, index, showCount, history }) => {
                         }
                     } else {
                         console.log('else to no previous votes');
-                        const upVote = { votedBy: { id: user.uid, name: user.displayName, alreadyVoted: true, betId: bet.id }};
-                        const updatedUpvotes = [...previousUpvotes, upVote]
-                        voteRef.update({ upvotes: updatedUpvotes });
+                        // if () {
+                        //     const upVote = { votedBy: { id: user.uid, name: user.displayName, alreadyVoted: true, betId: bet.id }};
+                        //     const updatedUpvotes = [...previousUpvotes, upVote]
+                        //     voteRef.update({ upvotes: updatedUpvotes });
+                        // } else {
+                        //     console.log('nope');
+                        // }
                     }
                     //! End Attempt 32,392
                 }
@@ -156,12 +158,12 @@ const BetItem = ({ bet, index, showCount, history }) => {
                     )}
                 </div>
                 <div
-                    className='more-details'
+                    className={`more-details ${!multipleSelectValue.includes(user.displayName) && 'adjusted-more-details'}`}
                     onClick={() => setToggle(!toggle)}
                 >
                     More Details
                 </div>
-                <div className={`more-details-container ${toggle ? 'show' : ''}`}>
+                <div className={`more-details-container ${!multipleSelectValue.includes(user.displayName) && 'adjusted-more-details-container'} ${toggle ? 'show' : ''}`}>
                     <div className='created-date'>
                         created: {formatDate(created)}
                     </div>
