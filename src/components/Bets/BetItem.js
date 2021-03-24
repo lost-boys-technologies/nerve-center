@@ -61,6 +61,7 @@ const BetItem = ({ bet, index, showCount, history }) => {
                                     timer: 3500
                                 });
                             } else if (previousUpvotes.length < allChallengers.length) {
+                                // TODO Something I can do is maybe map over the list and insure the length of prevVotedBy.id is < 1 or something
                                 const upVote = { votedBy: { id: user.uid, name: user.displayName, alreadyVoted: true, betId: bet.id }};
                                 const updatedUpvotes = [...previousUpvotes, upVote]
                                 voteRef.update({ upvotes: updatedUpvotes });
