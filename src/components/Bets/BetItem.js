@@ -52,28 +52,37 @@ const BetItem = ({ bet, index, showCount, history }) => {
                     const previousUpvotes = doc.data().upvotes;
                     if (Boolean(previousUpvotes.length)) {
                         for (let i = 0; i < previousUpvotes.length; i++) {
-                            let hasVoted = previousUpvotes[i].votedBy.alreadyVoted;
-                            console.log('hasVoted', hasVoted);
-                            if (hasVoted !== undefined && hasVoted) {
+                            let prevVotedBy = previousUpvotes[i].votedBy;
+                            console.log('current user', user.uid);
+
+                            // alreadyVoted ---- betId ---- id
+
+                            console.log('previous votes', previousUpvotes);
+                            console.log('only prev vote by', previousUpvotes[i]);
+                            if (user.uid === prevVotedBy.id) {
+                                console.log('swal is fired');
                                 Swal.fire({
                                     imageUrl: 'https://media.giphy.com/media/TkCyizr5RDDyyvDk3a/giphy.gif',
                                     title: `you can only vote once, ${user.displayName}!`,
                                     showConfirmButton: false,
                                     timer: 3500
-                                })
+                                });
                             } else {
-                                console.log('else inside hasVoted');
-                                // const upVote = { votedBy: { id: user.uid, name: user.displayName, alreadyVoted: true, betId: bet.id }};
-                                // const updatedUpvotes = [...previousUpvotes, upVote]
-                                // voteRef.update({ upvotes: updatedUpvotes });
+                                console.log('update votes hits - SHOULD NOT SEE THAT ~swal is fired~');
+                                const upVote = { votedBy: { id: user.uid, name: user.displayName, alreadyVoted: true, betId: bet.id }};
+                                const updatedUpvotes = [...previousUpvotes, upVote]
+                                voteRef.update({ upvotes: updatedUpvotes });
                             }
                         }
                     } else {
                         console.log('else to no previous votes');
+                        const upVote = { votedBy: { id: user.uid, name: user.displayName, alreadyVoted: true, betId: bet.id }};
+                        const updatedUpvotes = [...previousUpvotes, upVote]
+                        voteRef.update({ upvotes: updatedUpvotes });
                         // if () {
-                        //     const upVote = { votedBy: { id: user.uid, name: user.displayName, alreadyVoted: true, betId: bet.id }};
-                        //     const updatedUpvotes = [...previousUpvotes, upVote]
-                        //     voteRef.update({ upvotes: updatedUpvotes });
+                            // const upVote = { votedBy: { id: user.uid, name: user.displayName, alreadyVoted: true, betId: bet.id }};
+                            // const updatedUpvotes = [...previousUpvotes, upVote]
+                            // voteRef.update({ upvotes: updatedUpvotes });
                         // } else {
                         //     console.log('nope');
                         // }
