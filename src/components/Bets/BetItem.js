@@ -51,18 +51,20 @@ const BetItem = ({ bet, index, showCount, history }) => {
             voteRef.get().then(doc => {
                 if (doc.exists) {
                     //! Attempt 32,392
-                    const votedDudes = [];
                     const previousUpvotes = doc.data().upvotes;
 
                     if (Boolean(previousUpvotes.length)) {
-                        console.log('there are previous upvotes');
                         // ? NOTES: below is what i need to figure out. I need to map previousUpvotes but it breaks - go line by line to fix
                         // ? Possibly use for loop
                         for (let i = 0; i < previousUpvotes.length; i++) {
                             let hasVoted = previousUpvotes[i].votedBy.alreadyVoted;
-                            console.log('has voted', hasVoted);
                             if (hasVoted !== undefined && hasVoted) {
-                                console.log('you have VOTED');
+                                Swal.fire({
+                                    imageUrl: 'https://media.giphy.com/media/TkCyizr5RDDyyvDk3a/giphy.gif',
+                                    title: `you can only vote once, ${user.displayName}!`,
+                                    showConfirmButton: false,
+                                    timer: 3500
+                                })
                             } else {
                                 console.log('else inside hasVoted');
                                 // const upVote = { votedBy: { id: user.uid, name: user.displayName, alreadyVoted: true, betId: bet.id }};
