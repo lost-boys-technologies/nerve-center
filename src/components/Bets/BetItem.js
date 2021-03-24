@@ -10,7 +10,6 @@ import Swal from 'sweetalert2';
 const BetItem = ({ bet, index, showCount, history }) => {
     const { firebase, user } = useContext(FirebaseContext);
     const [toggle, setToggle] = useState(false);
-    const [disableVote, setDisableVote] = useState(false);
     const { multipleSelectValue, dateCompletion, created, betDetails, postedBy, betTerms, cashAmount, mealPriceLimit, betRestaurant, betOther, upvotes } = bet;
 
     const postedByAuthUser = user && user.uid === bet.postedBy.id;
@@ -52,7 +51,6 @@ const BetItem = ({ bet, index, showCount, history }) => {
                 if (doc.exists) {
                     //! Attempt 32,392
                     const previousUpvotes = doc.data().upvotes;
-
                     if (Boolean(previousUpvotes.length)) {
                         // ? NOTES: below is what i need to figure out. I need to map previousUpvotes but it breaks - go line by line to fix
                         // ? Possibly use for loop
@@ -78,7 +76,6 @@ const BetItem = ({ bet, index, showCount, history }) => {
                         const updatedUpvotes = [...previousUpvotes, upVote]
                         voteRef.update({ upvotes: updatedUpvotes });
                     }
-
                     //! End Attempt 32,392
                 }
             })
@@ -141,8 +138,8 @@ const BetItem = ({ bet, index, showCount, history }) => {
                         </p>
                     </div>
                     {!postedByAuthUser ? (
-                        <div className='bet-voting'>
-                            <div className={`voting bet-approval ${disableVote && 'disabled'}`} onClick={handleUpvote}><i className='far fa-thumbs-up fa-2x'></i></div>
+                        <div className={`bet-voting ${!multipleSelectValue.includes(user.displayName) && 'disabled'}`}>
+                            <div className='voting bet-approval' onClick={handleUpvote}><i className='far fa-thumbs-up fa-2x'></i></div>
                             <div className='voting bet-rejection' onClick={handleDownvote}><i className='far fa-thumbs-down fa-2x'></i></div>
                         </div>
                     ) : (
@@ -152,7 +149,6 @@ const BetItem = ({ bet, index, showCount, history }) => {
                                 className='cancel-bet-area'
                                 color='secondary'
                                 onClick={handleDeleteBet}
-                                // startIcon={<BlockIcon />}
                             >
                                 Cancel Bet
                             </Button>
