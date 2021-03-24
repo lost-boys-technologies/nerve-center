@@ -43,71 +43,40 @@ const BetItem = ({ bet, index, showCount, history }) => {
     }
 
     const handleUpvote = () => {
+        console.log('bets', bet.id);
         if (!user) {
             history.push('/login')
         } else {
-            const voteRef = firebase.db.collection('bets').doc(bet.id);
+            const voteRef = firebase.db.collection('bets').doc(bet.id); // <--- you're already getting the bet deets, homie
             voteRef.get().then(doc => {
                 if (doc.exists) {
+                    //! Attempt 32,392
                     const previousUpvotes = doc.data().upvotes;
-                    console.log('PREVIOUS UPVOTES', previousUpvotes);
-                    // if (!previousUpvotes) {
-                        const hasVoted = previousUpvotes.map(previousUpvote => {
-                            // TODO I feel like I'm inching closer
-                            //* I need to see if `alreadyVoted` ON A SPECIFIC BET is true or false
-                            //* If it is another bet.id, proceed with adding the user's vote (and subsequent change to alreadyVoted and bet.id)
-                            if (bet.id === previousUpvote.votedBy.betId && previousUpvote.votedBy.alreadyVoted) {
-                                Swal.fire({
-                                    imageUrl: 'https://media.giphy.com/media/TkCyizr5RDDyyvDk3a/giphy.gif',
-                                    title: `you can only vote once, ${user.displayName}!`,
-                                    showConfirmButton: false,
-                                    timer: 3500
-                                })
-                            } else {
-                                console.log('Previous Upvotes exsist - else');
-                            }
-                        })
-                    // } else {
-                    //     console.log('no previous bets');
-                    // }
-                    // const upVote = { votedBy: { id: user.uid, name: user.displayName, alreadyVoted: true, betId: bet.id }};
-                    // const updatedUpvotes = [...previousUpvotes, upVote]
-                    // voteRef.update({ upvotes: updatedUpvotes })
 
-                    //! Construction Zone - NO MULTIPLE VOTES BY USER
-
-                    /*
-                    if (user.uid !== postedBy.id && multipleSelectValue.includes(user.displayName)) {
-                        const previousUpvotes = doc.data().upvotes;
-                        const haveYouVoted = previousUpvotes.find(previousUpvote => previousUpvote && previousUpvote.votedBy && previousUpvote.votedBy.id ? previousUpvote.votedBy.id : 'nope')
-                        console.log('haveyouvoted');
-                        //! This doesn't work - all sorts of broken
-                        if (user.uid !== haveYouVoted && haveYouVoted !== 'nope') {
-                            const upvote = { votedBy: { id: user.uid, name: user.displayName }};
-                            const updatedUpvotes = [...previousUpvotes, upvote];
-                            voteRef.update({ upvotes: updatedUpvotes });
-                        } 
-                        else {
-                            Swal.fire({
-                                imageUrl: 'https://media.giphy.com/media/TkCyizr5RDDyyvDk3a/giphy.gif',
-                                title: `you can only vote once, ${user.displayName}!`,
-                                showConfirmButton: false,
-                                timer: 3500
-                            })
-                        }
+                    if (Boolean(previousUpvotes.length)) {
+                        console.log('there are previous upvotes');
+                        // ? NOTES: below is what i need to figure out. I need to map previousUpvotes but it breaks - go line by line to fix
+                        console.log('check', previousUpvotes[0].votedBy.name);
                     } else {
-                        // TODO Tidy this up
-                        //* Add popover or something
-                        setDisableVote(true);
+                        console.log('no previous upvotes');
                     }
 
-                    */
-                    //! End Construction Zone
+                    //! End Attempt 32,392
+                    // const previousUpvotes = doc.data().upvotes;
+                    const upVote = { votedBy: { id: user.uid, name: user.displayName, alreadyVoted: true, betId: bet.id }};
+                    const updatedUpvotes = [...previousUpvotes, upVote]
+                    // voteRef.update({ upvotes: updatedUpvotes })
                 }
             })
         }
     }
 
+    //* IMPORTANT: this updates the vote
+    // const upVote = { votedBy: { id: user.uid, name: user.displayName, alreadyVoted: true, betId: bet.id }};
+    // const updatedUpvotes = [...previousUpvotes, upVote]
+    // voteRef.update({ upvotes: updatedUpvotes })
+    //* /IMPORTANT
+    
     const handleDownvote = () => {
         console.log('downvote');
     }
