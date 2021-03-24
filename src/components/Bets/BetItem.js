@@ -51,12 +51,19 @@ const BetItem = ({ bet, index, showCount, history }) => {
             voteRef.get().then(doc => {
                 if (doc.exists) {
                     //! Attempt 32,392
+                    const votedDudes = [];
                     const previousUpvotes = doc.data().upvotes;
 
                     if (Boolean(previousUpvotes.length)) {
                         console.log('there are previous upvotes');
                         // ? NOTES: below is what i need to figure out. I need to map previousUpvotes but it breaks - go line by line to fix
-                        console.log('check', previousUpvotes[0].votedBy.name);
+                        // ? Possibly use for loop
+                        for (let i = 0; i < previousUpvotes.length; i++) {
+                            let hasVoted = previousUpvotes[i].votedBy.alreadyVoted;
+                            if (hasVoted) {
+                                console.log('you have voted');
+                            }
+                        }
                     } else {
                         console.log('no previous upvotes');
                     }
