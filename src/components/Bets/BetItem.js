@@ -59,8 +59,8 @@ const BetItem = ({ bet, index, showCount, history }) => {
 
                             console.log('previous votes', previousUpvotes);
                             console.log('only prev vote by', previousUpvotes[i]);
-                            if (user.uid === prevVotedBy.id) {
-                                console.log('swal is fired');
+                            console.log('double check this', prevVotedBy.alreadyVoted)
+                            if (user.uid === prevVotedBy.id && prevVotedBy.alreadyVoted) {
                                 Swal.fire({
                                     imageUrl: 'https://media.giphy.com/media/TkCyizr5RDDyyvDk3a/giphy.gif',
                                     title: `you can only vote once, ${user.displayName}!`,
@@ -68,7 +68,6 @@ const BetItem = ({ bet, index, showCount, history }) => {
                                     timer: 3500
                                 });
                             } else {
-                                console.log('update votes hits - SHOULD NOT SEE THAT ~swal is fired~');
                                 const upVote = { votedBy: { id: user.uid, name: user.displayName, alreadyVoted: true, betId: bet.id }};
                                 const updatedUpvotes = [...previousUpvotes, upVote]
                                 voteRef.update({ upvotes: updatedUpvotes });
