@@ -9,7 +9,7 @@ import AddIcon from '@material-ui/icons/Add';
 import './bets.scss';
 
 const BetsLists = (props) => {
-	const { firebase } = useContext(FirebaseContext);
+	const { firebase, user } = useContext(FirebaseContext);
 	const [bets, setBets] = useState([]);
 
 	useEffect(() => {
@@ -17,7 +17,7 @@ const BetsLists = (props) => {
 	}, []);
 	
 	const getBets = () => {
-		firebase.db.collection('bets').onSnapshot(handleSnapshot)
+		firebase.db.collection('bets').orderBy('created', 'asc').onSnapshot(handleSnapshot)
 	}
 
 	const handleSnapshot = (snapshot) => {

@@ -10,7 +10,6 @@ import Swal from 'sweetalert2';
 const BetItem = ({ bet, index, showCount, history }) => {
     const { firebase, user } = useContext(FirebaseContext);
     const [toggle, setToggle] = useState(false);
-    const [disableVote, setDisableVote] = useState(false);
     const { multipleSelectValue, dateCompletion, created, betDetails, postedBy, betTerms, cashAmount, mealPriceLimit, betRestaurant, betOther, upvotes } = bet;
 
     const postedByAuthUser = user && user.uid === bet.postedBy.id;
@@ -50,44 +49,33 @@ const BetItem = ({ bet, index, showCount, history }) => {
             voteRef.get().then(doc => {
                 if (doc.exists) {
                     const previousUpvotes = doc.data().upvotes;
-                    const upVote = { votedBy: { id: user.uid, name: user.displayName }};
-                    const updatedUpvotes = [...previousUpvotes, upVote]
-                    voteRef.update({ upvotes: updatedUpvotes })
+                    const allChallengers = doc.data().multipleSelectValue;
+                    if (Boolean(previousUpvotes.length)) {
+                        for (let i = 0; i < previousUpvotes.length; i++) {
+                            let prevVotedBy = previousUpvotes[i].votedBy;
+                            if (user.uid === prevVotedBy.id && prevVotedBy.alreadyVoted) {
+                                Swal.fire({
+                                    imageUrl: 'https://media.giphy.com/media/TkCyizr5RDDyyvDk3a/giphy.gif',
+                                    title: `you can only vote once, ${user.displayName}!`,
+                                    showConfirmButton: false,
+                                    timer: 3500
+                                });
+                            } else if (previousUpvotes.length < allChallengers.length) {
+                                const upVote = { votedBy: { id: user.uid, name: user.displayName, alreadyVoted: true, betId: bet.id }};
+                                const updatedUpvotes = [...previousUpvotes, upVote]
+                                voteRef.update({ upvotes: updatedUpvotes });
+                            }
+                        }
+                    } else {
+                        const upVote = { votedBy: { id: user.uid, name: user.displayName, alreadyVoted: true, betId: bet.id }};
+                        const updatedUpvotes = [...previousUpvotes, upVote]
+                        voteRef.update({ upvotes: updatedUpvotes });
+                    }
                 }
-
-                //! Construction Zone - NO MULTIPLE VOTES BY USER
-                // if (doc.exists) {
-                //     // TODO Tidy this up
-                //     //! This is just wrong on so many levels - I need the user ID or else this is dangerous but I'm tired and going with it for now
-                //     if (user.uid !== postedBy.id && multipleSelectValue.includes(user.displayName)) {
-                //         // const previousUpvotes = doc.data().upvotes;
-                //         // const haveYouVoted = previousUpvotes.find(previousUpvote => previousUpvote && previousUpvote.votedBy && previousUpvote.votedBy.id ? previousUpvote.votedBy.id : 'nope')
-                //         console.log('haveyouvoted');
-                //         //! This doesn't work - all sorts of broken
-                //         // if (user.uid !== haveYouVoted && haveYouVoted !== 'nope') {
-                //         //     const upvote = { votedBy: { id: user.uid, name: user.displayName }};
-                //         //     const updatedUpvotes = [...previousUpvotes, upvote];
-                //         //     voteRef.update({ upvotes: updatedUpvotes });
-                //         // } 
-                //         // else {
-                //         //     Swal.fire({
-                //         //         imageUrl: 'https://media.giphy.com/media/TkCyizr5RDDyyvDk3a/giphy.gif',
-                //         //         title: `you can only vote once, ${user.displayName}!`,
-                //         //         showConfirmButton: false,
-                //         //         timer: 3500
-                //         //     })
-                //         // }
-                //     // } else {
-                //     //     // TODO Tidy this up
-                //     //     //* Add popover or something
-                //     //     setDisableVote(true);
-                //     // }
-                // }
-                //! End Construction Zone
             })
         }
     }
-
+    
     const handleDownvote = () => {
         console.log('downvote');
     }
@@ -138,8 +126,8 @@ const BetItem = ({ bet, index, showCount, history }) => {
                         </p>
                     </div>
                     {!postedByAuthUser ? (
-                        <div className='bet-voting'>
-                            <div className={`voting bet-approval ${disableVote && 'disabled'}`} onClick={handleUpvote}><i className='far fa-thumbs-up fa-2x'></i></div>
+                        <div className={`bet-voting ${!multipleSelectValue.includes(user.displayName) && 'disabled'}`}>
+                            <div className='voting bet-approval' onClick={handleUpvote}><i className='far fa-thumbs-up fa-2x'></i></div>
                             <div className='voting bet-rejection' onClick={handleDownvote}><i className='far fa-thumbs-down fa-2x'></i></div>
                         </div>
                     ) : (
@@ -149,7 +137,6 @@ const BetItem = ({ bet, index, showCount, history }) => {
                                 className='cancel-bet-area'
                                 color='secondary'
                                 onClick={handleDeleteBet}
-                                // startIcon={<BlockIcon />}
                             >
                                 Cancel Bet
                             </Button>
@@ -157,12 +144,12 @@ const BetItem = ({ bet, index, showCount, history }) => {
                     )}
                 </div>
                 <div
-                    className='more-details'
+                    className={`more-details ${!multipleSelectValue.includes(user.displayName) && 'adjusted-more-details'}`}
                     onClick={() => setToggle(!toggle)}
                 >
                     More Details
                 </div>
-                <div className={`more-details-container ${toggle ? 'show' : ''}`}>
+                <div className={`more-details-container ${!multipleSelectValue.includes(user.displayName) && 'adjusted-more-details-container'} ${toggle ? 'show' : ''}`}>
                     <div className='created-date'>
                         created: {formatDate(created)}
                     </div>
