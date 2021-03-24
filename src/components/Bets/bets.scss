@@ -112,10 +112,7 @@
             min-width: 42px;
             padding: 0 10px;
 
-            &.disabled {
-                cursor: not-allowed;
-                display: none;
-            }
+            &.disabled { display: none; }
 
             .voting {
                 cursor: pointer;
