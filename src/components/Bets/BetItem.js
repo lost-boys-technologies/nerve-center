@@ -50,21 +50,21 @@ const BetItem = ({ bet, index, showCount, history }) => {
                 if (doc.exists) {
                     const previousUpvotes = doc.data().upvotes;
                     const allChallengers = doc.data().multipleSelectValue;
-                    if (Boolean(previousUpvotes.length)) {
-                        for (let i = 0; i < previousUpvotes.length; i++) {
-                            let prevVotedBy = previousUpvotes[i].votedBy;
-                            if (user.uid === prevVotedBy.id && prevVotedBy.alreadyVoted) {
-                                Swal.fire({
-                                    imageUrl: 'https://media.giphy.com/media/TkCyizr5RDDyyvDk3a/giphy.gif',
-                                    title: `you can only vote once, ${user.displayName}!`,
-                                    showConfirmButton: false,
-                                    timer: 3500
-                                });
-                            } else if (previousUpvotes.length < allChallengers.length) {
-                                const upVote = { votedBy: { id: user.uid, name: user.displayName, alreadyVoted: true, betId: bet.id }};
-                                const updatedUpvotes = [...previousUpvotes, upVote]
-                                voteRef.update({ upvotes: updatedUpvotes });
-                            }
+                    const currentTakers = previousUpvotes.map((currentUpVote) => currentUpVote.votedBy.id);
+
+                    if (Boolean(currentTakers.length)) {
+                        if (currentTakers.includes(user.uid)) {
+                            Swal.fire({
+                                imageUrl: 'https://media.giphy.com/media/TkCyizr5RDDyyvDk3a/giphy.gif',
+                                title: `you can only vote once, ${user.displayName}!`,
+                                showConfirmButton: false,
+                                timer: 3500
+                            });
+                            return;
+                        } else if (previousUpvotes.length < allChallengers.length) {
+                            const upVote = { votedBy: { id: user.uid, name: user.displayName, alreadyVoted: true, betId: bet.id }};
+                            const updatedUpvotes = [...previousUpvotes, upVote]
+                            voteRef.update({ upvotes: updatedUpvotes });
                         }
                     } else {
                         const upVote = { votedBy: { id: user.uid, name: user.displayName, alreadyVoted: true, betId: bet.id }};
