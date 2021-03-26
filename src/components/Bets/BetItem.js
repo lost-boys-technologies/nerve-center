@@ -75,20 +75,6 @@ const BetItem = ({ bet, index, showCount, history }) => {
             })
         }
     }
-    
-    const handleDownvote = () => {
-        console.log('downvote');
-    }
-
-    const splitChallengers = (challengers) => {
-        if (challengers.length > 1) {
-            let names = challengers.map((challenger) => challenger);
-            let finalName = names.pop();
-            return names.length ? names.join(', ') + ' and ' + finalName : finalName
-        }
-
-        return challengers;
-    }
 
     const handleDeleteBet = () => {
         Swal.fire({
@@ -110,6 +96,18 @@ const BetItem = ({ bet, index, showCount, history }) => {
             }
         })
     }
+
+    const splitChallengers = (challengers) => {
+        if (challengers.length > 1) {
+            let names = challengers.map((challenger) => challenger);
+            let finalName = names.pop();
+            return names.length ? names.join(', ') + ' and ' + finalName : finalName
+        }
+
+        return challengers;
+    }
+
+    const acceptedTakers = upvotes.map((acceptedTaker) => acceptedTaker.votedBy.name)
 
     return (
         <div className='bet-item-container'>
@@ -159,6 +157,14 @@ const BetItem = ({ bet, index, showCount, history }) => {
                     <div className='bet-terms-container'>
                         <span className='bet-title'>Bet Terms</span>
                         <span className='bet-details'>{displayBetTerms()}</span>
+                    </div>
+                    <div className='bet-takers-container'>
+                        <span className='bet-title'>Agreed Takers</span>
+                        {acceptedTakers.length > 0 ? (
+                            <span className='bet-details'>{splitChallengers(acceptedTakers)}</span>
+                        ) : (
+                            <span className='bet-details'>No Takers Yet!</span>
+                        )}
                     </div>
                 </div>
             </div>
