@@ -128,7 +128,6 @@ const BetItem = ({ bet, index, showCount, history }) => {
                     {!postedByAuthUser ? (
                         <div className={`bet-voting ${!multipleSelectValue.includes(user.displayName) && 'disabled'}`}>
                             <div className='voting bet-approval' onClick={handleUpvote}><i className='far fa-thumbs-up fa-2x'></i></div>
-                            <div className='voting bet-rejection' onClick={handleDownvote}><i className='far fa-thumbs-down fa-2x'></i></div>
                         </div>
                     ) : (
                         <div className='non-bet-voting'>
