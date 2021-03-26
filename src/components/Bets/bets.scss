@@ -123,11 +123,6 @@
             .voting {
                 cursor: pointer;
                 padding: 6px;
-
-                &.bet-approval {
-                    border-bottom: 1px solid $cyan-blue-color;
-                    // padding: 0 0 10px 0;
-                }
             }
         }
 
