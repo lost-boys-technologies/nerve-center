@@ -50,31 +50,23 @@ const BetItem = ({ bet, index, showCount, history }) => {
                 if (doc.exists) {
                     const previousUpvotes = doc.data().upvotes;
                     const allChallengers = doc.data().multipleSelectValue;
-                    if (Boolean(previousUpvotes.length)) {
-                        for (let i = 0; i < previousUpvotes.length; i++) {
-                            let prevVotedBy = previousUpvotes[i].votedBy;
-                            
-                            console.log('length check', previousUpvotes.length < allChallengers.length);
-                            console.log('already voted', !prevVotedBy.alreadyVoted);
+                    const currentTakers = previousUpvotes.map((currentUpVote) => currentUpVote.votedBy.id);
 
-                            if (user.uid === prevVotedBy.id && prevVotedBy.alreadyVoted) {
-                                Swal.fire({
-                                    imageUrl: 'https://media.giphy.com/media/TkCyizr5RDDyyvDk3a/giphy.gif',
-                                    title: `you can only vote once, ${user.displayName}!`,
-                                    showConfirmButton: false,
-                                    timer: 3500
-                                });
-                                console.log('!prevVotedBy.alreadyVoted', !prevVotedBy.alreadyVoted)
-                            } else if (previousUpvotes.length < allChallengers.length) {
-                                // TODO Something I can do is maybe map over the list and insure the length of prevVotedBy.id is < 1 or something
-                                console.log('first location');
-                                const upVote = { votedBy: { id: user.uid, name: user.displayName, alreadyVoted: true, betId: bet.id }};
-                                const updatedUpvotes = [...previousUpvotes, upVote]
-                                voteRef.update({ upvotes: updatedUpvotes });
-                            }
+                    if (Boolean(currentTakers.length)) {
+                        if (currentTakers.includes(user.uid)) {
+                            Swal.fire({
+                                imageUrl: 'https://media.giphy.com/media/TkCyizr5RDDyyvDk3a/giphy.gif',
+                                title: `you can only vote once, ${user.displayName}!`,
+                                showConfirmButton: false,
+                                timer: 3500
+                            });
+                            return;
+                        } else if (previousUpvotes.length < allChallengers.length) {
+                            const upVote = { votedBy: { id: user.uid, name: user.displayName, alreadyVoted: true, betId: bet.id }};
+                            const updatedUpvotes = [...previousUpvotes, upVote]
+                            voteRef.update({ upvotes: updatedUpvotes });
                         }
                     } else {
-                        console.log('second location');
                         const upVote = { votedBy: { id: user.uid, name: user.displayName, alreadyVoted: true, betId: bet.id }};
                         const updatedUpvotes = [...previousUpvotes, upVote]
                         voteRef.update({ upvotes: updatedUpvotes });
