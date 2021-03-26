@@ -160,7 +160,7 @@
 
             &.show {
                 //! Work out this approach
-                height: 150px;
+                height: 175px;
             }
 
             .created-date {
@@ -191,6 +191,12 @@
             }
 
             .bet-terms-container {
+                display: flex;
+                flex-direction: column;
+                flex-wrap: wrap;
+            }
+
+            .bet-takers-container {
                 display: flex;
                 flex-direction: column;
                 flex-wrap: wrap;
