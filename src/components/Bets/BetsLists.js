@@ -17,7 +17,7 @@ const BetsLists = (props) => {
 	}, []);
 	
 	const getBets = () => {
-		firebase.db.collection('bets').orderBy('created', 'asc').onSnapshot(handleSnapshot)
+		firebase.db.collection('bets').orderBy('approvalPeriod', 'asc').onSnapshot(handleSnapshot)
 	}
 
 	const handleSnapshot = (snapshot) => {
