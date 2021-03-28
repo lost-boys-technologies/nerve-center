@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import FirebaseContext from '../../firebase/context';
+import Countdown from '../../utils/Countdown';
 
 import Button from '@material-ui/core/Button';
 import BlockIcon from '@material-ui/icons/Block';
@@ -22,133 +23,124 @@ const BetItem = ({ bet, index, showCount, history }) => {
         return perfectDate
     }
 
-    const countdown = (period) => {
-        let daysAway = 0;
-        switch (period) {
-            case '1 day':
-                daysAway = 1;
-                break;
-            case '2 days':
-                daysAway = 2;
-                break;
-            case '3 days':
-                daysAway = 3;
-                break;
-            case '1 week':
-                daysAway = 7;
-                break;
-            default:
-                break;
-        }
+//     const countdown = (period) => {
+//         let daysAway = 0;
+//         switch (period) {
+//             case '1 day':
+//                 daysAway = 1;
+//                 break;
+//             case '2 days':
+//                 daysAway = 2;
+//                 break;
+//             case '3 days':
+//                 daysAway = 3;
+//                 break;
+//             case '1 week':
+//                 daysAway = 7;
+//                 break;
+//             default:
+//                 break;
+//         }
+
+//         // const Timer = ({ seconds }) => {
+//         //     // initialize timeLeft with the seconds prop
+//         //     const [timeLeft, setTimeLeft] = useState(seconds);
+          
+//         //     useEffect(() => {
+//         //       // exit early when we reach 0
+//         //       if (!timeLeft) return;
+          
+//         //       // save intervalId to clear the interval when the
+//         //       // component re-renders
+//         //       const intervalId = setInterval(() => {
+//         //         setTimeLeft(timeLeft - 1);
+//         //       }, 1000);
+          
+//         //       // clear interval on re-render to avoid memory leaks
+//         //       return () => clearInterval(intervalId);
+//         //       // add timeLeft as a dependency to re-rerun the effect
+//         //       // when we update it
+//         //     }, [timeLeft]);
+          
+//         //     return timeLeft;
+//         // };
+
+//         // let endDate = new Date();
+//         // const compareDate = endDate.setDate(endDate.getDate() + daysAway);
+//         // console.log(compareDate - created);
+//         // console.log('compare', compareDate);
+//         // console.log('created', created);
 
 
-        //* Pulling in code from my old iteration of this app
-        const secondsInADay = 86400;
-		const convertedBetTerm = secondsInADay * daysAway;
-		const calculatedStartDate = created + convertedBetTerm;
-		const timeSince = new Date().getTime() / 1000;
-		const betTermInSeconds = calculatedStartDate - timeSince;
-        console.log('bet terms in seconds', betTermInSeconds);
-
-        // const Timer = ({ seconds }) => {
-        //     // initialize timeLeft with the seconds prop
-        //     const [timeLeft, setTimeLeft] = useState(seconds);
+//         // let timer = setInterval(function() {
+//         //     timeBetweenDates(compareDate);
+//         //   }, 1000);
           
-        //     useEffect(() => {
-        //       // exit early when we reach 0
-        //       if (!timeLeft) return;
+//         //   function timeBetweenDates(toDate) {
+//         //     var dateEntered = toDate;
+//         //     var now = new Date();
+//         //     var difference = dateEntered.getTime() - now.getTime();
           
-        //       // save intervalId to clear the interval when the
-        //       // component re-renders
-        //       const intervalId = setInterval(() => {
-        //         setTimeLeft(timeLeft - 1);
-        //       }, 1000);
+//         //     if (difference <= 0) {
           
-        //       // clear interval on re-render to avoid memory leaks
-        //       return () => clearInterval(intervalId);
-        //       // add timeLeft as a dependency to re-rerun the effect
-        //       // when we update it
-        //     }, [timeLeft]);
-          
-        //     return timeLeft;
-        // };
-
-        // let endDate = new Date();
-        // const compareDate = endDate.setDate(endDate.getDate() + daysAway);
-        // console.log(compareDate - created);
-        // console.log('compare', compareDate);
-        // console.log('created', created);
-
-
-        // let timer = setInterval(function() {
-        //     timeBetweenDates(compareDate);
-        //   }, 1000);
-          
-        //   function timeBetweenDates(toDate) {
-        //     var dateEntered = toDate;
-        //     var now = new Date();
-        //     var difference = dateEntered.getTime() - now.getTime();
-          
-        //     if (difference <= 0) {
-          
-        //       // Timer done
-        //       clearInterval(timer);
+//         //       // Timer done
+//         //       clearInterval(timer);
             
-        //     } else {
+//         //     } else {
               
-        //       var seconds = Math.floor(difference / 1000);
-        //       var minutes = Math.floor(seconds / 60);
-        //       var hours = Math.floor(minutes / 60);
-        //       var days = Math.floor(hours / 24);
+//         //       var seconds = Math.floor(difference / 1000);
+//         //       var minutes = Math.floor(seconds / 60);
+//         //       var hours = Math.floor(minutes / 60);
+//         //       var days = Math.floor(hours / 24);
           
-        //       hours %= 24;
-        //       minutes %= 60;
-        //       seconds %= 60;
+//         //       hours %= 24;
+//         //       minutes %= 60;
+//         //       seconds %= 60;
           
-        //       console.log(days);
-        //       console.log(hours);
-        //       console.log(minutes);
-        //       console.log(seconds);
-        //     }
-        //   }
+//         //       console.log(days);
+//         //       console.log(hours);
+//         //       console.log(minutes);
+//         //       console.log(seconds);
+//         //     }
+//         //   }
 
 
-        /**
-         * 
-         * timer = setInterval(function() {
-  timeBetweenDates(compareDate);
-}, 1000);
+//         /**
+//          * 
+//          * timer = setInterval(function() {
+//   timeBetweenDates(compareDate);
+// }, 1000);
 
-function timeBetweenDates(toDate) {
-  var dateEntered = toDate;
-  var now = new Date();
-  var difference = dateEntered.getTime() - now.getTime();
+// function timeBetweenDates(toDate) {
+//   var dateEntered = toDate;
+//   var now = new Date();
+//   var difference = dateEntered.getTime() - now.getTime();
 
-  if (difference <= 0) {
+//   if (difference <= 0) {
 
-    // Timer done
-    clearInterval(timer);
+//     // Timer done
+//     clearInterval(timer);
   
-  } else {
+//   } else {
     
-    var seconds = Math.floor(difference / 1000);
-    var minutes = Math.floor(seconds / 60);
-    var hours = Math.floor(minutes / 60);
-    var days = Math.floor(hours / 24);
+//     var seconds = Math.floor(difference / 1000);
+//     var minutes = Math.floor(seconds / 60);
+//     var hours = Math.floor(minutes / 60);
+//     var days = Math.floor(hours / 24);
 
-    hours %= 24;
-    minutes %= 60;
-    seconds %= 60;
+//     hours %= 24;
+//     minutes %= 60;
+//     seconds %= 60;
 
-    $("#days").text(days);
-    $("#hours").text(hours);
-    $("#minutes").text(minutes);
-    $("#seconds").text(seconds);
-  }
-}
-         * 
-         */
-    }
+//     $("#days").text(days);
+//     $("#hours").text(hours);
+//     $("#minutes").text(minutes);
+//     $("#seconds").text(seconds);
+//   }
+// }
+//          * 
+//          */
+//     }
 
     const displayBetTerms = () => {
         switch (betTerms) {
@@ -243,7 +235,7 @@ function timeBetweenDates(toDate) {
                 <div className={`bet-card ${postedByAuthUser && 'no-vote'}`}>
                     <div className='bet-time-limit'>
                         {/* {formatDate(dateCompletion)} */}
-                        {countdown(approvalPeriod)}
+                        {Countdown(approvalPeriod, bet)}
                     </div>
                     <span className='divider' />
                     <div className='bet-challenger'>
