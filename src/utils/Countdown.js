@@ -52,15 +52,15 @@ const Countdown = (period, bet) => {
                 return;
             }
 
-            // TODO need to tidy up this experience (including timer-container and timer)
             timerComponents.push(
             <span className='timer'>
-                {timeLeft[interval]} - {interval}
+                <span className='number'>{timeLeft[interval]}</span> <span className='time'>{interval}</span>
             </span>
             );
         });
         return (
             <span className="timer-container">
+                Time Left
                 {timerComponents.length ? timerComponents : <span>Time's up!</span>}
             </span>
         );

@@ -60,19 +60,29 @@
             align-items: center;
             border-right: 1px solid $cyan-blue-color;
             padding: 20px;
-
-            //! Temporary? See TODO from Countdown.js
-            width: 200px;
+            width: 80px;
 
             .timer-container {
-                border: 1px solid red;
                 display: flex;
                 flex-direction: column;
-                align-items: center;
+                color: $cyan-blue-color;
 
                 .timer {
-                    text-align: center;
-                    // padding: 10px;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    font-size: 22px;
+
+                    .number {
+                        text-align: center;
+                        width: 30px;
+                        padding: 0 5px 0 0;
+                    }
+
+                    .time {
+                        display: flex;
+                        font-size: 12px;
+                    }
                 }
             }
         }
@@ -96,17 +106,12 @@
             justify-content: space-between;
             background-color: $white-color-opaque;
             border: 1px solid $cyan-blue-color;
-
-            //! Temporary? See TODO from Countdown.js
-            height: 100px;
+            height: 130px;
 
             &.no-vote {
                 margin: 0 -1 0;
                 border-top-right-radius: 4px;
             }
-
-            // //! Might want to get rid of this
-            // &.adjusted-vote { width: 390px; }
 
             .non-bet-voting {
                 display: flex;
