@@ -60,6 +60,31 @@
             align-items: center;
             border-right: 1px solid $cyan-blue-color;
             padding: 20px;
+            width: 80px;
+
+            .timer-container {
+                display: flex;
+                flex-direction: column;
+                color: $cyan-blue-color;
+
+                .timer {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    font-size: 22px;
+
+                    .number {
+                        text-align: center;
+                        width: 30px;
+                        padding: 0 5px 0 0;
+                    }
+
+                    .time {
+                        display: flex;
+                        font-size: 12px;
+                    }
+                }
+            }
         }
 
         .bet-challenger {
@@ -81,14 +106,12 @@
             justify-content: space-between;
             background-color: $white-color-opaque;
             border: 1px solid $cyan-blue-color;
+            height: 130px;
 
             &.no-vote {
                 margin: 0 -1 0;
                 border-top-right-radius: 4px;
             }
-
-            // //! Might want to get rid of this
-            // &.adjusted-vote { width: 390px; }
 
             .non-bet-voting {
                 display: flex;

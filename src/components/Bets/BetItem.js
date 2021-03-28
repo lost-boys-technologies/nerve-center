@@ -1,6 +1,7 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import FirebaseContext from '../../firebase/context';
+import Countdown from '../../utils/Countdown';
 
 import Button from '@material-ui/core/Button';
 import BlockIcon from '@material-ui/icons/Block';
@@ -10,7 +11,7 @@ import Swal from 'sweetalert2';
 const BetItem = ({ bet, index, showCount, history }) => {
     const { firebase, user } = useContext(FirebaseContext);
     const [toggle, setToggle] = useState(false);
-    const { multipleSelectValue, dateCompletion, created, betDetails, postedBy, betTerms, cashAmount, mealPriceLimit, betRestaurant, betOther, upvotes } = bet;
+    const { multipleSelectValue, dateCompletion, approvalPeriod, created, betDetails, postedBy, betTerms, cashAmount, mealPriceLimit, betRestaurant, betOther, upvotes } = bet;
 
     const postedByAuthUser = user && user.uid === bet.postedBy.id;
     // TODO Move this to a utils
@@ -115,7 +116,7 @@ const BetItem = ({ bet, index, showCount, history }) => {
                 <div className={`bet-card ${postedByAuthUser && 'no-vote'}`}>
                     <div className='bet-time-limit'>
                         {/* {formatDate(dateCompletion)} */}
-                        <span>Upvotes: {upvotes.length}</span>
+                        {Countdown(approvalPeriod, bet)}
                     </div>
                     <span className='divider' />
                     <div className='bet-challenger'>
