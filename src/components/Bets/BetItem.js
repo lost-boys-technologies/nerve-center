@@ -93,7 +93,12 @@ const BetItem = ({ bet, index, showCount, history }) => {
                 }).catch(err => {
                 console.error('Error deleting document:', err);
                 })
-                Swal.fire('Deleted!', '', 'success')
+                Swal.fire({
+                    title: 'Deleted!',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 1000
+                })
             }
         })
     }
