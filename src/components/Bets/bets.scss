@@ -60,7 +60,21 @@
             align-items: center;
             border-right: 1px solid $cyan-blue-color;
             padding: 20px;
-            width: 140px;
+
+            //! Temporary? See TODO from Countdown.js
+            width: 200px;
+
+            .timer-container {
+                border: 1px solid red;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                .timer {
+                    text-align: center;
+                    // padding: 10px;
+                }
+            }
         }
 
         .bet-challenger {
@@ -82,6 +96,9 @@
             justify-content: space-between;
             background-color: $white-color-opaque;
             border: 1px solid $cyan-blue-color;
+
+            //! Temporary? See TODO from Countdown.js
+            height: 100px;
 
             &.no-vote {
                 margin: 0 -1 0;

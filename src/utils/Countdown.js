@@ -27,10 +27,10 @@ const Countdown = (period, bet) => {
 
         if (difference > 0) {
         timeLeft = {
-            d: Math.floor(difference / (1000 * 60 * 60 * 24)),
-            h: Math.floor((difference / (1000 * 60 * 60)) % 24),
-            m: Math.floor((difference / 1000 / 60) % 60),
-            s: Math.floor((difference / 1000) % 60),
+            days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+            hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+            minutes: Math.floor((difference / 1000 / 60) % 60),
+            seconds: Math.floor((difference / 1000) % 60),
         };
     }
 
@@ -52,16 +52,17 @@ const Countdown = (period, bet) => {
                 return;
             }
 
+            // TODO need to tidy up this experience (including timer-container and timer)
             timerComponents.push(
-            <span>
-                {timeLeft[interval]} {interval}{" "}
+            <span className='timer'>
+                {timeLeft[interval]} - {interval}
             </span>
             );
         });
         return (
-            <>
+            <span className="timer-container">
                 {timerComponents.length ? timerComponents : <span>Time's up!</span>}
-            </>
+            </span>
         );
 }
 
