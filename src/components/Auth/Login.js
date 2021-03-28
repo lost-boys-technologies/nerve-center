@@ -5,6 +5,8 @@ import validateLogin from './validateLogin';
 import firebase from '../../firebase';
 import './auth.scss';
 
+import Button from '@material-ui/core/Button';
+
 const INITIAL_STATE = {
 	name: '',
 	email: '',
@@ -76,16 +78,18 @@ const Login = props => {
 				{errors.password && <p className='error-text'>{errors.password}</p>}
 				{firebaseError && <p className='error-text'>{firebaseError}</p>}
 				<div className='login-buttons'>
-					<button
+					<Button
 						disabled={isSubmitting}
+						size='small'
 						style={{ background: isSubmitting ? 'grey' : '#9FC7D9' }}
 						type='submit'
+						variant='contained'
 					>
 						Submit
-					</button>
-					<button type='button' onClick={() => setLogin(prevLogin => !prevLogin)}>
+					</Button>
+					<Button size='small' type='button' variant='contained' onClick={() => setLogin(prevLogin => !prevLogin)}>
 						{login ? 'Need to create and account?' : 'Already have an account?'}
-					</button>
+					</Button>
 				</div>
 			</form>
 			{login ? (
@@ -93,19 +97,18 @@ const Login = props => {
 					<Link to='/forgot'>Need Help?</Link>
 				</div>
 			) : ''}
-			<div className='google-login'>
+			{/* <div className='google-login'>
 				<button
-					// onClick={firebase.loginByGoogle}
+					onClick={firebase.loginByGoogle}
 					type='button'
 				>
-					{/* // TODO Update Google Login Option - need to focus on other things first */}
 					<img
 						src='https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg'
 						alt='logo'
 					/>
 					Sign in With Google
 				</button>
-			</div>
+			</div> */}
 		</div>
 	);
 };
