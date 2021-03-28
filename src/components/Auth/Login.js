@@ -97,19 +97,18 @@ const Login = props => {
 					<Link to='/forgot'>Need Help?</Link>
 				</div>
 			) : ''}
-			<div className='google-login'>
+			{/* <div className='google-login'>
 				<button
-					// onClick={firebase.loginByGoogle}
+					onClick={firebase.loginByGoogle}
 					type='button'
 				>
-					{/* // TODO Update Google Login Option - need to focus on other things first */}
 					<img
 						src='https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg'
 						alt='logo'
 					/>
 					Sign in With Google
 				</button>
-			</div>
+			</div> */}
 		</div>
 	);
 };

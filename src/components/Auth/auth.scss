@@ -6,7 +6,7 @@
     flex-direction: column;
     justify-content: center;
     margin: 0 auto;
-    padding: 0 0 30px;
+    height: 300px;
     align-items: center;
 	background-color: $white-color-opaque;
 	opacity: 0.85;
@@ -52,6 +52,8 @@
 		margin: 0 auto;
 		text-align: center;
 	}
+
+	.forgot-password { margin: 10px 0 0 0; }
 
 	.forgot-password > a {
 		color: $cyan-blue-color;
