@@ -22,17 +22,6 @@ const BetsLists = (props) => {
 	}
 
 	const handleSnapshot = (snapshot) => {
-
-		//! Works
-		// const bets = snapshot.docs.map(doc => {
-		// 	console.log('dock', doc); // contains a doc.id
-		// 	console.log('doc.id', doc.id); // 
-		// 	return { id: doc.id, ...doc.data() }
-		// })
-		setBets(bets);
-		//! /Works
-
-		//! Approach I want
 		let actives = [];
 		let pending = [];
 
@@ -62,38 +51,6 @@ const BetsLists = (props) => {
 				pending.push({ id: docu.id, ...docu.data() });
 			}
 		}
-		//! /Approach I want
-
-		//! One approach
-		// const bets = snapshot.docs.map(doc => {
-		// 	let away;
-		// 	switch (doc.data().approvalPeriod) {
-		// 		case '1 day':
-		// 			away = 1;
-		// 			break;
-		// 		case '2 days':
-		// 			away = 2;
-		// 			break;
-		// 		case '3 days':
-		// 			away = 3;
-		// 			break;
-		// 		case '1 week':
-		// 			away = 7;
-		// 			break;
-		// 		default:
-		// 			break;
-		// 	}
-
-		// 	if (doc.data().created + away * 24 * 60 * 60 * 1000 < new Date()) {
-		// 		// return setActiveBets({ id: doc.id, ...doc.data() });
-		// 		console.log('hit');
-		// 	}
-		// 	return { id: doc.id, ...doc.data() }
-		// })
-		// console.log('bets', bets);
-		// setBets(bets);
-		//! /One approach
-
 		setActiveBets(actives);
 		setBets(pending);
 	}
