@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import FirebaseContext from '../../firebase/context';
 import { Link } from 'react-router-dom';
 import BetItem from './BetItem';
+import ActiveBetItem from './ActiveBetItem';
 // import CreateBet from './CreateBet';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
@@ -62,16 +63,16 @@ const BetsLists = (props) => {
 					<Button variant='contained' endIcon={<AddIcon />}>Create Bet</Button>
 				</Link>
 			</div>
-			<div className='pending-bets'>
+			<div className='bets pending-bets'>
 				<h3>Pending Bets</h3>
 				{bets.map((bet, index) => (
 					<BetItem key={bet.id} showCount={true} bet={bet} index={index + 1} />
 				))}
 			</div>
-			<div className='active-bets'>
+			<div className='bets active-bets'>
 				<h3>Active Bets</h3>
 				{activeBets.map((bet, index) => (
-					<BetItem key={bet.id} showCount={true} bet={bet} index={index + 1} />
+					<ActiveBetItem key={bet.id} showCount={true} bet={bet} index={index + 1} />
 				))}
 			</div>
 		</div>

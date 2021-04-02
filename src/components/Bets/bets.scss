@@ -19,29 +19,17 @@
         .create-bet-link { text-decoration: none; }
     }
 
-    .pending-bets {
+    .bets {
         display: flex;
         flex-direction: column;
         flex-basis: 50%;
     }
 
-    .active-bets {
-        display: flex;
-        flex-direction: column;
-        flex-basis: 50%;
-
-        //! Temporary
-        span {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: $white-color-opaque;
-            color: $red-color;
-            font-size: 50px;
-            text-align: center;
-            height: 100%;
-        }
-    }
+    // .active-bets {
+    //     display: flex;
+    //     flex-direction: column;
+    //     flex-basis: 50%;
+    // }
 }
 
 // Bet Item Container
