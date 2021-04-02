@@ -1,24 +1,6 @@
-import React, { useEffect, useContext, useState } from "react";
-import FirebaseContext from '../../firebase/context';
+import React, { useEffect, useState } from "react";
 
 const BetCountdown = (period, bet) => {
-    const { firebase, user } = useContext(FirebaseContext);
-
-    const activateBet = () => {
-        const voteRef = firebase.db.collection('bets').doc(bet.id);
-        console.log('voteRef', voteRef);
-        voteRef.get().then(doc => {
-            if (doc.exists) {
-                const previousUpvotes = doc.data().upvotes;
-                // const allChallengers = doc.data().multipleSelectValue;
-                // const currentTakers = previousUpvotes.map((currentUpVote) => currentUpVote.votedBy.id);
-                const upVote = { votedBy: { id: user.uid, name: user.displayName, alreadyVoted: true, betId: bet.id }};
-                const updatedUpvotes = [...previousUpvotes, upVote];
-                voteRef.update({ upvotes: updatedUpvotes });
-            }
-        })
-    }
-
     const calculateTimeLeft = () => {
     let daysAway;
         switch (period) {

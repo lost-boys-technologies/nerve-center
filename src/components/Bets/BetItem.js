@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import FirebaseContext from '../../firebase/context';
-import Countdown from './BetCountdown';
+import Countdown from '../../utils/Countdown';
 
 import Button from '@material-ui/core/Button';
 
@@ -119,7 +119,6 @@ const BetItem = ({ bet, index, showCount, history }) => {
             <div className='full-bet-card'>
                 <div className={`bet-card ${postedByAuthUser && 'no-vote'}`}>
                     <div className='bet-time-limit'>
-                        {/* {formatDate(dateCompletion)} */}
                         {Countdown(approvalPeriod, bet)}
                     </div>
                     <span className='divider' />

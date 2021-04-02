@@ -70,7 +70,6 @@ const BetsLists = (props) => {
 			</div>
 			<div className='active-bets'>
 				<h3>Active Bets</h3>
-				{/* <span>THIS SECTION IS A WORK IN PROGRESS</span> */}
 				{activeBets.map((bet, index) => (
 					<BetItem key={bet.id} showCount={true} bet={bet} index={index + 1} />
 				))}
