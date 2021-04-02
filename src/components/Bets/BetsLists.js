@@ -22,34 +22,49 @@ const BetsLists = (props) => {
 	}
 
 	const handleSnapshot = (snapshot) => {
-		// for (var i = 0; i < snapshot.docs.length; i++) {
-		// 	const doc = snapshot.docs[i].data();
-		// 	let away;
-		// 	switch (doc.approvalPeriod) {
-		// 		case '1 day':
-		// 			away = 1;
-		// 			break;
-		// 		case '2 days':
-		// 			away = 2;
-		// 			break;
-		// 		case '3 days':
-		// 			away = 3;
-		// 			break;
-		// 		case '1 week':
-		// 			away = 7;
-		// 			break;
-		// 		default:
-		// 			break;
-		// 	}
-			
-		// 	if (doc.created + away * 24 * 60 * 60 * 1000 < new Date()) {
-		// 		setActiveBets({ id: doc.id, ...doc });
-		// 		// console.log('hit');
-		// 	} else {
-		// 		setBets({ id: doc.id, ...doc });
-		// 	}
-		// }
 
+		//! Works
+		// const bets = snapshot.docs.map(doc => {
+		// 	console.log('dock', doc); // contains a doc.id
+		// 	console.log('doc.id', doc.id); // 
+		// 	return { id: doc.id, ...doc.data() }
+		// })
+		setBets(bets);
+		//! /Works
+
+		//! Approach I want
+		let actives = [];
+		let pending = [];
+
+		for (var i = 0; i < snapshot.docs.length; i++) {
+			const docu = snapshot.docs[i];
+			let away;
+			switch (docu.data().approvalPeriod) {
+				case '1 day':
+					away = 1;
+					break;
+				case '2 days':
+					away = 2;
+					break;
+				case '3 days':
+					away = 3;
+					break;
+				case '1 week':
+					away = 7;
+					break;
+				default:
+					break;
+			}
+
+			if (docu.data().created + away * 24 * 60 * 60 * 1000 < new Date()) {
+				actives.push({ id: docu.id, ...docu.data() });
+			} else {
+				pending.push({ id: docu.id, ...docu.data() });
+			}
+		}
+		//! /Approach I want
+
+		//! One approach
 		// const bets = snapshot.docs.map(doc => {
 		// 	let away;
 		// 	switch (doc.data().approvalPeriod) {
@@ -77,13 +92,12 @@ const BetsLists = (props) => {
 		// })
 		// console.log('bets', bets);
 		// setBets(bets);
-		const bets = snapshot.docs.map(doc => {
-			return { id: doc.id, ...doc.data() }
-		})
-		setBets(bets);
+		//! /One approach
+
+		setActiveBets(actives);
+		setBets(pending);
 	}
 
-	console.log('activeBets', typeof activeBets);
 	return (
 		<div className='bets-container'>
 			<div className='create-bet-btn'>
@@ -93,21 +107,17 @@ const BetsLists = (props) => {
 			</div>
 			<div className='pending-bets'>
 				<h3>Pending Bets</h3>
-				{/* //! HERE */}
-				{/* // TODO put back in the for loop code that sets these to state and figure out the errors from there */}
 				{bets.map((bet, index) => (
 					<BetItem key={bet.id} showCount={true} bet={bet} index={index + 1} />
 				))}
 			</div>
-			{/* //! Construction Zone */}
 			<div className='active-bets'>
 				<h3>Active Bets</h3>
 				{/* <span>THIS SECTION IS A WORK IN PROGRESS</span> */}
-				{/* {activeBets.map((bet, index) => (
+				{activeBets.map((bet, index) => (
 					<BetItem key={bet.id} showCount={true} bet={bet} index={index + 1} />
-				))} */}
+				))}
 			</div>
-			{/* //! End Construction Zone */}
 		</div>
 	);
 };
