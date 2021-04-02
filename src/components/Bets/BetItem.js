@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import FirebaseContext from '../../firebase/context';
-import Countdown from '../../utils/Countdown';
+import Countdown from './BetCountdown';
 
 import Button from '@material-ui/core/Button';
-import BlockIcon from '@material-ui/icons/Block';
 
 import Swal from 'sweetalert2';
 
