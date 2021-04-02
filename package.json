@@ -25,7 +25,8 @@
 		"react-scripts": "^4.0.1",
 		"ssri": "^8.0.1",
 		"sweetalert2": "^10.0.2",
-		"sweetalert2-react-content": "^3.2.0"
+		"sweetalert2-react-content": "^3.2.0",
+		"y18n": "^5.0.5"
 	},
 	"scripts": {
 		"start": "react-scripts start",
