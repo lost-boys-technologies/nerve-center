@@ -13,6 +13,8 @@ const BetItem = ({ bet, index, showCount, history }) => {
     const { multipleSelectValue, dateCompletion, approvalPeriod, created, betDetails, postedBy, betTerms, cashAmount, mealPriceLimit, betRestaurant, betOther, upvotes } = bet;
 
     const postedByAuthUser = user && user.uid === bet.postedBy.id;
+    const acceptedTakers = upvotes.map((acceptedTaker) => acceptedTaker.votedBy.name);
+
     // TODO Move this to a utils
     const formatDate = (date) => {
         let cleanDate = new Date(date).toISOString().replace(/T.*/,'').split('-')
@@ -112,8 +114,6 @@ const BetItem = ({ bet, index, showCount, history }) => {
         return challengers;
     }
 
-    const acceptedTakers = upvotes.map((acceptedTaker) => acceptedTaker.votedBy.name)
-
     return (
         <div className='bet-item-container'>
             <div className='full-bet-card'>
@@ -129,7 +129,7 @@ const BetItem = ({ bet, index, showCount, history }) => {
                     </div>
                     {!postedByAuthUser ? (
                         <div className={`bet-voting ${!multipleSelectValue.includes(user.displayName) && 'disabled'}`}>
-                            <div className='voting bet-approval' onClick={handleUpvote}><i className='far fa-thumbs-up fa-2x'></i></div>
+                            <div className='voting bet-approval' onClick={handleUpvote}>{acceptedTakers.includes(user.displayName) ? <i class="fas fa-check fa-2x"></i> : <i className='far fa-thumbs-up fa-2x'></i>}</div>
                         </div>
                     ) : (
                         <div className='non-bet-voting'>

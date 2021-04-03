@@ -53,7 +53,6 @@ const ActiveBetItem = ({ bet, index, showCount, history }) => {
 
     const acceptedTakers = upvotes.map((acceptedTaker) => acceptedTaker.votedBy.name)
 
-    console.log('datecompletion', dateCompletion);
     return (
         <div className='bet-item-container'>
             <div className='full-bet-card'>
