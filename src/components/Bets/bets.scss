@@ -19,7 +19,13 @@
         .create-bet-link { text-decoration: none; }
     }
 
-    .bets {
+    .pending-bets {
+        display: flex;
+        flex-direction: column;
+        flex-basis: 50%;
+    }
+
+    .active-bets {
         display: flex;
         flex-direction: column;
         flex-basis: 50%;
@@ -110,7 +116,7 @@
                 display: flex;
                 justify-content: center;
                 font-size: 30px;
-                width: 400px;
+                // width: 400px;
 
                 p { font-size: 25px; }
             }
@@ -244,7 +250,7 @@
     }
 
     .fa-thumbs-up { color: $cyan-color; }
-    .fa-thumbs-down { color: $flat-red; }
+    .fa-check { color: $green-color; }
 }
 
 // Create Bet Container
