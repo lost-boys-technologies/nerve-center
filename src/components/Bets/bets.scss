@@ -24,12 +24,6 @@
         flex-direction: column;
         flex-basis: 50%;
     }
-
-    // .active-bets {
-    //     display: flex;
-    //     flex-direction: column;
-    //     flex-basis: 50%;
-    // }
 }
 
 // Bet Item Container
@@ -75,6 +69,28 @@
             }
         }
 
+        .bet-status {
+            display: flex;
+            align-items: center;
+            border-right: 1px solid $cyan-blue-color;
+            padding: 20px;
+            font-weight: 700;
+            width: 90px;
+
+            .completed { color: $green-color }
+            .in-progress {
+                color: $flat-red;
+                animation: flicker 1s linear infinite;
+                text-align:center;
+            }
+        }
+
+        @keyframes flicker {
+            50% {
+                opacity: 0;
+            }
+        }
+
         .bet-challenger {
             display: flex;
             align-items: center;
@@ -84,8 +100,16 @@
             margin: 0 auto;
             color: $cyan-blue-color;
 
-            span {
-                font-weight: 700;
+            p { font-size: 16px; }
+            span { font-weight: 700; }
+
+            &.accepted {
+                display: flex;
+                justify-content: center;
+                font-size: 30px;
+                width: 400px;
+
+                p { font-size: 25px; }
             }
         }
 

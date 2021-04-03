@@ -53,13 +53,18 @@ const ActiveBetItem = ({ bet, index, showCount, history }) => {
 
     const acceptedTakers = upvotes.map((acceptedTaker) => acceptedTaker.votedBy.name)
 
+    console.log('datecompletion', dateCompletion);
     return (
         <div className='bet-item-container'>
             <div className='full-bet-card'>
                 <div className={`bet-card ${postedByAuthUser && 'no-vote'}`}>
-                    <div className='bet-challenger'>
+                    <div className='bet-status'>
+                        {new Date() < +new Date(dateCompletion) ? <span className='completed'>Completed</span> : <span className='in-progress'>In Progress</span>}
+                    </div>
+                    <span className='divider' />
+                    <div className='bet-challenger accepted'>
                         <p>
-                            <span>{postedBy.name}</span> is challenging <span>{splitChallengers(multipleSelectValue)}</span>
+                            {splitChallengers(multipleSelectValue)} accepted {postedBy.name}'s bet.
                         </p>
                     </div>
                 </div>
