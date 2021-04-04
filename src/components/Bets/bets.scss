@@ -32,6 +32,22 @@
     }
 }
 
+// Rejected Bets Container
+.rejected-bets-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    h3 { color: $white-color; }
+
+    .rejected-bets {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
 // Bet Item Container
 .bet-item-container {
     display: flex;
@@ -77,17 +93,23 @@
 
         .bet-status {
             display: flex;
+            justify-content: center;
             align-items: center;
             border-right: 1px solid $cyan-blue-color;
             padding: 20px;
             font-weight: 700;
-            width: 90px;
+            min-width: 90px;
 
             .completed { color: $green-color }
             .in-progress {
                 color: $flat-red;
                 animation: flicker 1s linear infinite;
                 text-align:center;
+            }
+            .rejected {
+                text-align: center;
+                color: $red-color;
+                font-weight: 700;
             }
         }
 
@@ -116,7 +138,7 @@
                 display: flex;
                 justify-content: center;
                 font-size: 30px;
-                // width: 400px;
+                width: auto;
 
                 p { font-size: 25px; }
             }

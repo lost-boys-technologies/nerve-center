@@ -1,13 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import FirebaseContext from '../../firebase/context';
-import Countdown from '../../utils/Countdown';
 
-import Button from '@material-ui/core/Button';
-
-import Swal from 'sweetalert2';
-
-const ActiveBetItem = ({ bet, index, showCount, history }) => {
+const RejectedBetItem = ({ bet, index, showCount, history }) => {
     const { firebase, user } = useContext(FirebaseContext);
     const [toggle, setToggle] = useState(false);
     const { multipleSelectValue, dateCompletion, approvalPeriod, created, betDetails, postedBy, betTerms, cashAmount, mealPriceLimit, betRestaurant, betOther, upvotes } = bet;
@@ -58,12 +53,11 @@ const ActiveBetItem = ({ bet, index, showCount, history }) => {
             <div className='full-bet-card'>
                 <div className={`bet-card ${postedByAuthUser && 'no-vote'}`}>
                     <div className='bet-status'>
-                        {new Date() < +new Date(dateCompletion) ? <span className='completed'>Completed</span> : <span className='in-progress'>In Progress</span>}
+                    <span className='rejected'>REJECTED!</span>
                     </div>
-                    <span className='divider' />
                     <div className='bet-challenger accepted'>
                         <p>
-                            {splitChallengers(acceptedTakers)} accepted {postedBy.name}'s bet.
+                            {postedBy.name}'s bet was rejected by {splitChallengers(multipleSelectValue)}, that's embarassing...
                         </p>
                     </div>
                 </div>
@@ -99,4 +93,4 @@ const ActiveBetItem = ({ bet, index, showCount, history }) => {
     )
 }
 
-export default withRouter(ActiveBetItem);
+export default withRouter(RejectedBetItem);
