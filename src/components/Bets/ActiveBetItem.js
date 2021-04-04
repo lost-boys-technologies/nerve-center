@@ -63,12 +63,12 @@ const ActiveBetItem = ({ bet, index, showCount, history }) => {
                     <span className='divider' />
                     <div className='bet-challenger accepted'>
                         <p>
-                            {splitChallengers(multipleSelectValue)} accepted {postedBy.name}'s bet.
+                            {splitChallengers(acceptedTakers)} accepted {postedBy.name}'s bet.
                         </p>
                     </div>
                 </div>
                 <div
-                    className={`more-details ${!multipleSelectValue.includes(user.displayName) && 'adjusted-more-details'}`}
+                    className='more-details adjusted-more-details'
                     onClick={() => setToggle(!toggle)}
                 >
                     More Details
