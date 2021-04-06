@@ -74,14 +74,6 @@ const RejectedBetItem = ({ bet, index, showCount, history }) => {
                         <div className='created-date'>
                             created: {formatDate(created)}
                         </div>
-                        <div className='bet-summary-container'>
-                            <span className='bet-title'>Summary of Bet</span>
-                            <span className='bet-details'>{betDetails}</span>
-                        </div>
-                        <div className='bet-terms-container'>
-                            <span className='bet-title'>Bet Terms</span>
-                            <span className='bet-details'>{displayBetTerms()}</span>
-                        </div>
                         <div className='bet-takers-container'>
                             <span className='bet-title'>Agreed Takers</span>
                             {acceptedTakers.length > 0 ? (
@@ -89,6 +81,14 @@ const RejectedBetItem = ({ bet, index, showCount, history }) => {
                             ) : (
                                 <span className='bet-details'>No Takers Yet!</span>
                             )}
+                        </div>
+                        <div className='bet-terms-container'>
+                            <span className='bet-title'>Bet Terms</span>
+                            <span className='bet-details'>{displayBetTerms()}</span>
+                        </div>
+                        <div className='bet-summary-container'>
+                            <span className='bet-title'>Summary of Bet</span>
+                            <span className='bet-details'>{betDetails}</span>
                         </div>
                     </div>
                 </Collapse>
