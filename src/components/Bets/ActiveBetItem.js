@@ -73,7 +73,7 @@ const ActiveBetItem = ({ bet, index, showCount, history }) => {
                 >
                     More Details
                 </div>
-                <div className={`more-details-container ${!multipleSelectValue.includes(user.displayName) && 'adjusted-more-details-container'} ${toggle ? 'show' : ''}`}>
+                <div className={`more-details-container accepted ${toggle ? 'show' : ''}`}>
                     <div className='created-date'>
                         created: {formatDate(created)}
                     </div>
