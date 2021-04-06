@@ -3,7 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import FirebaseContext from '../../firebase/context';
 import Countdown from '../../utils/Countdown';
 
-import Button from '@material-ui/core/Button';
+import Collapse from '@material-ui/core/Collapse';
 
 import Swal from 'sweetalert2';
 
@@ -68,32 +68,34 @@ const ActiveBetItem = ({ bet, index, showCount, history }) => {
                     </div>
                 </div>
                 <div
-                    className='more-details adjusted-more-details'
+                    className={`more-details ${!multipleSelectValue.includes(user.displayName) && 'adjusted-more-details'}`}
                     onClick={() => setToggle(!toggle)}
                 >
                     More Details
                 </div>
-                <div className={`more-details-container accepted ${toggle ? 'show' : ''}`}>
-                    <div className='created-date'>
-                        created: {formatDate(created)}
+                <Collapse in={toggle}>
+                    <div className={`more-details-container ${!multipleSelectValue.includes(user.displayName) && 'adjusted-more-details-container'}`}>
+                        <div className='created-date'>
+                            created: {formatDate(created)}
+                        </div>
+                        <div className='bet-summary-container'>
+                            <span className='bet-title'>Summary of Bet</span>
+                            <span className='bet-details'>{betDetails}</span>
+                        </div>
+                        <div className='bet-terms-container'>
+                            <span className='bet-title'>Bet Terms</span>
+                            <span className='bet-details'>{displayBetTerms()}</span>
+                        </div>
+                        <div className='bet-takers-container'>
+                            <span className='bet-title'>Agreed Takers</span>
+                            {acceptedTakers.length > 0 ? (
+                                <span className='bet-details'>{splitChallengers(acceptedTakers)}</span>
+                            ) : (
+                                <span className='bet-details'>No Takers Yet!</span>
+                            )}
+                        </div>
                     </div>
-                    <div className='bet-summary-container'>
-                        <span className='bet-title'>Summary of Bet</span>
-                        <span className='bet-details'>{betDetails}</span>
-                    </div>
-                    <div className='bet-terms-container'>
-                        <span className='bet-title'>Bet Terms</span>
-                        <span className='bet-details'>{displayBetTerms()}</span>
-                    </div>
-                    <div className='bet-takers-container'>
-                        <span className='bet-title'>Agreed Takers</span>
-                        {acceptedTakers.length > 0 ? (
-                            <span className='bet-details'>{splitChallengers(acceptedTakers)}</span>
-                        ) : (
-                            <span className='bet-details'>No Takers Yet!</span>
-                        )}
-                    </div>
-                </div>
+                </Collapse>
             </div>
         </div>
     )

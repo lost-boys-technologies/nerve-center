@@ -214,9 +214,9 @@
             flex-direction: column;
             background-color: $cyan-blue-color;
             color: $ivory-color;
-            transition: height 1s ease;
+            transition: height 1s ease; //! this
             margin: 0 65px 0 0;
-            height: 0;
+            height: auto;
             overflow: hidden;
 
             border-right: 1px solid $cyan-blue-color;
@@ -224,11 +224,6 @@
             border-left: 1px solid $cyan-blue-color;
 
             &.adjusted-more-details-container { margin: 0; }
-
-            &.show {
-                //! Work out this approach
-                height: 175px;
-            }
 
             .created-date {
                 display: flex;
