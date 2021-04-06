@@ -225,8 +225,6 @@
             border-bottom: 1px solid $cyan-blue-color;
             border-left: 1px solid $cyan-blue-color;
 
-            &.adjusted-more-details-container { margin: 0; }
-
             .created-date {
                 display: flex;
                 justify-content: flex-end;
@@ -261,6 +259,8 @@
                 flex-direction: column;
                 flex-wrap: wrap;
                 width: 450px;
+
+                &.rejected { width: auto; }
             }
 
             .bet-takers-container {
@@ -270,7 +270,14 @@
                 width: 200px;
             }
 
+            &.adjusted-more-details-container { margin: 0; }
+
             &.accepted { margin: 0; }
+
+            &.rejected {
+                position: relative;
+                margin: 0;
+            }
         }
     }
 
@@ -409,6 +416,13 @@
                 width: 289px;
                 margin: 0 0 0 18px;
             }
+        }
+
+        .bet-terms-container-rejected {
+            border: 1px solid red;
+            display: flex;
+            justify-content: flex-start;
+            padding: 5px 10px 0 0;
         }
 
         .bet-timelines {
