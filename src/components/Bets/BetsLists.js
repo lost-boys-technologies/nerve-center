@@ -68,7 +68,7 @@ const BetsLists = (props) => {
 			<div className='bets-container'>
 				<div className='create-bet-btn'>
 					<Link className='create-bet-link' to='/create'>
-						<Button variant='contained' endIcon={<AddIcon />}>Create Bet</Button>
+						<Button variant='contained' className='btn' endIcon={<AddIcon />}>Create Bet</Button>
 					</Link>
 				</div>
 				<div className='bets pending-bets'>

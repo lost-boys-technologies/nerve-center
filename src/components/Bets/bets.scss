@@ -13,10 +13,12 @@
 
     .create-bet-btn {
         position: absolute;
-        top: 56.5px;
+        top: 70px;
         right: 20px;
 
         .create-bet-link { text-decoration: none; }
+
+        .btn { background-color: $gold-color; }
     }
 
     .pending-bets {
