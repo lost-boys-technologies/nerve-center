@@ -212,9 +212,11 @@
         .more-details-container {
             display: flex;
             flex-direction: column;
-            background-color: $cyan-blue-color;
+            // background-color: $cyan-blue-color;
+            // background: linear-gradient(to top right, $cyan-blue-color 60%, #4574AD 60%);
+            background: linear-gradient(13deg, $cyan-blue-color 60%, $cyan-color);
             color: $ivory-color;
-            transition: height 1s ease; //! this
+            padding: 25px 10px 5px 10px;
             margin: 0 65px 0 0;
             height: auto;
             overflow: hidden;
