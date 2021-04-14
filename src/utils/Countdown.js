@@ -11,10 +11,10 @@ const Countdown = (period, bet) => {
 
             if (difference > 0) {
                 timeLeft = {
-                    // months: Math.floor(difference / (1000 * 60 * 60 * 24 * 31)),
+                    months: Math.floor(difference / (1000 * 60 * 60 * 24 * 31)),
                     days: Math.floor(difference / (1000 * 60 * 60 * 24)),
                     hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-                    minutes: Math.floor((difference / 1000 / 60) % 60),
+                    // minutes: Math.floor((difference / 1000 / 60) % 60),
                     // seconds: Math.floor((difference / 1000) % 60),
                 };
             }
