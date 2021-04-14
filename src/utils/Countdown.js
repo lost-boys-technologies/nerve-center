@@ -10,13 +10,25 @@ const Countdown = (period, bet) => {
             difference = +new Date(bet.dateCompletion) - +new Date();
 
             if (difference > 0) {
-                timeLeft = {
-                    months: Math.floor(difference / (1000 * 60 * 60 * 24 * 31)),
-                    days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-                    hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-                    minutes: Math.floor((difference / 1000 / 60) % 60),
-                    // seconds: Math.floor((difference / 1000) % 60),
-                };
+
+                // console.log('months', difference / (1000 * 60 * 60 * 24 * 31));
+                if (Math.floor(difference / (1000 * 60 * 60 * 24 * 31)) > 0) {
+                    timeLeft = {
+                        // months: Math.floor(difference / (1000 * 60 * 60 * 24 * 31)),
+                        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+                        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+                        minutes: Math.floor((difference / 1000 / 60) % 60),
+                        // seconds: Math.floor((difference / 1000) % 60),
+                    };
+                } else {
+                    timeLeft = {
+                        months: Math.floor(difference / (1000 * 60 * 60 * 24 * 31)),
+                        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+                        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+                        // minutes: Math.floor((difference / 1000 / 60) % 60),
+                        // seconds: Math.floor((difference / 1000) % 60),
+                    };
+                }
             }
         } else {
             switch (period) {

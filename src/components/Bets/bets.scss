@@ -144,15 +144,13 @@
                     }
                 }
             }
+        }
 
-            &.accepted {
-                justify-content: flex-end;
-                flex-basis: 50%;
-                padding: 0;
-                width: auto;
-
-                span { color: $white-color; }
-            }
+        .accepted-bet-time-limit {
+            position: relative;
+            bottom: 10px;
+            left: 250px;
+            color: $white-color;
         }
 
         .bet-status {

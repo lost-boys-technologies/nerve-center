@@ -58,7 +58,7 @@ const ActiveBetItem = ({ bet, index, showCount, history }) => {
             <div className='full-bet-card'>
                 <div className={`bet-card ${postedByAuthUser && 'no-vote'}`}>
                     <div className='bet-status'>
-                        {new Date() < +new Date(dateCompletion) ? <span className='completed'>Completed</span> : <span className='in-progress'>In Progress</span>}
+                        {new Date() > +new Date(dateCompletion) ? <span className='completed'>Completed</span> : <span className='in-progress'>In Progress</span>}
                     </div>
                     <div className='bet-challenger accepted'>
                         <p>
@@ -74,7 +74,7 @@ const ActiveBetItem = ({ bet, index, showCount, history }) => {
                 </div>
                 <Collapse in={toggle}>
                     <div className={`more-details-container ${!multipleSelectValue.includes(user.displayName) && 'adjusted-more-details-container'}`}>
-                        <div className='bet-time-limit accepted'>
+                        <div className='accepted-bet-time-limit'>
                             {Countdown(false, bet)}
                         </div>
                         <div className='bet-takers-container'>
