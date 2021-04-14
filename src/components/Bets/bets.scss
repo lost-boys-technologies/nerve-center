@@ -17,6 +17,8 @@
         right: 20px;
 
         .create-bet-link { text-decoration: none; }
+
+        .btn { background-color: $gold-color; }
     }
 
     .pending-bets {
@@ -89,6 +91,11 @@
                     }
                 }
             }
+        }
+
+        .accepted-bet-time {
+            display: flex;
+            justify-content: flex-end;
         }
 
         .bet-status {
@@ -212,23 +219,16 @@
         .more-details-container {
             display: flex;
             flex-direction: column;
-            background-color: $cyan-blue-color;
+            background: linear-gradient(13deg, $cyan-blue-color 60%, $cyan-color);
             color: $ivory-color;
-            transition: height 1s ease;
+            padding: 25px 10px 5px 10px;
             margin: 0 65px 0 0;
-            height: 0;
+            height: auto;
             overflow: hidden;
 
             border-right: 1px solid $cyan-blue-color;
             border-bottom: 1px solid $cyan-blue-color;
             border-left: 1px solid $cyan-blue-color;
-
-            &.adjusted-more-details-container { margin: 0; }
-
-            &.show {
-                //! Work out this approach
-                height: 175px;
-            }
 
             .created-date {
                 display: flex;
@@ -244,6 +244,8 @@
 
             .bet-details {
                 padding: 0 0 5px 10px;
+
+                
             }
 
             .bet-summary-container {
@@ -261,12 +263,25 @@
                 display: flex;
                 flex-direction: column;
                 flex-wrap: wrap;
+                // width: 450px;
+
+                &.rejected { width: auto; }
             }
 
             .bet-takers-container {
                 display: flex;
                 flex-direction: column;
                 flex-wrap: wrap;
+                width: 200px;
+            }
+
+            &.adjusted-more-details-container { margin: 0; }
+
+            &.accepted { margin: 0; }
+
+            &.rejected {
+                position: relative;
+                margin: 0;
             }
         }
     }
@@ -406,6 +421,13 @@
                 width: 289px;
                 margin: 0 0 0 18px;
             }
+        }
+
+        .bet-terms-container-rejected {
+            border: 1px solid red;
+            display: flex;
+            justify-content: flex-start;
+            padding: 5px 10px 0 0;
         }
 
         .bet-timelines {
