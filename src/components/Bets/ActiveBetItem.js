@@ -67,15 +67,15 @@ const ActiveBetItem = ({ bet, index, showCount, history }) => {
                     </div>
                 </div>
                 <div
-                    className={`more-details ${!multipleSelectValue.includes(user.displayName) && 'adjusted-more-details'}`}
+                    className='more-details adjusted-more-details'
                     onClick={() => setToggle(!toggle)}
                 >
                     More Details
                 </div>
                 <Collapse in={toggle}>
-                    <div className={`more-details-container ${!multipleSelectValue.includes(user.displayName) && 'adjusted-more-details-container'}`}>
-                        <div className='bet-time-limit accepted'>
-                            {Countdown(false, bet)}
+                    <div className='more-details-container adjusted-more-details-container'>
+                        <div className='accepted-bet-time'>
+                            Ends In:&nbsp; {Countdown(false, bet)}
                         </div>
                         <div className='bet-takers-container'>
                             <span className='bet-title'>Agreed Takers</span>
