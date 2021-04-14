@@ -13,7 +13,7 @@
 
     .create-bet-btn {
         position: absolute;
-        top: 70px;
+        top: 56.5px;
         right: 20px;
 
         .create-bet-link { text-decoration: none; }
@@ -214,8 +214,6 @@
         .more-details-container {
             display: flex;
             flex-direction: column;
-            // background-color: $cyan-blue-color;
-            // background: linear-gradient(to top right, $cyan-blue-color 60%, #4574AD 60%);
             background: linear-gradient(13deg, $cyan-blue-color 60%, $cyan-color);
             color: $ivory-color;
             padding: 25px 10px 5px 10px;
@@ -260,7 +258,7 @@
                 display: flex;
                 flex-direction: column;
                 flex-wrap: wrap;
-                width: 450px;
+                // width: 450px;
 
                 &.rejected { width: auto; }
             }
