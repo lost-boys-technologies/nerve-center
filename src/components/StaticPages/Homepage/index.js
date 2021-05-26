@@ -40,13 +40,16 @@ const Homepage = () => {
     });
 
 	return (
-		<div className='homepage-container'>
+		<>
+			<div className='homepage-container'>
+				<h1>Welcome to Garbage Time Fantasy</h1>
+			</div>
 			<Paper className='paper-container' elevation={3}>
 				<div className='countdown-container'>
 					{timerComponents}
 				</div>
 			</Paper>
-		</div>
+		</>
 	);
 };
 
