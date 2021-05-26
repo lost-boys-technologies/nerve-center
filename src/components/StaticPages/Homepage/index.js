@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Paper from '@material-ui/core/Paper';
 
 import './homepage.scss';
 
@@ -40,10 +41,11 @@ const Homepage = () => {
 
 	return (
 		<div className='homepage-container'>
-			<h2>Homepage</h2>
-			<div className='countdown-container'>
-				{timerComponents}
-			</div>
+			<Paper className='paper-container' elevation={3}>
+				<div className='countdown-container'>
+					{timerComponents}
+				</div>
+			</Paper>
 		</div>
 	);
 };

@@ -2,31 +2,41 @@
 
 .homepage-container {
     
-    .countdown-container {
+    .paper-container {
         display: flex;
-        flex-direction: column;
-        color: $cyan-blue-color;
-        font-size: 50px;
+        justify-content: center;
+        width: 800px;
+        height: 600px;
+        margin: 50px auto;
 
-        .timer {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            font-size: 50px;
-            font-size: 22px;
-
-            .number {
-                font-size: 50px;
-                text-align: center;
-                width: 30px;
-                padding: 0 5px 0 0;
-            }
-
-            .time {
-                font-size: 50px;
-                display: flex;
-                font-size: 12px;
+        .countdown-container {
+            // flex-direction: row;
+            // width: 850px;
+            // margin: 0 auto;
+            // color: $cyan-blue-color;
+            // font-size: 50px;
+    
+            .timer {
+                // display: flex;
+                // flex-direction: row;
+                // align-items: center;
+                // font-size: 50px;
+                // font-size: 22px;
+    
+                // .number {
+                //     font-size: 50px;
+                //     text-align: center;
+                //     width: 30px;
+                //     padding: 0 5px 0 0;
+                // }
+    
+                // .time {
+                //     font-size: 50px;
+                //     display: flex;
+                //     font-size: 12px;
+                // }
             }
         }
+
     }
 }
