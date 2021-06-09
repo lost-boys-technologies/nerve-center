@@ -1,38 +1,43 @@
 @import '../../../variables.scss';
 
 .homepage-container {
-    display: flex;
-    height: 200px;
-    background-image: linear-gradient($cyan-blue-color, $cyan-color);
-    border-bottom-left-radius: 20% 30%;
-
-    h1 {
-        margin: 50px auto;
-        font-size: 60px;
-        color: $white-color;
-    }
+    margin: 20px 100px;
+    // display: flex;
+    // flex-direction: column;
 }
 
 .paper-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    width: 800px;
-    height: 600px;
-    margin: 60px auto;
+    padding: 30px 50px;
+    // display: flex;
+    // justify-content: center;
+    // width: 800px;
+    // height: 600px;
+    // margin: 60px auto;
+
+    .title {
+        display: flex;
+        justify-content: center;
+        margin: 20px 0;
+        font-size: 40px;
+    }
 
     .countdown-container {
+        display: flex;
         flex-direction: row;
-        width: 850px;
         margin: 0 auto;
         color: $cyan-blue-color;
         font-size: 50px;
+        min-width: 760px;
 
         .timer {
             display: flex;
             flex-direction: row;
             align-items: center;
             font-size: 50px;
-            font-size: 22px;
+            padding: 0 22px; 
 
             .number {
                 font-size: 50px;
@@ -44,7 +49,8 @@
             .time {
                 font-size: 50px;
                 display: flex;
-                font-size: 12px;
+                font-size: 30px;
+                margin-left: 25px;
             }
         }
     }

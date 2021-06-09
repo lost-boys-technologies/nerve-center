@@ -41,14 +41,14 @@ const Homepage = () => {
 
 	return (
 		<>
-			<div className='homepage-container'>
-				<h1>Welcome to Garbage Time Fantasy</h1>
+			<div className='homepage-container'>				
+				<Paper className='paper-container' elevation={3}>
+					<div className='title'>Draft Begins In:</div>
+					<div className='countdown-container'>
+						{timerComponents}
+					</div>
+				</Paper>
 			</div>
-			<Paper className='paper-container' elevation={3}>
-				<div className='countdown-container'>
-					{timerComponents}
-				</div>
-			</Paper>
 		</>
 	);
 };

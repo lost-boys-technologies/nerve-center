@@ -14,7 +14,6 @@ import CreateBet from './Bets/CreateBet';
 import Members from './StaticPages/Members';
 import Homepage from './StaticPages/Homepage';
 import Constitution from './StaticPages/Constitution';
-import Rules from './StaticPages/Rules';
 import Account from './StaticPages/Account';
 // import NotFound from './StaticPages/404';
 
@@ -31,12 +30,11 @@ const App = () => {
 				</div>
 				<div className='route-container'>
 					<Switch>
-						<Route exact path='/' component={Homepage} render={() => <Redirect to='' />} />
 						{user && (
 							<React.Fragment>
+								<Route exact path='/' component={Homepage} render={() => <Redirect to='' />} />
 								<Route path='/members' component={Members} />
 								<Route path='/constitution' component={Constitution} />
-								<Route path='/rules' component={Rules} />
 								<Route path='/bets' component={BetsLists} />
 								<Route path='/create' component={CreateBet} />
 								<Route path='/account' component={Account} />
