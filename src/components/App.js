@@ -10,11 +10,13 @@ import firebase, { FirebaseContext } from '../firebase';
 import BetsLists from './Bets/BetsLists';
 import CreateBet from './Bets/CreateBet';
 
+// My Account
+import Account from './Account';
+
 // Static Pages
 import Members from './StaticPages/Members';
 import Homepage from './StaticPages/Homepage';
 import Constitution from './StaticPages/Constitution';
-import Account from './StaticPages/Account';
 // import NotFound from './StaticPages/404';
 
 import './App.scss';
