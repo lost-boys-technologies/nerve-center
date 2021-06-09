@@ -1,0 +1,51 @@
+@import '../../../variables.scss';
+
+.homepage-container {
+    margin: 20px 100px;
+}
+
+.paper-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px 50px;
+
+    .title {
+        display: flex;
+        justify-content: center;
+        margin: 20px 0;
+        font-size: 40px;
+    }
+
+    .countdown-container {
+        display: flex;
+        flex-direction: row;
+        margin: 0 auto;
+        color: $cyan-blue-color;
+        font-size: 50px;
+        min-width: 760px;
+
+        .timer {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            font-size: 50px;
+            padding: 0 22px; 
+
+            .number {
+                font-size: 50px;
+                text-align: center;
+                width: 30px;
+                padding: 0 5px 0 0;
+            }
+
+            .time {
+                font-size: 50px;
+                display: flex;
+                font-size: 30px;
+                margin-left: 25px;
+            }
+        }
+    }
+
+}
