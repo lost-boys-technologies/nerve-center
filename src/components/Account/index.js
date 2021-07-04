@@ -16,14 +16,19 @@ const Account = () => {
 		<div className='my-account-container'>
 			<paper>
 				<Grid container spacing={3}>
-					<Grid item xs={4}>
+					<Grid item xs={5}>
 						<div className='card left-side-bar'>
-							User: {user.displayName}<br />
-							Email: {user.email}<br />
-							Member Since: {user.metadata.creationTime}<br />
+							<div className='profile-picture'>
+								<img alt='user profile' src='https://fakeimg.pl/300/' />
+							</div>
+							<div className='player-details'>
+								User: {user.displayName}<br />
+								Email: {user.email}<br />
+								Member Since: {user.metadata.creationTime}<br />
+							</div>
 						</div>
 					</Grid>
-					<Grid item xs={8}>
+					<Grid item xs={7}>
 						<div className='card'>xs=12</div>
 					</Grid>
 				</Grid>
