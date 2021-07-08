@@ -6,6 +6,7 @@ import ActiveBetItem from './ActiveBetItem';
 import RejectedBetItem from './RejectedBetItem';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
+import Fab from '@material-ui/core/Fab';
 
 import './bets.scss';
 
@@ -66,11 +67,11 @@ const BetsLists = (props) => {
 	return (
 		<>
 			<div className='bets-container'>
-				<div className='create-bet-btn'>
+				<Fab variant="extended" className='create-bet-btn'>
 					<Link className='create-bet-link' to='/create'>
-						<Button variant='contained' className='btn' endIcon={<AddIcon />}>Create Bet</Button>
+						Create Bet
 					</Link>
-				</div>
+				</Fab>
 				<div className='bets pending-bets'>
 					<h3>Pending Bets</h3>
 					{bets.map((bet, index) => (
