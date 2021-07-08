@@ -12,11 +12,14 @@
     }
 
     .create-bet-btn {
-        position: absolute;
-        top: 56.5px;
+        position: fixed;
+        top: 60px;
         right: 20px;
 
-        .create-bet-link { text-decoration: none; }
+        .create-bet-link {
+            text-decoration: none;
+            color: $cyan-blue-color;
+        }
 
         .btn { background-color: $gold-color; }
     }
