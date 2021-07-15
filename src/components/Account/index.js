@@ -14,25 +14,25 @@ const Account = () => {
 
 	return (
 		<div className='my-account-container'>
-			<paper>
-				<Grid container spacing={3}>
-					<Grid item xs={5}>
-						<div className='card left-side-bar'>
-							<div className='profile-picture'>
-								<img alt='user profile' src='https://fakeimg.pl/300/' />
-							</div>
-							<div className='player-details'>
-								User: {user.displayName}<br />
-								Email: {user.email}<br />
-								Member Since: {user.metadata.creationTime}<br />
-							</div>
-						</div>
-					</Grid>
-					<Grid item xs={7}>
-						<div className='card'>xs=12</div>
-					</Grid>
-				</Grid>
-			</paper>
+			<div className='card left-side-bar' >
+				<div className='profile-picture'>
+					<img alt='user profile' src='https://fakeimg.pl/300/' />
+				</div>
+				<div className='player-details'>
+					<div className='user'>
+						User: {user.displayName}<br />
+					</div>
+					<div className='email'>
+						Email: {user.email}<br />
+					</div>
+					<div className='member-since'>
+						Member Since: {user.metadata.creationTime}<br />
+					</div>
+				</div>
+			</div>
+			<div className='card right-side-bar'>
+				<h2>Right Side</h2>
+			</div>
 		</div>
 	);
 };
