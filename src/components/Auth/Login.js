@@ -27,10 +27,12 @@ const Login = props => {
 
 	async function authenticateUser() {
 		const { name, email, password } = values
+		let admin = false;
+
 		try {
 			login 
 				? await firebase.login(email, password)
-				: await firebase.register(name, email, password)
+				: await firebase.register(name, email, password, admin)
 			props.history.push('/'); 
 			{!login && props.history.go(0);}
 		} catch (err) {
