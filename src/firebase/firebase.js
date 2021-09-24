@@ -16,7 +16,8 @@ class Firebase {
             password
         );
 
-        await this.db.collection('users').doc(newUser.user.uid).set({ uid: newUser.user.uid, name: name, admin: false, bananas: true },{ merge: true });
+        //* NOTE: can use .set method to create any additional data.
+        await this.db.collection('users').doc(newUser.user.uid).set({ uid: newUser.user.uid, name: name, admin: false },{ merge: true });
         // TODO Rewrite logic for email verification and have user logout after registering
         // await this.auth.currentUser.sendEmailVerification();
         return await newUser.user.updateProfile({
