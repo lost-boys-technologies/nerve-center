@@ -13,6 +13,9 @@ import CreateBet from './Bets/CreateBet';
 // My Account
 import Account from './Account';
 
+// Admin
+import Admin from './Admin';
+
 // Static Pages
 import Members from './StaticPages/Members';
 import Homepage from './StaticPages/Homepage';
@@ -40,6 +43,7 @@ const App = () => {
 								<Route path='/bets' component={BetsLists} />
 								<Route path='/create' component={CreateBet} />
 								<Route path='/account' component={Account} />
+								<Route path='/admin' component={Admin} />
 							</React.Fragment>
 						)}
 						<Route path='/login' component={Login} />

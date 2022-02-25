@@ -6,15 +6,20 @@ import './account.scss';
 
 const Account = () => {
 	const { firebase, user } = useContext(FirebaseContext);
-	const [currentUser, setCurrentUser] = useState([])
+	const [currentUser, setCurrentUser] = useState([]);
 
 	useEffect(() => {
         getUsers();
+		getUserBets();
     }, [])
 
 	const getUsers = () => {
         firebase.db.collection('users').onSnapshot(handleSnapshot);
     }
+
+	const getUserBets = () => {
+		firebase.db.collection('bets').orderBy('approvalPeriod', 'asc').onSnapshot(handleSnapshot)
+	}
 
 	// TODO Cleanup with CreateBet.js `handleSnapshot` very similar
 	const handleSnapshot = (snapshot) => {
@@ -22,12 +27,9 @@ const Account = () => {
             return { id: doc?.id, ...doc?.data() }
         });
         const currentUser = users?.filter(filteredUser => filteredUser?.uid === user?.uid);
+
         setCurrentUser(currentUser[0]);
     }
-
-	// TODO Create admin portal to update user details
-	const { admin } = currentUser
-	console.log('admin', admin);
 
 	return (
 		<div className='my-account-container'>

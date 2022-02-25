@@ -11,10 +11,14 @@
 		padding: 0 10px;
 	}
 
-	.nav-link, .user-name {
+	.nav-link, .user-name, .admin {
 		cursor: pointer;
 		color: $ivory-color;
 		text-decoration: none;
+	}
+
+	.admin {
+		color: $red-color;
 	}
 
 	.links-container {

@@ -24,6 +24,12 @@
         .btn { background-color: $gold-color; }
     }
 
+    .no-active-bets {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
     .pending-bets {
         display: flex;
         flex-direction: column;
