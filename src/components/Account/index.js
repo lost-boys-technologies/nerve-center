@@ -18,10 +18,10 @@ const Account = () => {
 
 	// TODO Cleanup with CreateBet.js `handleSnapshot` very similar
 	const handleSnapshot = (snapshot) => {
-        const users = snapshot.docs.map(doc => {
-            return { id: doc.id, ...doc.data() }
+        const users = snapshot?.docs?.map(doc => {
+            return { id: doc?.id, ...doc?.data() }
         });
-        const currentUser = users.filter(filteredUser => filteredUser.uid === user.uid);
+        const currentUser = users?.filter(filteredUser => filteredUser?.uid === user?.uid);
         setCurrentUser(currentUser[0]);
     }
 
