@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FirebaseContext } from '../../firebase';
 
@@ -6,6 +6,9 @@ import './Header.scss';
 
 const Header = () => {
 	const {user, firebase} = React.useContext(FirebaseContext);
+
+	// TODO need to add context with isAdmin
+	const isAdmin = true;
 
 	return (
 		<nav className='nav-link-container'>
@@ -36,6 +39,13 @@ const Header = () => {
 									{user.displayName}
 								</NavLink>
 							</li>
+							{isAdmin && (
+								<li>
+									<NavLink className='admin' to='/admin'>
+										Admin
+									</NavLink>
+								</li>
+							)}
 							<li>
 								<div className='nav-link' onClick={() => firebase.logout()}>
 									logout

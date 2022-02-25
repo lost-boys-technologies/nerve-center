@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom';
 import BetItem from './BetItem';
 import ActiveBetItem from './ActiveBetItem';
 import RejectedBetItem from './RejectedBetItem';
-import Button from '@material-ui/core/Button';
-import AddIcon from '@material-ui/icons/Add';
 import Fab from '@material-ui/core/Fab';
 
 import './bets.scss';
@@ -15,6 +13,8 @@ const BetsLists = (props) => {
 	const [bets, setBets] = useState([]);
 	const [activeBets, setActiveBets] = useState([]);
 	const [rejectedBets, setRejectedBets] = useState([]);
+	const noBets = bets.length <= 0 && activeBets.length <= 0;
+	const noRejectedBets = rejectedBets.length > 0;
 
 	useEffect(() => {
 		getBets();
@@ -72,27 +72,35 @@ const BetsLists = (props) => {
 						Create Bet
 					</Link>
 				</Fab>
-				<div className='bets pending-bets'>
-					<h3>Pending Bets</h3>
-					{bets.map((bet, index) => (
-						<BetItem key={bet.id} showCount={true} bet={bet} index={index + 1} />
-					))}
-				</div>
-				<div className='bets active-bets'>
-					<h3>Active Bets</h3>
-					{activeBets.map((bet, index) => (
-						<ActiveBetItem key={bet.id} showCount={true} bet={bet} index={index + 1} />
-					))}
-				</div>
+				{noBets ? (
+					<h3 className='no-active-bets'>No Active Bets</h3>
+				) : (
+					<>
+						<div className='bets pending-bets'>
+							<h3>Pending Bets</h3>
+							{bets.map((bet, index) => (
+								<BetItem key={bet.id} showCount={true} bet={bet} index={index + 1} />
+							))}
+						</div>
+						<div className='bets active-bets'>
+							<h3>Active Bets</h3>
+							{activeBets.map((bet, index) => (
+								<ActiveBetItem key={bet.id} showCount={true} bet={bet} index={index + 1} />
+							))}
+						</div>
+					</>
+				)}
 			</div>
-			<div className='rejected-bets-container'>
-				<div className='rejected-bets'>
-					<h3>Rejected Bets</h3>
-					{rejectedBets.map((bet, index) => (
-						<RejectedBetItem key={bet.id} showCount={true} bet={bet} index={index + 1} />
-					))}
+			{noRejectedBets && (
+				<div className='rejected-bets-container'>
+					<div className='rejected-bets'>
+						<h3>Rejected Bets</h3>
+						{rejectedBets.map((bet, index) => (
+							<RejectedBetItem key={bet.id} showCount={true} bet={bet} index={index + 1} />
+						))}
+					</div>
 				</div>
-			</div>
+			)}
 		</>
 	);
 };

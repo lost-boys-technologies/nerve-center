@@ -104,7 +104,6 @@ const CreateBet = (props) => {
             cancelButtonColor: '#95A5A6',
             confirmButtonText: 'Yes, cancel it!'
         }).then((result) => {
-            console.log(result);
             if (result.isConfirmed) {
                 Swal.fire({
                     title: 'Cancelled!',
