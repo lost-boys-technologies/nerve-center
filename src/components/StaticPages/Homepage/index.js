@@ -4,7 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import './homepage.scss';
 
 const HPCountdown = () => {
-	const difference = new Date('11/11/2021') - new Date();
+	const difference = new Date('9/4/2022') - new Date();
 	
 	const timeLeft = {
 		days: Math.floor(difference / (1000 * 60 * 60 * 24)),
@@ -43,7 +43,7 @@ const Homepage = () => {
 		<>
 			<div className='homepage-container'>				
 				<Paper className='paper-container' elevation={3}>
-					<div className='title'>Playoffs Begins In:</div>
+					<div className='title'>Draft Begins In:</div>
 					<div className='countdown-container'>
 						{timerComponents}
 					</div>
