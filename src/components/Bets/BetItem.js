@@ -15,6 +15,7 @@ const BetItem = ({ bet, index, showCount, history }) => {
 
     const postedByAuthUser = user && user.uid === bet.postedBy.id;
     const acceptedTakers = upvotes.map((acceptedTaker) => acceptedTaker.votedBy.name);
+    const acceptedTakerThresholdReached = acceptedTakers.length > 0;
 
     // TODO Move this to a utils
     const formatDate = (date) => {
@@ -115,6 +116,25 @@ const BetItem = ({ bet, index, showCount, history }) => {
         return challengers;
     }
 
+    const shouldRenderCancelButton = () => {
+        if (acceptedTakerThresholdReached) {
+            return null;
+        }
+
+        return (
+            <div className='non-bet-voting'>
+                <Button
+                    variant='contained'
+                    className='cancel-bet-area'
+                    color='secondary'
+                    onClick={handleDeleteBet}
+                >
+                    Cancel Bet
+                </Button>
+            </div>
+        );
+    }
+
     return (
         <div className='bet-item-container'>
             <div className='full-bet-card'>
@@ -133,16 +153,7 @@ const BetItem = ({ bet, index, showCount, history }) => {
                             <div className='voting bet-approval' onClick={handleUpvote}>{acceptedTakers.includes(user.displayName) ? <i className="fas fa-check fa-2x"></i> : <i className='far fa-thumbs-up fa-2x'></i>}</div>
                         </div>
                     ) : (
-                        <div className='non-bet-voting'>
-                            <Button
-                                variant='contained'
-                                className='cancel-bet-area'
-                                color='secondary'
-                                onClick={handleDeleteBet}
-                            >
-                                Cancel Bet
-                            </Button>
-                        </div>
+                        shouldRenderCancelButton()
                     )}
                 </div>
                 <div
