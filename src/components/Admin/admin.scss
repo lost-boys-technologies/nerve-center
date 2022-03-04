@@ -1,2 +1,13 @@
 @import '../../variables';
 
+.admin-container {
+    display: flex;
+    flex-basis: 25%;
+    border: 1px solid red;
+
+    .league-members {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid blue;
+    }
+}
