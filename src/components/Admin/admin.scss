@@ -2,12 +2,19 @@
 
 .admin-container {
     display: flex;
-    flex-basis: 25%;
+    width: 100%;
+    margin-top: 35px;
     border: 1px solid red;
 
-    .league-members-table {
-        display: flex;
-        flex-direction: column;
+    .left-side {
         border: 1px solid blue;
+        display: flex;
+        flex-basis: 10%;
+    }
+
+    .right-side {
+        display: flex;
+        flex-basis: 50%;
+        justify-content: center;
     }
 }

@@ -15,21 +15,33 @@ const Constitution = () => {
     }, [])
 
 	const getUsers = () => {
-        firebase.db.collection('users').onSnapshot(handleSnapshot);
+		// TODO orderBy timestamp including null values
+        firebase.db.collection('users')
+			// .where('uid', '==', true)
+			// .orderBy('memberSince', 'asc')
+			.orderBy('name', 'asc')
+			.onSnapshot(handleSnapshot);
     }
 
 	const handleSnapshot = (snapshot) => {
         const users = snapshot?.docs?.map(doc => {
             return { id: doc?.id, ...doc?.data() }
         });
+		console.log('users', users);
 		setAllUsers(users);
     }
 
 	return (
 		<div className='admin-container'>
-			<LeagueTable
-				users={allUsers}
-			/>
+			<div className='left-side'>
+				<LeagueTable
+					users={allUsers}
+					page={'admin'}
+				/>
+			</div>
+			<div className='right-side'>
+				Right Side
+			</div>
 		</div>
 	);
 };
