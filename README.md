@@ -18,7 +18,7 @@ It will most likely be refactored to use more modern technologies (Next.js/Astro
 
 ## Installation
 
-For this to function in its entirety, you will need the firebase `config.js` file at the root.
+For this to function in its entirety, you will need the firebase `config.js` file at the root. Visit [Google's Firebase console](https://console.firebase.google.com/) for more information.
 
 1. Clone the repository
 ```
