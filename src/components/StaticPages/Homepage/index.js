@@ -4,7 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import './homepage.scss';
 
 const HPCountdown = () => {
-	const difference = new Date('9/4/2022') - new Date();
+	const difference = new Date('8/30/2025') - new Date();
 	
 	const timeLeft = {
 		days: Math.floor(difference / (1000 * 60 * 60 * 24)),
