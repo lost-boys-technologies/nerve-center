@@ -35,9 +35,9 @@ cd nerve-center
 nvm use
 ```
 
-4. Install dependencies
+4. Install dependencies (leverage sudo if necessary)
 ```
-npm install  # Use 'sudo npm install' if necessary
+npm install
 ```
 
 5. Start the development server
